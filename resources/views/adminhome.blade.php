@@ -8,31 +8,22 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                           
-                        </div>
+                        <div class="alert alert-success" role="alert"> </div>
                     @endif
 
-                    You are logged in Admin!
+                    @if(Session::has('success')) <!-- ถ้าบันทึกสำเร็จ ค่า succes ใน dataController -->
+                    <div class="alert alert-success"> 
+                    <p>{{Session::get('success') }}</p> 
+                    </div>
+                    @endif
+                    <h3>Admin login</h3>
+                    Hello {{ Auth::user()->name}}
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th width="5"> No.</th>
-                            <th> Member Name</th>
-                            <th> Member Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $row =>$value)
-                        <tr>
-                            <td> {{$row+1}}</td>
-                            <td> {{$value->name}}</td>
-                            <td> {{$value->email}}</td>
-                        </tr>
-                         @endforeach
-                    </tbody>
-                </table>
+                <a href="{{ url('/user') }}"class="btn btn-primary">Show Data</a>
+                <br>
+                <a href="{{ url('/charttype') }}"class="btn btn-warning">สรุปผลอุปกรณ์</a>
+                <br>
+                <a href="{{ url('/chartproblem') }}"class="btn btn-danger">สรุปผลปัญหาต่างๆ</a>
             </div>
         </div>
     </div>

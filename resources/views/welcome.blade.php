@@ -63,12 +63,12 @@
             }
         </style>
     </head>
-    <body>
+    <body >
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -81,19 +81,23 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                <a href="{{ url('/home') }}"><img src="{{('/image/cc.jpg')}}">click me!</a>
+               <!-- <a href="{{ url('/home') }}">Home</a> -->
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <!--     <iframe
+                allow="microphone;"
+                 width="350"
+                 height="430"
+                 src="https://console.dialogflow.com/api-client/demo/embedded/f8fdd7b9-1a4b-4aa9-9865-e7ebd41d0454">
+                
+                </iframe> -->
+                
                 </div>
             </div>
         </div>
     </body>
 </html>
+
+          
