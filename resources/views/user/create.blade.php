@@ -1,4 +1,4 @@
-@extends('user.master') 
+@extends('layouts.nav') 
 @section('title','จัดการฐานข้อมูล')
 @section('content')
  <div class="container">
@@ -15,14 +15,27 @@
 </div> 
 @endif 
 
+<div align="right">
+		<a href="{{url('/history')}}" class="btn btn-primary"  >history</a>
+</div>
+
+
 @if(\Session::has('success')) <!-- ถ้าบันทึกสำเร็จ ค่า succes ใน userController -->
 <div class="alert alert-success"> 
-<p>{{ \Session::get('user') }}</p> 
+<p>{{ \Session::get('success') }}</p> 
 </div> 
 @endif 
 
-
-<form method="post" action="{{url('user')}}">{{csrf_field()}} 
+<form method="post" action="{{action('OnlyuserController@store')}}" enctype="multipart/form-data"> {{csrf_field()}} 
+<div class="form-group"> 
+<label>อุปกรณ์</label>
+      <select class="form-control" name="typename">
+          <option value="คอมพิวเตอร์">คอมพิวเตอร์</option>
+          <option value="โน๊ตบุ๊ค">โน๊ตบุ๊ค</option>
+          <option value="เครื่องปริ้นซ์">เครื่องปริ้นซ์ </option>
+          <option value="ระบบเครือข่าย">ระบบเครือข่าย </option>
+      </select>
+      </div>
 <div class="form-group"> 
 <input type="text" name="productCode" class="form-control" placeholder="รหัสผลิตภัณฑ์" />
 </div> 
@@ -30,19 +43,9 @@
 <input type="text" name="problem" class="form-control" placeholder="สาเหตุ/ปัญหาที่พบ" /> 
 </div>
  
-<label>ประเภท</label>
-      <select class="form-control" name="typename">
-          <option value="จอภาพ">จอภาพ</option>
-          <option value="คีย์บอร์ด">คีย์บอร์ด</option>
-          <option value="เมาส์">เมาส์</option>
-          <option value="CPU">CPU </option>
-          <option value="CD/DVD">CD/DVD</option>
-          <option value="เครื่องปริ้นซ์">เครื่องปริ้นซ์ </option>
-          
-      </select>
 
 <div class="form-group"> 
-<input type="submit" class="btn btn-primary" value="บันทึก"/> 
+<button type="submit" class="btn btn-primary" ><i class="fa fa-save"></i> Save</button> 
 </div> 
 </form> 
 </div> 

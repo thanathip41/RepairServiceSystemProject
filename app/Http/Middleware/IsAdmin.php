@@ -15,9 +15,9 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->check()&& $request->user()->admin==0){
-            return redirect()->guest('home');
-        }
+       if(auth()->check()&& $request->user()->roleCheck==2){
         return $next($request);
+        }abort(403);  
     }
+    
 }

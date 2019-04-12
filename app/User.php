@@ -16,8 +16,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','department', 'email','username', 'password','admin'
+       'id', 'name','department', 'email','username', 'password'
     ];
+
+    public function adminChecktest()
+    {   
+        return $this->belongsTo(roleCheck::class,'roleCheck');   //เรียก rolecheck class จาก roleCheck.php
+    }
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -27,6 +33,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $primaryKey="id";   // php มอง id เป็น int 
+    public $incrementing =false;
+
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);

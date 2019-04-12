@@ -19,11 +19,9 @@
                     <h3>Admin login</h3>
                     Hello {{ Auth::user()->name}}
                 </div>
-                <a href="{{ url('/user') }}"class="btn btn-primary">Show Data</a>
-                <br>
-                <a href="{{ url('/charttype') }}"class="btn btn-warning">สรุปผลอุปกรณ์</a>
-                <br>
-                <a href="{{ url('/chartproblem') }}"class="btn btn-danger">สรุปผลปัญหาต่างๆ</a>
+                <a href="{{ url('/Check') }}"class="btn btn-primary">Check Data</a>
+                
+                <a href="{{ url('/Role') }}"class="btn btn-defualt">Update role => พนักงาน</a>
             </div>
         </div>
     </div>
