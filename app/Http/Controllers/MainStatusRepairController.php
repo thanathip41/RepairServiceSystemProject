@@ -8,13 +8,9 @@ use App\User;
 use Auth;
 use Illuminate\Support\Facades\Session;
 
-class statusController extends Controller
+class MainStatusRepairController extends Controller
 {
     
-    public function edit($id)
-    {
-        //
-    }
     public function update( Request $request, $id)
     {   
         $this->validate($request, 
@@ -30,7 +26,7 @@ class statusController extends Controller
         $update->method = $request->get('method');
         $update->remark = $request->get('remark');
         $update->save(); 
-        return back()->with('success', 'อัพเดทเรียบร้อย');
+        return redirect('/datarepair')->with('success', 'อัพเดทเรียบร้อย');
     }
    
 }

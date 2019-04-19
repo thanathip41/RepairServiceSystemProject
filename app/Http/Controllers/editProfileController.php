@@ -10,7 +10,7 @@ class editProfileController extends Controller
     public function index()
     {
         $users = User::all(); 
-	    return view('user.editProfile', compact('users')); 
+	    return view('admin.editProfile', compact('users')); 
     }
     public function update(Request $request,$id)
     {

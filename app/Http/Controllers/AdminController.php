@@ -11,7 +11,7 @@ class AdminController extends Controller
     {
         
         $admin = data::all();  
-        return view('user.admincheck', compact('admin')); 
+        return view('admin.admincheck', compact('admin')); 
     }
     
     public function update(Request $request, $id)

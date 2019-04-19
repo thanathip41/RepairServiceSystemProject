@@ -10,7 +10,7 @@ class AdminRoleController extends Controller
     {
         $users = User::all(); 
        // dd($users);
-        return view('user.changeRole', compact('users')); 
+        return view('admin.changeRole', compact('users')); 
     }
     public function update(Request $request, $id)
     {   

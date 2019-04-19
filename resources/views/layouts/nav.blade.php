@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -28,7 +29,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 </head>
-<body>
+<body >
 <nav class="navbar-fixed-top">
 <div class="container-fluid">
     <div id="app">
@@ -44,10 +45,10 @@
                  User!Only
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url('/insert') }}">data</a>
-                  <a class="dropdown-item" href="{{ url('/history') }}">Check list</a>
+                  <a class="dropdown-item" href="{{ url('/insert') }}">Insert Data Repair</a>
+                  <a class="dropdown-item" href="{{ url('/history') }}">Check list Repair</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url('/user') }}">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
               </ul>
@@ -60,10 +61,11 @@
                  Maintenance!Only
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url('/user') }}">Data repair</a>
-                  <a class="dropdown-item" href="{{ url('/Piechart') }}">report</a>
+                  <a class="dropdown-item" href="{{ url('/datarepair') }}">Data repair</a>
+                  <a class="dropdown-item" href="{{ url('/Piechart') }}"><i class="fa fa-pie-chart"></i>  Piechart</a>
+                  <a class="dropdown-item" href="{{ url('/Barchart') }}"><i class="fa fa-bar-chart"></i> Barchart</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url('/user') }}">Something else here</a>
+                  <a class="dropdown-item" href="{{ url('/Barchart') }}">Something else here</a>
                 </div>
               </li>
               </ul>

@@ -7,15 +7,12 @@ use App\data;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Session;
-class OnlyuserController extends Controller
+class UserInsertRepairController extends Controller
 {
-    public function index()
-    {
-       //
-    }
+
     public function create()
     {
-        return view('user.create');
+        return view('user.InsertRepair');
         //อ้างอิงตำแหน่งของ view 
     }
     public function store(Request $request)
@@ -25,12 +22,12 @@ class OnlyuserController extends Controller
         [   'productCode' => 'required', 'problem' => 'required', 
         ]); 
         $input = new data(
-            [ 'productCode' => $request->get('productCode'), 
+            [ 'idM'=>Auth::user()->id,
+              'productCode' => $request->get('productCode'), 
               'problem' => $request->get('problem'),
-              'name' =>Auth::user()->name, //seccion username to table data 
               'type_id'=>$request->get('typename'),
               'id'=>('MT-').date('dHis') ,//mt_rand(000,999)   Ymdhis //str.random(3) //.date('dhis')
-              'email'=>Auth::user()->email,
+              
             ]);
          $input->save();
          return back()->with('success', 'อัพเดทเรียบร้อย');

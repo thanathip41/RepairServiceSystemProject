@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class data extends Model
 {
-    protected $fillable=['productCode','problem','name','type_id','id','email'];
-     // 'repairman','statusCheck', 'method','remark' ไม่ได้ถูกส่ง
+    protected $fillable=['productCode','problem','type_id','id','idM'];// 'repairman','statusCheck', 'method','remark' ไม่ได้ถูกส่ง
     
+     public function idMtest()
+    {   
+        return $this->belongsTo(User::class,'id');   
+    }
 
     public function typeCheck()
     {  
@@ -20,9 +23,9 @@ class data extends Model
     return $this->belongsTo(statusCheck::class,'statusCheck');
     }
 
-    public function testx()
+    public function users()
     { 
-    return $this->belongsTo(test::class,'xxx');
+    return $this->belongsTo(User::class,'idM'); //('App\User','idM','id');
     }
 
    protected $primaryKey="id";   // php มอง id เป็น int 

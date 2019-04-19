@@ -26,7 +26,7 @@
 </div> 
 @endif 
 
-<form method="post" action="{{action('OnlyuserController@store')}}" enctype="multipart/form-data"> {{csrf_field()}} 
+<form method="post" action="{{action('UserInsertRepairController@store')}}" enctype="multipart/form-data"> {{csrf_field()}} 
 <div class="form-group"> 
 <label>อุปกรณ์</label>
       <select class="form-control" name="typename">

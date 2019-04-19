@@ -26,7 +26,7 @@
 <th>รายละเอียด </th>
 </tr> 
 @foreach($history as $row)
-@if  ($row['name']==Auth::user()->name) 
+@if  ($row['idM']==Auth::user()->id) 
 <tr> @if ($row['delete']==0)
     <td>{{$row['id']}}</td> 
     <td>{{$row['productCode']}}</td> 
@@ -44,7 +44,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       	</div>
-				<form method="post" action="{{action('statusUserController@update',$row['id'])}}">{{csrf_field()}}  
+				<form method="post" action="{{action('UserRepairVerifyController@update',$row['id'])}}">{{csrf_field()}}  
 				<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body">
 				<p class="text-center">
@@ -62,16 +62,16 @@
   </div>
 </div>
 @elseif ($row['statusCheck']==1)
-<button class="btn btn-outline-dark"> <i class="fa fa-spinner" ></i>  wait</button>
+<a class="text-dark"> <i class="fa fa-spinner" ></i>  wait</a>
 @elseif ($row['statusCheck']==2)
-<button class="btn btn-outline-dark"> <i class="fa fa-spinner" ></i>  wait</button>
+<a class="text-dark"> <i class="fa fa-spinner" ></i>  wait</a>
 @elseif ($row['statusCheck']==4)
-<button class="btn btn-outline-success"> Success</button>
+<a class="text-success"> Success</a>
 @elseif ($row['statusCheck']==5)
-<button class="btn btn-outline-dark"> <i class="fa fa-spinner" ></i>  wait</button>
+<a class="text-dark"> <i class="fa fa-spinner" ></i>  wait</a>
 @endif</td>
 
-<td><button class="btn btn-success"  data-toggle="modal" data-target="#full{{ $row['id']}}">  <i class="fa fa-book"></i> </button> <!-- data-tartget หา ID แต่ละตัวเพื่อส่งค่าไปให้ modal -->
+<td><button class="btn btn-success"  data-toggle="modal" data-target="#full{{ $row['id']}}">  <i class="fa fa-file"></i> </button> <!-- data-tartget หา ID แต่ละตัวเพื่อส่งค่าไปให้ modal -->
 <div class="modal modal-danger fade" id="full{{$row['id']}}"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -102,7 +102,7 @@
               </tr>
 							<tr class="table-light">
 								<td> ชื่อ-นามสกุล :</td>
-                <td>{{$row['name']}}</td>
+                <td>{{$row->users->name}}</td>
               </tr>
             </tbody> <br>
 						<thead class="table-primary">

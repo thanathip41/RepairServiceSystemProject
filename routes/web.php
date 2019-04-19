@@ -47,25 +47,25 @@ Auth::routes();
 
     Route::group(['middleware' =>'maintenance'], function()
     {   
-        Route::resource('/user', 'dataController');
-        Route::resource('/status', 'statusController');
-        Route::resource('/chart', 'GraphController'); 
-        Route::get('/Barchart', 'GraphController@Barchart'); 
-        Route::get('/Piechart', 'GraphController@Piechart');
-        Route::get('/downloadPDF/{id}', 'dataController@downloadPDF');
-        Route::any('/searchID', 'dataController@searchID');
-        Route::any('/searchCode', 'dataController@searchCode');
-        Route::any('/searchDate', 'dataController@searchDate');
-        Route::get('/mail', 'mailController@index');
-        Route::post('/postMail', 'mailController@post');
-        //Route::get('/sendmail', 'mailController@post');
+        Route::resource('/datarepair', 'MainDataRepairController');
+        Route::resource('/status', 'MainStatusRepairController');
+        Route::get('/Barchart', 'MainRepairGraphController@Barchart'); 
+        Route::get('/Piechart', 'MainRepairGraphController@Piechart');
+        Route::get('/downloadPDF/{id}', 'MainDataRepairController@downloadPDF');
+        Route::any('/searchID', 'MainDataRepairController@searchID');
+        Route::any('/searchCode', 'MainDataRepairController@searchCode');
+        Route::any('/searchDateBetween', 'MainDataRepairController@searchDateBetween');
+        Route::any('/searchDate', 'MainDataRepairController@searchDate');
+        Route::get('/mail', 'MainMailController@index');
+        Route::post('/postMail', 'MainMailController@post');
+        Route::post('/postMailCC', 'MainMailController@postCC');
     });
     Route::group(['middleware' =>'user'], function()
      {
-        Route::get('/history', 'OnlyuserController@history');
-        Route::resource('/statusUser', 'statusUserController');
-        Route::get('/insert', 'OnlyuserController@create');
-         Route::resource('/insertdata', 'OnlyuserController');
+        Route::get('/history', 'UserInsertRepairController@history');
+        Route::resource('/statusUser', 'UserRepairVerifyController');
+        Route::get('/insert', 'UserInsertRepairController@create');
+         Route::resource('/insertdata', 'UserInsertRepairController');
      });
      Route::resource('/profile', 'editProfileController');
     

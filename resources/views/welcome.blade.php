@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>RepairServiceSystemProject</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -52,10 +52,10 @@
                  User!Only
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url('/insert') }}">data</a>
-                  <a class="dropdown-item" href="{{ url('/history') }}">Check list</a>
+                  <a class="dropdown-item" href="{{ url('/insert') }}"><i class="fa fa-pencil"></i> Insert Data Repair</a>
+                  <a class="dropdown-item" href="{{ url('/history') }}"><i class="fa fa-list"></i> Check list</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url('/user') }}">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
               </ul>
@@ -68,10 +68,11 @@
                  Maintenance!Only
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url('/user') }}">Data repair</a>
-                  <a class="dropdown-item" href="{{ url('/Piechart') }}">report</a>
+                  <a class="dropdown-item" href="{{ url('/datarepair') }}"><i class="fa fa-database"></i> Data repair</a>
+                  <a class="dropdown-item" href="{{ url('/Piechart') }}"><i class="fa fa-area-chart"></i>  Piechart</a>
+                  <a class="dropdown-item" href="{{ url('/Barchart') }}"><i class="fa fa-bar-chart"></i> Barchart</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url('/user') }}">Something else here</a>
+                  <a class="dropdown-item" href="{{ url('/Barchart') }}">Something else here</a>
                 </div>
               </li>
               </ul>
@@ -87,7 +88,7 @@
                   <a class="dropdown-item" href="{{ url('/Role') }}">RoleUser</a>
                   <a class="dropdown-item" href="{{ url('/Check') }}">Data repair</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url('/') }}">Something else here</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
               </ul>@endif
@@ -149,7 +150,7 @@
   @elseif (Auth::user()->roleCheck==1)
   <div class="container-fluid" >
       <div class="mySlides">
-    <a href="{{url('/user')}}"><img src="{{('/image/7.jpg')}}" width="100%" ></a>
+    <a href="{{url('/datarepair')}}"><img src="{{('/image/7.jpg')}}" width="100%" ></a>
       </div>
       <div class="mySlides">
     <a href="{{url('/Piechart')}}"><img src="{{('/image/8.jpg')}}" width="100%"></a>

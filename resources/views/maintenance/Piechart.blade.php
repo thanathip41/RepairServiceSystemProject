@@ -23,7 +23,7 @@
    {
     var data = google.visualization.arrayToDataTable(analytics);
     var options = {
-     title : 'TEST'
+     title : 'รายงานผลปัญญาทีต่างๆที่มีการแจ้งซ่อมในบริษัท'
     };
     var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
     chart.draw(data, options);
@@ -35,10 +35,10 @@
  <body>
   <br/>
   <div class="container">
-   <h3 align="center">Make Google Pie Chart in Laravel</h3><br />
+   <h3 align="center">รายงานผลปัญญาทีต่างๆที่มีการแจ้งซ่อมในบริษัท</h3><br />
    <div class="panel panel-default">
     <div class="panel-heading">
-     <h3 class="panel-title">googlechart TEST  </h3>
+     <h3 class="panel-title">รายงานผลปัญญาทีต่างๆที่มีการแจ้งซ่อมในบริษัท </h3>
      </div>
     <div class="panel-body" align="center">
      <div id="pie_chart" style="width:750px; height:450px;">

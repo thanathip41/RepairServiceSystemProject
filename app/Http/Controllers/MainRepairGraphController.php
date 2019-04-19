@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\data;
 use DB;
 
-class GraphController extends Controller
+class MainRepairGraphController extends Controller
 {
     function Barchart()
     {
@@ -21,7 +21,7 @@ class GraphController extends Controller
      {
       $array[++$key] = [$value->type_id, $value->number];
      }
-     return view('user.Barchart')->with('type_id', json_encode($array));
+     return view('maintenance.Barchart')->with('type_id', json_encode($array));
     }
 
     function Piechart()
@@ -37,6 +37,6 @@ class GraphController extends Controller
      {
       $array[++$key] = [$value->problem, $value->number];
      }
-     return view('user.Piechart')->with('problem', json_encode($array));
+     return view('maintenance.Piechart')->with('problem', json_encode($array));
     }
 }

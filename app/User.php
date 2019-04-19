@@ -9,21 +9,19 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table='users';
     protected $fillable = [
        'id', 'name','department', 'email','username', 'password'
     ];
-
     public function adminChecktest()
     {   
-        return $this->belongsTo(roleCheck::class,'roleCheck');   //เรียก rolecheck class จาก roleCheck.php
+        return $this->belongsTo(roleCheck::class,'roleCheck');   
+        //เรียก rolecheck class จาก roleCheck.php
     }
-
+    public function data(){   
+        return $this->hasmany(data::class,'id');   //('App\Data','id')
+        //เรียก modal data :: class ให้ id ของ users = idM
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -41,14 +39,4 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
-
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-   // protected $casts = [
-     //   'email_verified_at' => 'datetime',
-    //];
 }

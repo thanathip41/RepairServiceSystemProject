@@ -7,9 +7,9 @@ use App\data;
 use Auth;
 use Illuminate\Support\Facades\Session;
 
-class statusUserController extends Controller
+class UserRepairVerifyController extends Controller
 {
-    public function update( Request $request, $id)
+    public function update(Request $request, $id)
     {   
         $this->validate($request, 
         [ 
@@ -19,7 +19,6 @@ class statusUserController extends Controller
         $update = data::find($id); 
         $update->statusCheck =$request->get('statusCheck');
         $update->save(); 
-        return back()->with('success', 'อัพเดทเรียบร้อย');
+        return redirect('/history')->with('success', 'อัพเดทเรียบร้อย');
     }
-
 }

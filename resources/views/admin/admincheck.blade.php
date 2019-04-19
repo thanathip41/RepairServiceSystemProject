@@ -5,7 +5,7 @@
 <div class="row"> 
 <div class="col-md-12"> 
 <br> 
-<h3 align="center">Data history</h3> <br />  
+<h3 align="center">Table management</h3> <br />  
 
 @if(\Session::has('success')) <!-- ถ้าบันทึกสำเร็จ ค่า succes ใน userController -->
 <div class="alert alert-success"> 
@@ -19,12 +19,11 @@
 <tr>
 <th>รหัสแจ้งซ่อม</th> 
 <th>รหัสผลิตภัณฑ์</th> 
-<th>สาเหตุ/ปัญหาที่พบ</th>
-<th>ประเภทอุปกรณ์</th>
+<th>อุปกรณ์/ปัญหาที่พบ</th>
 <th>ชื่อผู้แก้ไขปัญหา</th>
 <th>วิธีแก้ไขปัญหา</th>
+<th>เวลาแจ้ง/รับซ่อม</th>
 <th>สถานะการซ่อม</th>
-<th>เวลา</th>
 <th>Delete</th>
 </tr> 
 
@@ -32,11 +31,13 @@
 <tr>@if ($row['delete']==0)
 <td>{{$row['id']}}</td> 
 <td>{{$row['productCode']}}</td> 
-<td>{{$row['problem']}}</td>
-<td>{{$row['type_id']}}</td> <!-- ดึงข้อมูล type ใน fn m = typename -->
+<td>{{$row['type_id']}} : <br> <p style="color:red;">{{$row['problem']}}</p></td> 
 <td>{{$row['repairman']}}</td>
 <td>{{$row['method']}}</td>
-<td>{{$row['created_at']}}</td>
+<td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> 
+    <p style="color:red;">
+    @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
+		@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
 <td>{{$row->statusCheckname->status}}</td>
 <td><button class="btn btn-danger"  data-toggle="modal" data-target="#m{{ $row['id']}}">Delete</button> 
 <div class="modal modal-danger fade" id="m{{$row['id']}}"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

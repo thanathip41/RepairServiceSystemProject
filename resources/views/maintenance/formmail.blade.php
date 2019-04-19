@@ -5,7 +5,7 @@
  <div class="container">
 <div class="row"> 
 <div class="col-md-12"> <br /> 
-<h3 align="center">เพิ่มข้อมูล</h3> <br/> 
+<h3 align="center">Send Email</h3> <br/> 
 
 @if(count($errors) > 0) 
 <div class="alert alert-danger"> 
@@ -16,29 +16,30 @@
 </div> 
 @endif 
 
-<div align="right">
-		<a href="{{url('/history')}}" class="btn btn-primary"  >history</a>
-</div>
-
-
 @if(\Session::has('success')) 
 <div class="alert alert-success"> 
 <p>{{ \Session::get('success') }}</p> 
 </div> 
 @endif 
 
-<form method="post" action="{{action('mailController@post')}}">{{csrf_field()}}  <!-- {{action('mailController@post')}}  /postMail-->
+<form method="post" action="{{action('MainMailController@postCC')}}">{{csrf_field()}}  
 <div class="form-group"> 
-<label>email</label>
+<label>Email</label>
       <input type="text" name="email" class="form-control">
       </div>
 <div class="form-group"> 
-<label>S</label>
+<label>Subject</label>
 <input type="text" name="subject" class="form-control"/>
 </div> 
+
+ <div class="form-group"> 
+<label>CC</label>
+<input type="text" name="cc" class="form-control" /> 
+</div>
+ 
 <div class="form-group"> 
 <label>Message</label>
-<input type="text" name="message" class="form-control"  /> 
+<textarea type="text" name="message" class="form-control" row="8"></textarea> 
 </div>
  
 <div class="form-group"> 
