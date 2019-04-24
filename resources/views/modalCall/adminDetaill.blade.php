@@ -1,5 +1,5 @@
 
-<button type="button" class="btn btn-success"  data-toggle="modal" data-target="#detaill{{$row['id']}}"> <i class="fas fa-file"></i></button>
+<button type="button" class="btn btn-success"  data-toggle="modal" data-target="#detaill{{$row['id']}}"><i class="fa fa-file"></i></button>
 <div class="modal fade" id="detaill{{$row['id']}}"  role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -7,7 +7,6 @@
         <h4 class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-				<form  action="{{action('MainDataRepairController@PDF',$row['id'])}}"> 
 	      <div class="modal-body">
 				<table class="table">
             <thead class="table-primary">
@@ -71,10 +70,8 @@
           </table>			
 	     	  </div>
            <div class="modal-footer">
-              <button type="submit" class="btn btn-success"> Print </button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 	      </div>
-      </form>
     </div>
   </div>
 </div>

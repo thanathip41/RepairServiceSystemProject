@@ -22,7 +22,7 @@
 </div> 
 @endif 
 
-<form method="post" action="{{action('MainMailController@postCC')}}">{{csrf_field()}}  
+<form method="post" action="{{action('MainMailController@post')}}">{{csrf_field()}}  
 <div class="form-group"> 
 <label>Email</label>
       <input type="text" name="email" class="form-control">
@@ -32,10 +32,10 @@
 <input type="text" name="subject" class="form-control"/>
 </div> 
 
- <div class="form-group"> 
+ <!-- <div class="form-group"> 
 <label>CC</label>
 <input type="text" name="cc" class="form-control" /> 
-</div>
+</div> -->
  
 <div class="form-group"> 
 <label>Message</label>

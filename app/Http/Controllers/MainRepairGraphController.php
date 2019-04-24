@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\data;
+use App\users;
 use DB;
 
 class MainRepairGraphController extends Controller
@@ -39,4 +40,8 @@ class MainRepairGraphController extends Controller
      }
      return view('maintenance.Piechart')->with('problem', json_encode($array));
     }
+
+
+    
+    
 }

@@ -28,11 +28,11 @@
 
     <!-- navbar -->
 <nav class="navbar-fixed-top">
-<div class="container-fluid">
+<div class="container">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel"> 
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"> <i class="fa fa-wrench"></i> Repair 
+                <a class="navbar-brand" href="{{ url('/') }}"> <i class="fa fa-wrench"></i>
                 
                 </a>
 
@@ -45,53 +45,19 @@
                 </a>
 
                 @if (Auth::user()->roleCheck==0)
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-briefcase"></i>
-                 User!Only
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url('/insert') }}"><i class="fa fa-pencil"></i> Insert Data Repair</a>
-                  <a class="dropdown-item" href="{{ url('/history') }}"><i class="fa fa-list"></i> Check list</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              </ul>
-
+                <a class="navbar-brand" href="{{ url('/insert') }}"> <i>Repairing</i>  </a>
+                <a class="navbar-brand" href="{{ url('/history') }}"> <i>/ History</i> </a>
+          
                 @elseif (Auth::user()->roleCheck==1)
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-briefcase"></i>
-                 Maintenance!Only
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url('/datarepair') }}"><i class="fa fa-database"></i> Data repair</a>
-                  <a class="dropdown-item" href="{{ url('/Piechart') }}"><i class="fa fa-area-chart"></i>  Piechart</a>
-                  <a class="dropdown-item" href="{{ url('/Barchart') }}"><i class="fa fa-bar-chart"></i> Barchart</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url('/Barchart') }}">Something else here</a>
-                </div>
-              </li>
-              </ul>
-
+                <a class="navbar-brand" href="{{ url('/datarepair') }}"><i>Management Data</i></a>
+                <a class="navbar-brand" href="{{ url('/Piechart') }}">   <i>/ Report Chart</i> </a>
+                  
+ 
                 @elseif (Auth::user()->roleCheck==2)
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-briefcase"></i>
-                 Admin!Only
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ url('/Role') }}">RoleUser</a>
-                  <a class="dropdown-item" href="{{ url('/Check') }}">Data repair</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              </ul>@endif
+                <a class="navbar-brand" href="{{ url('/Role') }}"><i>Management User</i></a>
+                <a class="navbar-brand" href="{{ url('/Check') }}"><i>Management Data</i></a>
+                 @endif
+                 </ul>
               
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -126,7 +92,7 @@
 </div>
 </nav>
     <!-- start home page -->
-    <div class="container-fluid" >
+    <div class="container" >
       <div class="mySlides">
     <a href="#"><img src="{{('/image/q.jpg')}}" width="100%" ></a>
       </div>
@@ -203,7 +169,7 @@ function showSlides() {
   #contact {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
   </style>
 
-<div class="container-fluid">
+<div class="container">
 <div class="progress">
   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 </div>
@@ -223,7 +189,7 @@ function showSlides() {
 </div>
 <br>
 
-<div class="container-fluid">
+<div class="container">
   <section class="bg-danger" id="contact">
     <div class="container">
       <h2 class="text-center text-uppercase">contact</h2>
@@ -241,7 +207,7 @@ function showSlides() {
 <br>
 
 <!-- carousel -->
-<div class="container-fluid">
+<div class="container">
             <!-- Carousel
             ================================================== -->
           <div id="myCarousel" class="carousel slide">        
@@ -285,8 +251,8 @@ $('#myCarousel').carousel({
 </script>
 
 
-<!-- Footer -->
-<div class="container-fluid">
+<!-- Footer  -fluid-->
+<div class="container"> 
 <footer class="jumbotron text-center" style="margin-bottom:0">
 
   <!-- Copyright -->

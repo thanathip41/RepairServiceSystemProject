@@ -37,4 +37,6 @@ class UserInsertRepairController extends Controller
         $history = data::all();
         return view('user.history', compact('history'))->with('success', 'เรียบร้อย'); 
     }
+
+    
 }

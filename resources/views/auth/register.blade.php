@@ -63,7 +63,7 @@
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" 
-                                name="username" value="{{ old('username') }}" required autofocus placeholder="User ID">
+                                name="username" value="{{ old('username') }}" required autofocus placeholder="Username">
 
                                 @if ($errors->has('username'))
                                     <span class="invalid-feedback" role="alert">

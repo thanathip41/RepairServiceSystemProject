@@ -2,48 +2,93 @@
 <html lang="en"> 
 <head> 
 <meta charset="utf-8"> 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title> รายงาน</title> 
-</head> 
+</head>
+
 <body>
-<div align="center">
-<img src="https://yt3.ggpht.com/a-/AN66SAzDWKdAj58uAsuMRU_TcD5bPWg7wxL3uOBVvw=s100-mo-c-c0xffffffff-rj-k-no">
-<!--<img src="{{('/image/cc.jpg')}}"> -->
-</div>
-<h1 align="center"> รายงาน การแจ้งซ่อมผลิตภัณฑ์</h1>
-<h2 align="center">รายละเอียดของผู้แจ้งซ่อมผลิตภัณฑ์</h2>
-<h2>หมายเลขการแจ้ง : {{$PDF->id}}</h2>
-<h2>วันที่แจ้ง : {{$PDF->created_at}}</h2>
-<h2>รหัสผลิตภัณฑ์ : {{$PDF->productCode}}</h2>
-<h2>ผู้แจ้งซ่อม : {{$PDF->name}} แผนกงาน : {{$PDF->department}}</h2>
-<h2>สาเหตุ/ปัญหาที่พบ : {{$PDF->problem}}</h2>
+<h4 align="right"><i>เลขแจ้งซ่อม {{$PDF->id}}</i></h4>
+<h1 align="center"><i>รายงานการแจ้งซ่อม</i></h1>
+<table>
+  <tr>
+     <th><h3 ><u>รายละเอียดของผู้แจ้งซ่อม</u></h3></th>
+     <th></th>
+  </tr>
+  <br>
+  <tr>
+     <td><h3> วันที่แจ้ง</h3> </td>
+      <td> {{date('d/m/Y',strtotime($PDF->created_at))}}</td>
+  </tr>
+  <br>
+  <tr>
+    <td><h3> รหัสผลิตภัณฑ์</h3></td>
+    <td>{{$PDF->productCode}} </td>
+  </tr>
+  <br>
+  <tr>
+    <td><h3> ผู้แจ้งซ่อม</h3></td>
+     <td>{{$PDF->users->name}}</td>
+  </tr>
+  <br>
+  <tr>
+    <td><h3> แผนกงาน</h3></td>
+     <td>{{$PDF->users->department}}</td>
+  </tr>
+  <br>
+  <tr>
+    <td><h3> สาเหตุ/ปัญหาที่พบ</h3></td>
+    <td>{{$PDF->problem}}</td>
+  </tr>
+  <br>
 <br>
-
-<h2 align="center">รายละเอียดของการซ่อมผลิตภัณฑ์</h2>
-<h2 >วันที่ซ่อมผลิตภัณฑ์ : @if ($PDF->created_at==$PDF->updated_at)  </h2> 
-@else {{$PDF->updated_at}}
-@endif
-<h2>ชื่อผู้แก้ไขปัญหา : {{$PDF->repairman}}</h2>
-<h2>วิธีการแก้ไขสาเหตุ/ปัญหา :{{$PDF->method}} </h2>
-<h2>หมายเหตุ : {{$PDF->remark}} </h2>
-
-
-<div class="container">
-<div class="row">
-<div class="col-md-4">
-<label>ลงชื่อ ............................</label>
-<h3> ({{$PDF->name}})</h3>
-<h3> (ผู้แจ้งซ่อม)</h3>
-</div>
-<div class="col-md-4">
-<label>ลงชื่อ ............................</label>
-<h3> ({{$PDF->repairman}})</h3>
-<h3> (ผู้รับซ่อม)</h3>
-</div>
-</div>
-</div>
+  <tr > 
+     <th><h3><u>รายละเอียดของการซ่อม</u></h3></th>
+     <th></th>
+  </tr>
+  <br>
+  <tr >
+     <td><h3> สถานะการซ่อม</h3> </td>
+      <td>{{$PDF->statusCheckname->status}}</td>
+  </tr>
+  <br>
+  <tr>
+    <td><h3> วันที่ซ่อมผลิตภัณฑ์ </h3></td>
+	<td>@if ($PDF->created_at==$PDF->updated_at) ไม่ได้ดำเนินการ </h2> 
+        @else {{date('d/m/Y',strtotime($PDF->updated_at))}} @endif</td>
+  </tr>
+  <br>
+  <tr>
+     <td><h3> ชื่ออผู้แก้ไขปัญหา</h3> </td>
+      <td>{{$PDF->repairman}}</td>
+  </tr>
+  <br>
+  <tr>
+    <td><h3> วิธีการแก้ไขสาเหตุ/ปัญหา</h3></td>
+    <td>{{$PDF->method}}</td>
+  </tr>
+  <br>
+  <tr>
+    <td><h3> หมายเหตุ</h3></td>
+     <td>{{$PDF->remark}}</td>
+  </tr>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<tr>
+      <th><h2 align="center">ลงชื่อ .............................</h2></th>
+      <th><h2 align="center">ลงชื่อ .............................</h2></th>
+  </tr>
+  <tr>
+ 
+  <td><h3 align="center" >({{$PDF->users->name}})</h3></td>
+  <td><h3  align="center">({{$PDF->repairman}})</h3></td>
+ 
+  </tr>
+  <tr>
+  <td><h3 align="center">(ผู้แจ้งซ่อม)</h3></td>
+  <td><h3 align="center">(ผู้ดำเนินการซ่อม)</h3></td>
+  </tr>
+</table>
 </body> 
 </html> 

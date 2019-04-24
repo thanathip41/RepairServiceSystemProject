@@ -42,7 +42,7 @@ Auth::routes();
     {
         Route::resource('/Role', 'AdminRoleController');
         Route::resource('/Check', 'AdminController');
-        
+ 
     });
 
     Route::group(['middleware' =>'maintenance'], function()
@@ -51,7 +51,7 @@ Auth::routes();
         Route::resource('/status', 'MainStatusRepairController');
         Route::get('/Barchart', 'MainRepairGraphController@Barchart'); 
         Route::get('/Piechart', 'MainRepairGraphController@Piechart');
-        Route::get('/downloadPDF/{id}', 'MainDataRepairController@downloadPDF');
+        Route::get('/formpdf/{id}', 'MainDataRepairController@PDF');
         Route::any('/searchID', 'MainDataRepairController@searchID');
         Route::any('/searchCode', 'MainDataRepairController@searchCode');
         Route::any('/searchDateBetween', 'MainDataRepairController@searchDateBetween');
@@ -59,13 +59,14 @@ Auth::routes();
         Route::get('/mail', 'MainMailController@index');
         Route::post('/postMail', 'MainMailController@post');
         Route::post('/postMailCC', 'MainMailController@postCC');
+        
     });
     Route::group(['middleware' =>'user'], function()
      {
         Route::get('/history', 'UserInsertRepairController@history');
         Route::resource('/statusUser', 'UserRepairVerifyController');
         Route::get('/insert', 'UserInsertRepairController@create');
-         Route::resource('/insertdata', 'UserInsertRepairController');
+        Route::resource('/insertdata', 'UserInsertRepairController');
      });
      Route::resource('/profile', 'editProfileController');
     

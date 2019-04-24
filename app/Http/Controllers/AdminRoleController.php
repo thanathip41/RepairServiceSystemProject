@@ -25,4 +25,13 @@ class AdminRoleController extends Controller
         $changeRole->save(); 
         return back()->with('success', 'บันทึกข้อมูลเรียบร้อย'); 
     }
+    public function destroy($id)
+{
+     $del = User::find($id);
+     $del->delete();
+     return back()->with('success', 'บันทึกข้อมูลเรียบร้อย');
+}
+
+
+
 }

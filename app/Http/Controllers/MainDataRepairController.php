@@ -15,8 +15,29 @@ class MainDataRepairController extends Controller
     {
         
         $data = data::paginate();  /// User = ตัวใน http/controller/_name file
-        //$showdata = Data::all(); 
-        return view('maintenance.index', compact('data')); 
+        $s1 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=1'));
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck'));
+     
+        return view('maintenance.index', compact('data','s1','s2','s3','s4','s5','sAll')); 
+        //  ชื่อ database data.. แสดงข้อมูลใน database
+    }
+
+    public function navbar()
+    {
+        $s1 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=1'));
+            dd(s1);
+            return view('welcome', compact('s1')); 
         //  ชื่อ database data.. แสดงข้อมูลใน database
     }
    
@@ -38,12 +59,12 @@ class MainDataRepairController extends Controller
         $update->save(); 
         return redirect('maintenance.index')->with('success', 'อัพเดทเรียบร้อย');
     }
-    public function downloadPDF($id) {
+    public function PDF($id) {
         $PDF=data::find($id);
         $view=\View::make('maintenance.pdf',compact('PDF'));
         $html=$view->render();
         $pdf=new PDF();
-        $pdf::SetTitle('รายงาน PDF');
+        $pdf::SetTitle('รายงานการแจ้งซ่อม');
         $pdf::Addpage();
         $pdf::SetFont('freeserif');
         $pdf::WriteHTML($html,true,false,true,false);
