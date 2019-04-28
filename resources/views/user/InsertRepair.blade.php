@@ -35,11 +35,10 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">อุปกรณ์</label>
 
                             <div class="col-md-6">
-                            <select class="form-control" name="typename">
-                                <option value="คอมพิวเตอร์">คอมพิวเตอร์</option>
-                                <option value="โน๊ตบุ๊ค">โน๊ตบุ๊ค</option>
-                                <option value="เครื่องปริ้นซ์">เครื่องปริ้นซ์ </option>
-                                <option value="ระบบเครือข่าย">ระบบเครือข่าย </option>
+                            <select class="form-control" name="type_id">
+                                <option value=1>คอมพิวเตอร์</option>
+                                <option value=2>ปริ้นเตอร์/สแกนเนอร์ </option>
+                                <option value=3>ระบบเครือข่าย </option>
                             </select>
                                                     
                             </div>
@@ -49,23 +48,23 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">รหัสผลิตภัณฑ์</label>
 
                             <div class="col-md-6">
-                            <input type="text" name="productCode" class="form-control" placeholder="รหัสผลิตภัณฑ์" />
+                            <input type="text" name="productCode" class="form-control" placeholder="รหัสผลิตภัณฑ์" required />
                                                
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">สาเหตุ/ปัญหาที่พบ</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right" required>สาเหตุ/ปัญหาที่พบ </label>
 
                             <div class="col-md-6">
     
-                            <textarea type="text" name="problem" class="form-control" placeholder="สาเหตุ/ปัญหาที่พบ" > </textarea>
+                            <textarea type="text" name="problem" class="form-control" placeholder="สาเหตุ/ปัญหาที่พบ" required > </textarea>
                                                
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary" ><i class="fa fa-save"></i> Save</button> 
+                            <button  onclick="validation();"  type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button> 
                             </div>
                         </div>
                     </form>
@@ -73,36 +72,14 @@
             </div>
         </div>
     </div>
-</div>
-
-
-<!--
-<form method="post" action="{{action('UserInsertRepairController@store')}}" enctype="multipart/form-data"> {{csrf_field()}} 
-<div class="form-group"> 
-<label>อุปกรณ์</label>
-      <select class="form-control" name="typename">
-          <option value="คอมพิวเตอร์">คอมพิวเตอร์</option>
-          <option value="โน๊ตบุ๊ค">โน๊ตบุ๊ค</option>
-          <option value="เครื่องปริ้นซ์">เครื่องปริ้นซ์ </option>
-          <option value="ระบบเครือข่าย">ระบบเครือข่าย </option>
-      </select>
-      </div>
-<div class="form-group"> 
-<input type="text" name="productCode" class="form-control" placeholder="รหัสผลิตภัณฑ์" />
-</div> 
-<div class="form-group"> 
-<input type="text" name="problem" class="form-control" placeholder="สาเหตุ/ปัญหาที่พบ" /> 
-</div>
- 
-
-<div class="form-group"> 
-<button type="submit" class="btn btn-primary" ><i class="fa fa-save"></i> Save</button> 
-</div> 
-</form> 
-</div> 
-</div>
-<div align="right"> 
-<a href="{{url('/')}}" class="btn btn-primary">back</a>  
-</div> -->
-</div>
+ @foreach($s1 as $row)	
+<script type="text/javascript">
+function validation()
+{ Swal.fire({
+  type: 'success',
+  title: 'มีคิวก่อนหน้าคุณจำนวน {{$row->number}} คน',
+})
+}
+</script>
+@endforeach
 @endsection

@@ -26,6 +26,6 @@ class editProfileController extends Controller
         $changeRole->department = $request->get('department');
         $changeRole->email = $request->get('email');
         $changeRole->save(); 
-        return back()->with('success', 'บันทึกข้อมูลเรียบร้อย');
+        return back()->with('success', 'Successfully');
     }
 }

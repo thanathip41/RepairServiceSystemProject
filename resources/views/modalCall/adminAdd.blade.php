@@ -16,7 +16,7 @@
 	     	  </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-	        <button type="submit" class="btn btn-danger">Yes </button> 
+	        <button onclick="validation();" type="submit" class="btn btn-primary">Yes </button> 
 	      </div>
       </form>
     </div>
@@ -27,3 +27,12 @@
 @elseif ($row['roleCheck']==2)
 <a> IT is Admin </a>
 @endif
+
+<script type="text/javascript">
+function validation()
+{ Swal.fire({
+  type: 'success',
+  title: 'Deleted successfully',
+})
+}
+</script>

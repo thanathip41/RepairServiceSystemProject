@@ -23,13 +23,14 @@ class AdminRoleController extends Controller
         $changeRole = User::find($id); 
         $changeRole->roleCheck = $request->get('roleCheck');
         $changeRole->save(); 
-        return back()->with('success', 'บันทึกข้อมูลเรียบร้อย'); 
+        return back()->with('success', 'Successfully'); 
     }
     public function destroy($id)
 {
      $del = User::find($id);
      $del->delete();
-     return back()->with('success', 'บันทึกข้อมูลเรียบร้อย');
+     sleep(3);
+     return back()->with('success', 'Successfully');
 }
 
 

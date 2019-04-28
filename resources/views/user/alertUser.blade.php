@@ -14,10 +14,6 @@
             </div> 
             @endif 
             </div>
-
-
-
-
 <div class="container">            
 <table class="table table-bordered table-striped"> 
 <tr>
@@ -30,13 +26,12 @@
 <th>รายละเอียด </th>
 </tr>
 
-
 @foreach($history as $row)
-@if  ($row['idM']==Auth::user()->id) 
-<tr> @if ($row['delete']==0)
+@if  ($row['idM']==Auth::user()->id ) 
+<tr> @if ($row['delete']==0 && $row['statusCheck']==3)
     <td>{{$row['id']}}</td> 
     <td>{{$row['productCode']}}</td> 
-    <td>{{$row->typeCheck->type_name}}: <br> <p style="color:red;">{{$row['problem']}}</p></td>
+    <td>{{$row['type_id']}} : <br> <p style="color:red;">{{$row['problem']}}</p></td>
     <td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> 
     <p style="color:red;">
     @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ

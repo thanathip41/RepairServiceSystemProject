@@ -19,6 +19,6 @@ class UserRepairVerifyController extends Controller
         $update = data::find($id); 
         $update->statusCheck =$request->get('statusCheck');
         $update->save(); 
-        return redirect('/history')->with('success', 'อัพเดทเรียบร้อย');
+        return redirect('/history')->with('success', 'Successfully');
     }
 }

@@ -24,6 +24,7 @@ class AdminController extends Controller
         $update = data::find($id); 
         $update->delete = $request->get('delete');
         $update->save(); 
-        return back()->with('success', 'อัพเดทเรียบร้อย');
+        sleep(3);
+        return back()->with('success', 'Successfully');
     }
 }

@@ -26,7 +26,7 @@ class MainStatusRepairController extends Controller
         $update->method = $request->get('method');
         $update->remark = $request->get('remark');
         $update->save(); 
-        return redirect('/datarepair')->with('success', 'อัพเดทเรียบร้อย');
+        return redirect('/datarepair')->with('success', 'successfully');
     }
    
 }

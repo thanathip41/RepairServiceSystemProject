@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class typeProduct extends Model
+class type_id extends Model
 {
-    protected $table='typeProduct';
+    protected $table='type_id';
     public function typeCheck(){       ////ทำให้ typeProduct table รู้จักค่า type_id 
-        return $this->hasMany(typeProduct::class);
+        return $this->hasMany(type_id::class,'typename');
     }
     
 }

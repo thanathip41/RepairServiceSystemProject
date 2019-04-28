@@ -15,7 +15,7 @@ class data extends Model
 
     public function typeCheck()
     {  
-    return $this->belongsTo(typeProduct::class,'type_id'); // ตัวแปร เทียบกับ typeProduct
+    return $this->belongsTo(type_id::class,'type_id'); // ตัวแปร เทียบกับ typeProduct
     }
     
     public function statusCheckname()

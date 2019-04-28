@@ -31,4 +31,7 @@
 <a class="text-success"> Success</a>
 @elseif ($row['statusCheck']==5)
 <a class="text-dark"> <i class="fa fa-spinner" ></i>  wait</a>
+
+@elseif ($row['statusCheck']==6) 
+<a class="text-danger">  ส่งเคลม</a>
 @endif

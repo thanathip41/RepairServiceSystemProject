@@ -36,7 +36,7 @@ class MainMailController extends Controller
         // $message->cc($data['cc']);
 
      });
-     return redirect('/datarepair')->with('success', 'Send E-mail Success');
+     return redirect('/datarepair')->with('success', 'Send E-mail Successfully');
     }
 
     /*

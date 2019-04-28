@@ -1,8 +1,8 @@
-@extends('layouts.nav') 
+@extends('layouts.navbar') 
 @section('content')
 
 <script type="text/javascript">
-   var analytics = <?php echo $problem; ?>
+   var analytics = <?php echo $type_id; ?>
 
    google.charts.load('current', {'packages':['corechart']});
 
@@ -20,7 +20,7 @@
   </script>
   <br/>
     <div class="panel-body" align="center">
-     <div id="pie_chart" style="width:750px; height:450px;">
+     <div id="pie_chart" style="width:750px; height:450px; ">
      </div>
     </div>
     <div class="container">

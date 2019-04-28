@@ -25,17 +25,18 @@
 </div>
 
 @elseif ($row['statusCheck']==2)
-<button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#two{{$row['id']}}">  การซ่อม</button> 
-<div class="modal fade" id="two{{$row['id']}}" role="dialog">
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#two{{$row['id']}}">การซ่อม</i></button>
+<div class="modal fade" id="two{{$row['id']}}"  role="dialog" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
-      	</div>
+      </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
-					<input type="hidden" name="_method" value="PATCH">
+				<input type="hidden" name="_method" value="PATCH">
 	      <div class="modal-body">
-						<p class="text-center">
+				<p class="text-center">
 						<label> รหัสการแจ้งซ่อม : {{$row['id']}}</label> </p>
 						<div class="form-group"> 
 						<label> รหัสผลิตภัณท์ : {{$row['productCode']}}</label>
@@ -47,15 +48,17 @@
 						<label> ชื่อผู้แก้ไขปัญหา : {{Auth::user()->name}}
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"> 
 						</label>
-				</div>
+						</div>
 						<div class="form-group"> 
 						<label> วิธีการแก้ไขปัญหา : </label>
-						<textarea   name="method" class="form-control" value="{{$row['problem']}}" required></textarea>
+						<textarea   name="method" class="form-control"  required></textarea>
 						</div>
-						<div class="form-group" align="center" > 
-						<input type="hidden"  name="statusCheck" value="3"><p style="color:red;">ยืนยันการซ่อมจากผู้ดูแล</p><br>
-	      </div>
-
+						<div class="form-group"> 
+						<label> หมายเหตุ : </label>
+						<textarea   name="remark" class="form-control"></textarea>
+						</div>
+						<input type="hidden"  name="statusCheck" value="3">
+	     	  </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
 	        <button type="submit" class="btn btn-primary">Yes </button> 
@@ -63,6 +66,32 @@
       </form>
     </div>
   </div>
+</div>
+
+<button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#twot{{$row['id']}}">เคลม</button> 
+<div class="modal fade" id="twot{{$row['id']}}" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}" > {{csrf_field()}}
+					<input type="hidden" name="_method" value="PATCH">
+					<div class="modal-body">
+					<p class="text-center">
+					<a > คุณต้องการส่งเคลม {{$row['type_id']}} ใช่หรือไม่</a>
+					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"> 
+					<input type="hidden"  name="statusCheck" value="6">
+					</p>
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
+	        <button type="submit" class="btn btn-primary">Yes </button>   
+					</div>                
+				</form>
+		</div>
+	</div>
 </div>
 
 @elseif ($row['statusCheck']==3)
@@ -80,17 +109,19 @@
 					<label>คุณต้องการส่ง E-mail : {{$row->users->email}} ใช่หรือไม่ </label>
       	<input type="hidden" name="email" value="{{$row->users->email}}">
 				<input type="hidden" name="subject" value="การแจ้งซ่อม {{$row['id']}}">
-				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row['type_id']}} ดำเนินเสร็จสมบูรณ์"> 
+				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row->typeCheck->type_name}} ดำเนินเสร็จสมบูรณ์"> 
 					</p>
 	     	  </div>
 	      <div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Yes </button> 
 	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-	        <button type="submit" class="btn btn-primary">Yes </button> 
 	      </div>
       </form>
     </div>
   </div>
 </div>
+
+
 
 @elseif ($row['statusCheck']==4)
 <a class="text-success">  เสร็จสมบูรณ์</a>
@@ -107,12 +138,12 @@
       	<label>คุณต้องการส่ง E-mail : {{$row->users->email}} ใช่หรือไม่ </label>
       	<input type="hidden" name="email" value="{{$row->users->email}}">
 				<input type="hidden" name="subject" value="การแจ้งซ่อม {{$row['id']}}">
-				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row['type_id']}} ดำเนินเสร็จสมบูรณ์"> 
+				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row->typeCheck->type_name}} ดำเนินเสร็จสมบูรณ์"> 
 					</p>
 	     	  </div>
 	      <div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Yes </button> 
 	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-	        <button type="submit" class="btn btn-primary">Yes </button> 
 	      </div>
       </form> 
     </div>
@@ -136,11 +167,14 @@
 					</p>
 	     	  </div>
 	      <div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Yes </button> 
 	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-	        <button type="submit" class="btn btn-primary">Yes </button> 
 	      </div>
       </form>
     </div>
   </div>
 </div>
+
+@elseif ($row['statusCheck']==6) 
+<a class="text-danger">  ส่งเคลม</a>
 @endif

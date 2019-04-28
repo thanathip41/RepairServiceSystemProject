@@ -14,7 +14,7 @@ class MainDataRepairController extends Controller
     public function index()
     {
         
-        $data = data::paginate();  /// User = ตัวใน http/controller/_name file
+        $data = data::paginate(30);  /// User = ตัวใน http/controller/_name file
         $s1 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=1'));
         $s2 = DB::select( 
@@ -25,10 +25,14 @@ class MainDataRepairController extends Controller
             DB::raw('select count(*) as number from data where statusCheck=4'));
         $s5 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=5'));
+        $s6 = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck=6'));
         $sAll = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck'));
-     
-        return view('maintenance.index', compact('data','s1','s2','s3','s4','s5','sAll')); 
+
+            
+                    
+        return view('maintenance.index', compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
         //  ชื่อ database data.. แสดงข้อมูลใน database
     }
 
@@ -36,9 +40,43 @@ class MainDataRepairController extends Controller
     {
         $s1 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=1'));
-            dd(s1);
-            return view('welcome', compact('s1')); 
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5'));
+        $s6 = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck=6'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck'));
+           
+        return view('layouts.navbar', compact('s1','s2','s3','s4','s5','s6','sAll')); 
         //  ชื่อ database data.. แสดงข้อมูลใน database
+    }
+
+  
+    public function alert()
+    {
+        $data =data::all();
+        $s1 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=1'));
+            $s2 = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck=2'));
+            $s3 = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck=3'));
+            $s4 = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck=4'));
+            $s5 = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck=5'));
+            $s6 = DB::select( 
+                    DB::raw('select count(*) as number from data where statusCheck=6'));
+            $sAll = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck'));
+            return view('maintenance.alertStatus',compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
+        
     }
    
     public function update(Request $request, $id)
@@ -57,7 +95,7 @@ class MainDataRepairController extends Controller
         $update->method = $request->get('method');
         $update->remark = $request->get('remark');
         $update->save(); 
-        return redirect('maintenance.index')->with('success', 'อัพเดทเรียบร้อย');
+        return redirect('maintenance.index')->with('success', 'Successfully');
     }
     public function PDF($id) {
         $PDF=data::find($id);
@@ -72,52 +110,112 @@ class MainDataRepairController extends Controller
     }
  public function searchID()
 
- { $searching = Input::get ('searchID');
+   {    $s1 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=1'));
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5'));
+        $s6 = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck=6'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck'));
+     
+    $searching = Input::get ('searchID');
     if($searching != "")
     {
     $query=data::WHERE( 'id', 'like', '%' . $searching . '%' )->paginate (50);
 // $pagination = $query->appends(array('searching'=> Input::get ( 'searching' )));
 if (count ($query) > 0)
-    return view ( 'maintenance.index' )->withquery($query)->withq($searching);
+    return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','sAll'))->withquery($query)->withq($searching);
 }
-    return view ( 'maintenance.index' )->withMessage ( 'No Details found. Try to search again !' );
+    return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','sAll') )->withMessage ( 'No Details found. Try to search again !' );
 }
 public function searchCode()
 
- { $searching = Input::get ('searchCode');
+ {   $s1 = DB::select( 
+    DB::raw('select count(*) as number from data where statusCheck=1'));
+    $s2 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=2'));
+    $s3 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=3'));
+    $s4 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=4'));
+    $s5 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=5'));
+    $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6'));
+    $sAll = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck'));
+
+
+    $searching = Input::get ('searchCode');
     if($searching != "")
     {
     $query=data::WHERE( 'productCode', 'like', '%' . $searching . '%' )->paginate (20);
      
 // $pagination = $query->appends(array('searching'=> Input::get ( 'searching' )));
 if (count ($query) > 0)
-    return view ( 'maintenance.index' )->withquery($query)->withq($searching);
+    return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','sAll') )->withquery($query)->withq($searching);
 }
-    return view ( 'maintenance.index' )->withMessage ( 'No Details found. Try to search again !' );
+    return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','sAll') )->withMessage ( 'No Details found. Try to search again !' );
 }
 
 public function searchDate()
- { $searching = Input::get ('searchDate');
+ {   $s1 = DB::select( 
+    DB::raw('select count(*) as number from data where statusCheck=1'));
+    $s2 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=2'));
+    $s3 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=3'));
+    $s4 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=4'));
+    $s5 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=5'));
+    $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6'));
+    $sAll = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck'));
+     $searching = Input::get ('searchDate');
     if($searching != "")
     {
     $query=data::WHEREDATE( 'created_at', 'like', '%' . $searching . '%')->paginate(20);
 if (count ($query) > 0)
-    return view ( 'maintenance.index' )->withquery($query)->withq($searching);
+    return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','sAll'))->withquery($query)->withq($searching);
 }
-    return view ( 'maintenance.index' )->withMessage ( 'No Details found. Try to search again !' );
+    return view ( 'maintenance.index' ,compact('s1','s2','s3','s4','s5','s6','sAll'))->withMessage ( 'No Details found. Try to search again !' );
 }
 
 
 public function searchDateBetween()
- { $searching = Input::get ('searchDatefrom');
+ { $s1 = DB::select( 
+    DB::raw('select count(*) as number from data where statusCheck=1'));
+    $s2 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=2'));
+    $s3 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=3'));
+    $s4 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=4'));
+    $s5 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=5'));
+    $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6'));
+    $sAll = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck'));
+     
+    $searching = Input::get ('searchDatefrom');
     $search = Input::get ('searchDateto');
     if($searching != "")
     {
     $query=data::WHEREDATE( 'created_at', '>=',$searching)->WHEREDATE('created_at', '<=',$search)->paginate (10);
 if (count ($query) > 0)
-    return view ( 'maintenance.index' )->withquery($query)->withq($searching);
+    return view ( 'maintenance.index' ,compact('s1','s2','s3','s4','s5','s6','sAll'))->withquery($query)->withq($searching);
 }
-    return view ( 'maintenance.index' )->withMessage ( 'No Details found. Try to search again !' );
+    return view ( 'maintenance.index' ,compact('s1','s2','s3','s4','s5','s6','sAll'))->withMessage ( 'No Details found. Try to search again !' );
 }
 
 }

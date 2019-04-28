@@ -1,10 +1,10 @@
-<input type="radio" name="demo" value="One"/> Search ID  <br>
-<input type="radio" name="demo" value="Two"/> Search Code <br>
-<input type="radio" name="demo" value="Three"/> Search Date <br>
-<input type="radio" name="demo" value="Four"/> Search Date Between Date  <br>
+<input type="radio" name="demo" value="One"/> Search ID   &nbsp;&nbsp;
+<input type="radio" name="demo" value="Two"/> Search Code &nbsp;&nbsp;
+<input type="radio" name="demo" value="Three"/> Search Date &nbsp;&nbsp;
+<input type="radio" name="demo" value="Four"/> Search Date Between Date  
 
-
-<div id="showOne" class="myDiv" >
+<br>
+<div id="showOne" class="myDiv" align="center">
 <form action="{{action('MainDataRepairController@searchID')}}" method="post" >
 			{{ csrf_field() }}
 				  <input type="text"  name="searchID"	placeholder="Search ID"> 
@@ -12,15 +12,15 @@
 		</form>
 </div>
 
-<div id="showTwo" class="myDiv">
+<div id="showTwo" class="myDiv" align="center">
 <form action="{{action('MainDataRepairController@searchCode')}}" method="post" >
 			{{ csrf_field() }}
-				  <input type="text"  name="searchCode"	placeholder="Search Code"  > 
+				  <input type="text"  name="searchCode"	 placeholder="Search Code"  > 
 					<button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
 		</form>
 </div>
 
-<div id="showThree" class="myDiv">
+<div id="showThree" class="myDiv" align="center">
 	<form action="{{action('MainDataRepairController@searchDate')}}" method="post" >
 			{{ csrf_field() }}
 					<input name="searchDate" type="date">
@@ -28,7 +28,7 @@
 		</form>
 </div>
 
-<div id="showFour" class="myDiv">
+<div id="showFour" class="myDiv" align="center">
 		<form id="MyForm" action="{{action('MainDataRepairController@searchDateBetween')}}" method="post" > {{ csrf_field() }}
 					<input name="searchDatefrom" type="date">
 					date to 
