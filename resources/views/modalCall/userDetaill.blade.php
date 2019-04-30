@@ -15,6 +15,10 @@
               </tr>
             </thead>
             <tbody >
+            <tr class="table-light">
+								<td>ประเภทอุปกรณ์ </td>
+                <td>{{$row->typeCheck->type_name}}</td>
+              </tr>
               <tr class="table-light">
 								<td>สาเหตุ/ปัญหาที่พบ :</td>
                 <td>{{$row['problem']}}</td>

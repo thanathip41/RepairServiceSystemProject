@@ -18,7 +18,7 @@
 
     <!-- navbar -->
 <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel"> 
+        <nav class="navbar navbar-expand-lg navbar-light bg-success">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}"> <i class="fa fa-wrench"></i></a>
 
@@ -29,27 +29,29 @@
                 @elseif (Auth::user()->roleCheck==1)
                 <a class="navbar-brand" href="{{ url('/datarepair') }}"><i>Management Data</i></a>
                 <a class="navbar-brand" href="{{ url('/Piechart') }}">   <i> Report Chart</i> </a>
+                <a class="navbar-brand" href="{{ url('/stat') }}"><i> stat repair</i> </a>
                
                 @elseif (Auth::user()->roleCheck==2)
                 <a class="navbar-brand" href="{{ url('/Role') }}"><i>Management User</i></a>
                 <a class="navbar-brand" href="{{ url('/Check') }}"><i> Management Data</i></a>
+                
                  @endif
                 
                 <ul class="navbar-nav ml-auto">  <!-- mr ซ้าย-->
                   @if (Auth::user()->roleCheck==0)
-                    @foreach($s3 as $row)
                     <li class="nav-item">
                           <a class="nav-link" href="{{url('/alertUser')}}" >
-                          <i class="fa fa-bell"><span class="badge badge-danger"> {{$row->number}}</span></i>
-                      </a>
-                      </li>@endforeach 
-                  @elseif (Auth::user()->roleCheck==1)
-                     @foreach($s1 as $row)
+                          <i class="fa fa-bell"><span class="badge badge-danger">@foreach($s3 as $row) {{$row->number}}  </span></i>
+                      </a>@endforeach
+                      </li>
+                  @elseif (Auth::user()->roleCheck==1  )
+                     
+     
                     <li class="nav-item">
-                          <a class="nav-link" href="{{url('/alert')}}" >
-                          <i class="fa fa-bell"><span class="badge badge-danger"> {{$row->number}}</span></i>
-                      </a>
-                      </li>@endforeach
+                          <a class="nav-link" href="{{url('/alertStatusone')}}" >
+                          <i class="fa fa-bell"><span class="badge badge-danger"> @foreach($s1 as $row) {{$row->number}}</span></i>
+                      </a>@endforeach
+                      </li>
                     @endif
                     <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> 
@@ -152,51 +154,43 @@ function showSlides() {
     dots[slideIndex-1].className += " active";
     setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
-</script>
- 
-
- <!--
-<div class="container">
-          <div id="myCarousel" class="carousel slide">        
-            <div class="carousel-inner">           
-                    <div class="item active"> 
-                    	<a href="#"><img src="{{('/image/6.jpg')}}" class="thumbnail" width="100%"></a>
-                          <div class="carousel-caption d-none d-md-block">
-                       	  <h4>kuyyyyyyyyyyyyyyyyyyyyyyyyyy</h4>
-                          <p>kuyyyyyyyyyyyyyyyyyyyyyyyyyy</p>
-                        </div>
-                     </div>
-
-                    <div class="item"> 
-                    <a href="#"><img src="{{('/image/7.jpg')}}" class="thumbnail" width="100%"></a>
-                        <div class="carousel-caption d-none d-md-block">
-                        <h4>kuyyyyyyyyyyyyyyyyyyyyyyyyyy</h4>
-                        <p>kuyyyyyyyyyyyyyyyyyyyyyyyyyy</p>
-                        </div>                                                   
-                    </div>  
-                    <div class="item"> 
-                    <a href="#"><img src="{{('/image/8.jpg')}}" class="thumbnail" width="100%"></a>
-                      <div class="carousel-caption d-none d-md-block">
-                      <h4>kuyyyyyyyyyyyyyyyyyyyyyyyyyy</h4>
-                      <p>kuyyyyyyyyyyyyyyyyyyyyyyyyyy</p>
-                     </div>                                                                                   
-                   </div> 
-              
-                  <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                  </ol>     
-            </div>                                                            
-          </div>   
-</div> 
+</script> 
+ <div class="container" >
+ <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{{('/image/6.jpg')}}" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{('/image/7.jpg')}}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{('/image/8.jpg')}}" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+<br>
 
 <script>
 $('#myCarousel').carousel({
-		interval:   2000
+		interval:2000
 	});
 </script>
--->
+
 
 <!-- Footer  -fluid-->
 <div class="container"> 

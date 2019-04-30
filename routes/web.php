@@ -17,7 +17,7 @@ Auth::routes();
    Route::group(['middleware' =>['auth']], function(){
    Route::get('/',function ()
      {
-       $data =data::all('id');
+       $data =data::all('idM');
        $s1 = DB::select( 
         DB::raw('select count(*) as number from data where statusCheck=1'));
         $s2 = DB::select( 
@@ -74,9 +74,14 @@ Auth::routes();
         Route::get('/mail', 'MainMailController@index');
         Route::post('/postMail', 'MainMailController@post');
         Route::post('/postMailCC', 'MainMailController@postCC');
-        Route::get('/alert', 'MainDataRepairController@alert');
         Route::resource('/stat', 'MainStatController');
-  
+        Route::get('/alertStatusone', 'MainStatusRepairController@alertfors1');
+        Route::get('/alertStatustwo', 'MainStatusRepairController@alertfors2');
+        Route::get('/alertStatustree', 'MainStatusRepairController@alertfors3');
+        Route::get('/alertStatusfour', 'MainStatusRepairController@alertfors4');
+        Route::get('/alertStatusfive', 'MainStatusRepairController@alertfors5');
+        Route::get('/alertStatussix', 'MainStatusRepairController@alertfors6');
+        Route::get('/process/{id}', 'MainStatusRepairController@process');
     });
     Route::group(['middleware' =>'user'], function()
      {

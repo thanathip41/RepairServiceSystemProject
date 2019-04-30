@@ -11,6 +11,7 @@ class MainStatController extends Controller
 {
     public function index()
     {
+        
         $s1 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=1'));
         $s2 = DB::select( 

@@ -16,8 +16,9 @@
 									</p>
 							</div>
 							<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Yes </button> 
 								<button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-								<button type="submit" class="btn btn-primary">Yes </button> 
+								
 	      			</div>
       </form>
     </div>
@@ -60,15 +61,16 @@
 						<input type="hidden"  name="statusCheck" value="3">
 	     	  </div>
 	      <div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Yes </button> 
 	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-	        <button type="submit" class="btn btn-primary">Yes </button> 
+	      
 	      </div>
       </form>
     </div>
   </div>
 </div>
 
-<button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#twot{{$row['id']}}">เคลม</button> 
+<button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#twot{{$row['id']}}">ซ่อมไม่ได้</button> 
 <div class="modal fade" id="twot{{$row['id']}}" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -80,14 +82,16 @@
 					<input type="hidden" name="_method" value="PATCH">
 					<div class="modal-body">
 					<p class="text-center">
-					<a > คุณต้องการส่งเคลม {{$row['type_id']}} ใช่หรือไม่</a>
+					<a> กรุณาตรวจสอบประกันของอุปกรณ์ก่อนยืนยัน</a><br>
+					<input type="radio"  name="statusCheck" value="6" required>มีประกัน ส่งเคลม<br>
+          <input type="radio"  name="statusCheck" value="7" required>หมดประกัน ซื้อใหม่<br>
 					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"> 
-					<input type="hidden"  name="statusCheck" value="6">
+					
 					</p>
 					</div>
 					<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Yes </button>   
 					<button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-	        <button type="submit" class="btn btn-primary">Yes </button>   
 					</div>                
 				</form>
 		</div>
@@ -176,5 +180,7 @@
 </div>
 
 @elseif ($row['statusCheck']==6) 
-<a class="text-danger">  ส่งเคลม</a>
+<a class="text-danger">  เคลมอุปกรณ์</a>
+@elseif ($row['statusCheck']==7) 
+<a class="text-danger"> ซื้ออุปกรณ์ใหม่</a>
 @endif

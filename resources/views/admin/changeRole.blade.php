@@ -20,7 +20,7 @@
 <th>E-mail</th>
 <th>Role</th>
 <th>Addmaintenance</th>
-<th>Deleted</th>
+
 
 </tr> 
 @foreach($users as $row) 
@@ -30,7 +30,7 @@
     <td>{{$row['email']}}</td>
 		<td> {{$row->adminChecktest->role}}</td>
     <td> @include('modalCall/adminAdd')</td>
-		<td>@include('modalCall/adminDelUser')</td>
+	
 </tr>@endif
 @endforeach
 </table> 

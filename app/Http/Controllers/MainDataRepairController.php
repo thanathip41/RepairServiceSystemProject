@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\data;
+use App\User;
 use Auth;
 use PDF;
 use DB;
@@ -14,7 +15,7 @@ class MainDataRepairController extends Controller
     public function index()
     {
         
-        $data = data::paginate(30);  /// User = ตัวใน http/controller/_name file
+        $data = data::paginate(5);  /// User = ตัวใน http/controller/_name file
         $s1 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=1'));
         $s2 = DB::select( 
@@ -30,8 +31,7 @@ class MainDataRepairController extends Controller
         $sAll = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck'));
 
-            
-                    
+      
         return view('maintenance.index', compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
         //  ชื่อ database data.. แสดงข้อมูลใน database
     }
@@ -76,7 +76,6 @@ class MainDataRepairController extends Controller
             $sAll = DB::select( 
                 DB::raw('select count(*) as number from data where statusCheck'));
             return view('maintenance.alertStatus',compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
-        
     }
    
     public function update(Request $request, $id)
@@ -128,8 +127,8 @@ class MainDataRepairController extends Controller
     $searching = Input::get ('searchID');
     if($searching != "")
     {
-    $query=data::WHERE( 'id', 'like', '%' . $searching . '%' )->paginate (50);
-// $pagination = $query->appends(array('searching'=> Input::get ( 'searching' )));
+    $query=data::WHERE( 'id', 'like', '%' . $searching . '%' )->paginate (5);
+     $pagination = $query->appends(array('searchID'=> Input::get ( 'searchID' )));
 if (count ($query) > 0)
     return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','sAll'))->withquery($query)->withq($searching);
 }
@@ -156,9 +155,8 @@ public function searchCode()
     $searching = Input::get ('searchCode');
     if($searching != "")
     {
-    $query=data::WHERE( 'productCode', 'like', '%' . $searching . '%' )->paginate (20);
-     
-// $pagination = $query->appends(array('searching'=> Input::get ( 'searching' )));
+    $query=data::WHERE( 'productCode', 'like', '%' . $searching . '%' )->paginate (5);
+ $pagination = $query->appends(array('searching'=> Input::get ( 'searching' )));
 if (count ($query) > 0)
     return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','sAll') )->withquery($query)->withq($searching);
 }
@@ -183,7 +181,8 @@ public function searchDate()
      $searching = Input::get ('searchDate');
     if($searching != "")
     {
-    $query=data::WHEREDATE( 'created_at', 'like', '%' . $searching . '%')->paginate(20);
+    $query=data::WHEREDATE( 'created_at', 'like', '%' . $searching . '%')->paginate(5);
+    $pagination = $query->appends(array('searchDate'=> Input::get ( 'searchDate' )));
 if (count ($query) > 0)
     return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','sAll'))->withquery($query)->withq($searching);
 }
@@ -209,11 +208,13 @@ public function searchDateBetween()
      
     $searching = Input::get ('searchDatefrom');
     $search = Input::get ('searchDateto');
-    if($searching != "")
+    if($searching != "" &&$search != "")
     {
-    $query=data::WHEREDATE( 'created_at', '>=',$searching)->WHEREDATE('created_at', '<=',$search)->paginate (10);
+    $query=data::WHEREDATE( 'created_at', '>=',$searching)->WHEREDATE('created_at', '<=',$search)->paginate (5);
+    $pagination = $query->appends(array('searchDatefrom'=> Input::get ( 'searchDatefrom' )));
+    $pagination = $query->appends(array('searchDateto'=> Input::get ( 'searchDateto' )));
 if (count ($query) > 0)
-    return view ( 'maintenance.index' ,compact('s1','s2','s3','s4','s5','s6','sAll'))->withquery($query)->withq($searching);
+    return view ( 'maintenance.index' ,compact('s1','s2','s3','s4','s5','s6','sAll'))->withquery($query);
 }
     return view ( 'maintenance.index' ,compact('s1','s2','s3','s4','s5','s6','sAll'))->withMessage ( 'No Details found. Try to search again !' );
 }

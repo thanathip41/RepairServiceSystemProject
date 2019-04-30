@@ -32,12 +32,12 @@ class UserInsertRepairController extends Controller
               
             ]);
          $input->save();
-         sleep(3);
+         sleep(2);
          return redirect('/insert')->with('success', 'Successfully');
         //return redirect()->route('user.index')->with('success', 'บันทึกข้อมูลเรียบร้อย'); 
     }
     public function history() {
-        $history = data::all();
+        $history = data::all(); //paginate() 
         return view('user.history', compact('history'))->with('success', 'Successfully'); 
     }
     public function alertUser() {

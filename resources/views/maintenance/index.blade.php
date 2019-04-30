@@ -1,7 +1,6 @@
 @extends('layouts.navbar') 
 @section('content')
-<br> 
-<br> 
+
 <br> 
 		<div class="container">
 				@if(\Session::has('success')) 
@@ -10,11 +9,10 @@
         </div>  @endif 
 		</div>
 
-
-	
-
 <div class="container" >
+<p class="text-right">
 @include('modalCall/sendmail')
+</p>
 </div>
 <br>
 <div class="container" align="center">
@@ -42,13 +40,13 @@
 						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
-				<td>@include('modalCall/detaill')</td> 
+				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 					@endif 
 				</tr>
 					@endforeach 
 		</table>
+	{{$data->links()}}
 </div>
-{{ $data->render()}}  
 @endif 
 @if(isset($query))  
 
@@ -62,6 +60,7 @@
 			<th>สถานะการซ่อม</th>
 			<th>Verify</th> 
 			<th>รายละเอียด</th>
+		
 		</tr> 
 
 		@foreach($query as $row)
@@ -77,7 +76,8 @@
 				@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> 
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
-				<td>@include('modalCall/detaill')</td> 
+				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
+				
 		@endif 
 		</tr>
 		@endforeach 
@@ -88,6 +88,4 @@
 					<p>{{ $message }}</p>
 					@endif
 </div> 
-
-
 @stop

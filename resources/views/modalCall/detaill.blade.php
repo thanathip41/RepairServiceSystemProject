@@ -3,7 +3,9 @@
   <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
+      <div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}
+      </div>
+
         <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
       <form action="{{action('MainDataRepairController@PDF',$row['id'])}}"> 
@@ -13,6 +15,10 @@
             <th>ข้อมูลการแจ้งซ่อม</th>
             <th></th>
           </tr>
+          <tr class="table-light">
+								<td>ประเภทอุปกรณ์ </td>
+                <td>{{$row->typeCheck->type_name}}</td>
+              </tr>
           <tr class="table-light">
             <td > รหัสผลิตภัณท์ </td>
             <td>{{$row['productCode']}}</td>

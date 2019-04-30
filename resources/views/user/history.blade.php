@@ -4,7 +4,7 @@
 <div class="container">
 <br>
 <div align="right">
-		<a href="{{url('/insert')}}" class="btn btn-primary"  >แจ้งซ่อม</a>
+		<a href="{{url('/insert')}}" class="btn btn-primary">แจ้งซ่อม</a>
 </div>
 <br>
 <div class="container">
@@ -14,9 +14,6 @@
             </div> 
             @endif 
             </div>
-
-
-
 
 <div class="container">            
 <table class="table table-bordered table-striped"> 

@@ -39,19 +39,34 @@ class MainRepairGraphController extends Controller
 
     function Piechart()
     {
+      $s1 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=1'));
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5'));
+        $s6 = DB::select( 
+                DB::raw('select count(*) as number from data where statusCheck=6'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck'));
+
      $input = DB::table('data')
        ->select(
-        DB::raw('type_id as type_id'),
+        DB::raw('problem as problem'),
         DB::raw('count(*) as number'))
-       ->groupBy('type_id')
+       ->groupBy('problem')
        ->get();
-     $array[] = ['type_id', 'Number'];
+     $array[] = ['problem', 'Number'];
      foreach($input as $key => $value)
      {
-      $array[++$key] = [$value->type_id, $value->number];
+      $array[++$key] = [$value->problem, $value->number];
      }
     // dd($array);
-     return view('maintenance.Piechart')->with('type_id', json_encode($array));
+     return view('maintenance.Piechart',compact('s1','s2','s3','s4','s5','s6','sAll'))->with('problem', json_encode($array));
     }
 
 

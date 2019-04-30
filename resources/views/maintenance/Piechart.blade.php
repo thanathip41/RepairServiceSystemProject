@@ -2,7 +2,7 @@
 @section('content')
 
 <script type="text/javascript">
-   var analytics = <?php echo $type_id; ?>
+   var analytics = <?php echo $problem; ?>
 
    google.charts.load('current', {'packages':['corechart']});
 
