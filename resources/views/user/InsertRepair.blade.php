@@ -12,7 +12,7 @@
 </ul> 
 </div> 
 @endif 
-
+@if (Auth::user()->deleted==0)
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -34,7 +34,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">รหัสผลิตภัณฑ์</label>
 
                             <div class="col-md-6">
-                            <input type="text" name="productCode" class="form-control" placeholder="รหัสผลิตภัณฑ์" required />
+                            <input type="text" name="productCode" id="productCode" class="form-control" placeholder="รหัสผลิตภัณฑ์" required />
                                                
                             </div>
                         </div>
@@ -56,13 +56,12 @@
                                 <option  value="ลงโปรแกรมใหม่">ลงโปรแกรมใหม่</option>
                                 <option  value="ลง window ใหม่">ลง window ใหม่</option>
                                 <option  value="เมาส์/คีย์บอร์ด">เมาส์/คีย์บอร์ด</option>
-                            </select>
-                                            
+                            </select>            
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                            <button  onclick="validation();"  type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button> 
+                            <button  onclick="check();"  type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button> 
                             </div>
                         </div>
                     </form>
@@ -70,6 +69,8 @@
             </div>
         </div>
     </div>
+    @else 
+    @endif
 <script>
   function typeAndproblem(val) {
      var HTML = "";
@@ -95,10 +96,22 @@
 </script>        
  @foreach($s1 as $row)	
 <script type="text/javascript">
+function check(){
+
+    var productCode=document.getElementById("productCode").value;
+    //console.log(productCode);
+    if (productCode){
+        validation();
+    }
+}
+
 function validation()
 { Swal.fire({
+
   type: 'success',
   title: 'มีคิวก่อนหน้าคุณจำนวน {{$row->number}} คน',
+  showConfirmButton: false,
+  timer: 1500
 })
 }
 </script>

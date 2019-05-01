@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Maintenace</title>
+  <title>Service Repair</title>
   <meta charset="utf-8">
    <!-- CSRF Token -->
    <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -13,6 +13,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+  <!-- css -->
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
+
 <!--icon navbar-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <!-- auto ref -->
@@ -22,37 +25,38 @@
 
  
 </head>
-<body  background="{{('/image/x.jpg')}}">
+<body >
 <div class="container">
 
 <!-- <nav class="navbar navbar-expand-md navbar-light navbar-laravel"> -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-home"></i> </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"><i class="fa fa-wrench"></i> </a>
 <ul class="navbar-nav mr-auto">
                 @if (Auth::user()->roleCheck==0)
-                <a class="navbar-brand" href="{{ url('/insert') }}"> <i>Repairing</i>  </a>
-                <a class="navbar-brand" href="{{ url('/history') }}"> <i> History</i> </a>
+                <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"> <i>Repairing</i>  </a>
+                <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i> History</i> </a>
           
                 @elseif (Auth::user()->roleCheck==1)
                 <div class="container">
-                <a class="navbar-brand" href="{{ url('/datarepair') }}"><i>Management Data</i></a>
-                <a class="navbar-brand" href="{{ url('/Piechart') }}"><i> Report Chart</i> </a>
-                <a class="navbar-brand" href="{{ url('/stat') }}"><i> Stat repair</i> </a>
+                <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i>Management Data</i></a>
+                <a class="navbar-brand" href="{{ url('/Piechart') }}" style="color : #FFFFFF;"><i> Report Chart</i> </a>
+                <a class="navbar-brand" href="{{ url('/stat') }}" style="color : #FFFFFF;"><i> Stat repair</i> </a>
               
                 @elseif (Auth::user()->roleCheck==2)
-                <a class="navbar-brand" href="{{ url('/Role') }}"><i>Management User</i></a>
-                <a class="navbar-brand" href="{{ url('/Check') }}"><i> Management Data</i></a>
+                <a class="navbar-brand" href="{{ url('/Role') }}" style="color : #FFFFFF;"><i>Management User</i></a>
+                <a class="navbar-brand" href="{{ url('/Check') }}" style="color : #FFFFFF;"><i> Management Data</i></a>
                  @endif
                  </ul>
                
              
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" >
                 @if (Auth::user()->roleCheck==1)
                 <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" 
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color : #FFFFFF;">
                         สถานะการซ่อม @foreach($sAll as $row) <span class="badge badge-danger"> {{$row->number}}</span>@endforeach
                       </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
                         <a class="dropdown-item" href="{{url('/alertStatusone')}}">รอคิว @foreach($s1 as $row)
                          <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a>
                          <a class="dropdown-item" href="{{url('/alertStatustwo')}}">ระหว่างการดำเนินการ @foreach($s2 as $row)
@@ -68,7 +72,8 @@
                       </div>
                     </li>@endif
         <li class="nav-item dropdown">
-         <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+         <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color : #FFFFFF;">
          <i class="fa fa-fw fa-user"></i>{{Auth::user()->username}}</a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              <a class="dropdown-item" href="{{url('/profile')}}" >My Profile </a>

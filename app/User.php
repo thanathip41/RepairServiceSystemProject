@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
     protected $table='users';
     protected $fillable = [
-       'id', 'name','department', 'email','username', 'password'
+       'id', 'name','department', 'email','username', 'password' ,'deleted'
     ];
     public function adminChecktest()
     {   

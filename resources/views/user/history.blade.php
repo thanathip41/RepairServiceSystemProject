@@ -1,6 +1,6 @@
 @extends('layouts.navbar') 
 @section('content')
-
+@if (Auth::user()->deleted==0)
 <div class="container">
 <br>
 <div align="right">
@@ -27,7 +27,6 @@
 <th>รายละเอียด </th>
 </tr>
 
-
 @foreach($history as $row)
 @if  ($row['idM']==Auth::user()->id) 
 <tr> @if ($row['delete']==0)
@@ -40,16 +39,19 @@
 		@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
     <td>{{$row->statusCheckname->status}}</td>
     <td> @include('modalCall/userHistory')</td>
-
-<td>@include('modalCall/userDetaill')</td>
+    <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 
     @endif
 </tr>
-@endif
 
+@endif
 @endforeach
+
 </table> 
  </div>
+ {{$history->render()}} 
+</div>
+@endif
 
-</div> 
+
 @stop

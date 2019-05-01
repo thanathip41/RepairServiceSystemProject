@@ -34,4 +34,6 @@
 
 @elseif ($row['statusCheck']==6) 
 <a class="text-danger">  ส่งเคลม</a>
+@elseif ($row['statusCheck']==7) 
+<a class="text-danger">  ซื้ออุปกรณ์ใหม่</a>
 @endif

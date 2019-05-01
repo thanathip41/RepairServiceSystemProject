@@ -28,22 +28,24 @@ class UserInsertRepairController extends Controller
               'productCode' => $request->get('productCode'), 
               'problem' => $request->get('problem'),
               'type_id'=>$request->get('type_id'),
-              'id'=>('MT-').date('dHis') ,//mt_rand(000,999)   Ymdhis //str.random(3) //.date('dhis')
+              'id'=>('MT-').date('mdHis') ,//mt_rand(000,999)   Ymdhis //str.random(3) //.date('dhis')
               
             ]);
          $input->save();
-         sleep(2);
+         sleep(1.5);
          return redirect('/insert')->with('success', 'Successfully');
         //return redirect()->route('user.index')->with('success', 'บันทึกข้อมูลเรียบร้อย'); 
     }
     public function history() {
-        $history = data::all(); //paginate() 
+        $history = data::paginate(5);
+       // dd($history) ; //paginate() 
         return view('user.history', compact('history'))->with('success', 'Successfully'); 
     }
-    public function alertUser() {
-        $history = data::all();
-        return view('user.alertUser', compact('history')); 
-    }
-
+    
+    public function process($id){
+        $row=data::find($id);
+        //dd($data);
+        return view('user.process',compact('row'));
+        }
     
 }

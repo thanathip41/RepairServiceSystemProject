@@ -39,7 +39,7 @@
 						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
-				<td>@include('modalCall/detaill')</td> 
+				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 					@endif 
 				</tr>
 					@endforeach 

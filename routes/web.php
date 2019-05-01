@@ -17,22 +17,22 @@ Auth::routes();
    Route::group(['middleware' =>['auth']], function(){
    Route::get('/',function ()
      {
-       $data =data::all('idM');
-       $s1 = DB::select( 
-        DB::raw('select count(*) as number from data where statusCheck=1'));
-        $s2 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=2'));
-        $s3 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=3'));
-        $s4 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=4'));
-        $s5 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=5'));
-        $s6 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=6'));
-        $sAll = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck'));
-       return view('homepage.welcome', compact('data','s1','s2','s3','s5','s6','sAll'));
+       $data =data::all();
+        $s1 = DB::select( 
+         DB::raw('select count(*) as number from data where statusCheck=1'));
+    //     $s2 = DB::select( 
+    //         DB::raw('select count(*) as number from data where statusCheck=2'));
+    //     $s3 = DB::select( 
+    //         DB::raw('select count(*) as number from data where statusCheck=3'));
+    //     $s4 = DB::select( 
+    //         DB::raw('select count(*) as number from data where statusCheck=4'));
+    //     $s5 = DB::select( 
+    //         DB::raw('select count(*) as number from data where statusCheck=5'));
+    //     $s6 = DB::select( 
+    //             DB::raw('select count(*) as number from data where statusCheck=6'));
+    //     $sAll = DB::select( 
+    //         DB::raw('select count(*) as number from data where statusCheck'));
+       return view('homepage.welcome', compact('data','s1')); //,'s1','s2','s3','s5','s6','sAll'
      });
 
     /*Route::get('/home',function()
@@ -57,7 +57,7 @@ Auth::routes();
     {
         Route::resource('/Role', 'AdminRoleController');
         Route::resource('/Check', 'AdminController');
- 
+        Route::resource('/deleted', 'AdminDelUserController');
     });
 
     Route::group(['middleware' =>'maintenance'], function()
@@ -77,7 +77,7 @@ Auth::routes();
         Route::resource('/stat', 'MainStatController');
         Route::get('/alertStatusone', 'MainStatusRepairController@alertfors1');
         Route::get('/alertStatustwo', 'MainStatusRepairController@alertfors2');
-        Route::get('/alertStatustree', 'MainStatusRepairController@alertfors3');
+        Route::get('/alertStatusthree', 'MainStatusRepairController@alertfors3');
         Route::get('/alertStatusfour', 'MainStatusRepairController@alertfors4');
         Route::get('/alertStatusfive', 'MainStatusRepairController@alertfors5');
         Route::get('/alertStatussix', 'MainStatusRepairController@alertfors6');
@@ -90,6 +90,7 @@ Auth::routes();
         Route::resource('/statusUser', 'UserRepairVerifyController');
         Route::get('/insert', 'UserInsertRepairController@create');
         Route::resource('/insertdata', 'UserInsertRepairController');
+        Route::get('/processUser/{id}', 'UserInsertRepairController@process');
      });
      Route::resource('/profile', 'editProfileController');
     

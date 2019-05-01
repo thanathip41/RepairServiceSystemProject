@@ -10,7 +10,7 @@ class AdminRoleController extends Controller
     {
         $users = User::all(); 
        // dd($users);
-        return view('admin.changeRole', compact('users')); 
+        return view('admin.manageUser', compact('users')); 
     }
     public function update(Request $request, $id)
     {   
@@ -25,14 +25,4 @@ class AdminRoleController extends Controller
         $changeRole->save(); 
         return back()->with('success', 'Successfully'); 
     }
-    public function destroy($id)
-{
-     $del = User::find($id);
-     $del->delete();
-     sleep(3);
-     return back()->with('success', 'Successfully');
-}
-
-
-
 }

@@ -17,7 +17,7 @@ class IsUser
     {
        if(auth()->check()&& $request->user()->roleCheck==0){
         return $next($request);
-        }abort(403);  
+        } abort(403);  
     }
     
 }

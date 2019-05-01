@@ -9,56 +9,53 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- css -->
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
 
     <!--icon navbar-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   
     </head>
-    <body  background="{{('/image/x.jpg')}}">
+    <body >
 
     <!-- navbar -->
 <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-success">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"> <i class="fa fa-wrench"></i></a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
+            <div class="container" >
+                <a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"> <i class="fa fa-wrench"></i></a>
 
                 @if (Auth::user()->roleCheck==0)
-                <a class="navbar-brand" href="{{ url('/insert') }}"> <i>Repairing</i>  </a>
-                <a class="navbar-brand" href="{{ url('/history') }}"> <i> History</i> </a>
+                <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"> <i>Repairing</i>  </a>
+                <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i> History</i> </a>
           
                 @elseif (Auth::user()->roleCheck==1)
-                <a class="navbar-brand" href="{{ url('/datarepair') }}"><i>Management Data</i></a>
-                <a class="navbar-brand" href="{{ url('/Piechart') }}">   <i> Report Chart</i> </a>
-                <a class="navbar-brand" href="{{ url('/stat') }}"><i> stat repair</i> </a>
+                <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i>Management Data</i></a>
+                <a class="navbar-brand" href="{{ url('/Piechart') }}" style="color : #FFFFFF;">   <i> Report Chart</i> </a>
+                <a class="navbar-brand" href="{{ url('/stat') }}" style="color : #FFFFFF;"><i> Stat repair</i> </a>
                
                 @elseif (Auth::user()->roleCheck==2)
-                <a class="navbar-brand" href="{{ url('/Role') }}"><i>Management User</i></a>
-                <a class="navbar-brand" href="{{ url('/Check') }}"><i> Management Data</i></a>
+                <a class="navbar-brand" href="{{ url('/Role') }}" style="color : #FFFFFF;"><i>Management User</i></a>
+                <a class="navbar-brand" href="{{ url('/Check') }}" style="color : #FFFFFF;"><i> Management Data</i></a>
                 
                  @endif
                 
                 <ul class="navbar-nav ml-auto">  <!-- mr ซ้าย-->
-                  @if (Auth::user()->roleCheck==0)
+                  
+
+                  @if (Auth::user()->roleCheck==1  )
                     <li class="nav-item">
-                          <a class="nav-link" href="{{url('/alertUser')}}" >
-                          <i class="fa fa-bell"><span class="badge badge-danger">@foreach($s3 as $row) {{$row->number}}  </span></i>
-                      </a>@endforeach
-                      </li>
-                  @elseif (Auth::user()->roleCheck==1  )
-                     
-     
-                    <li class="nav-item">
-                          <a class="nav-link" href="{{url('/alertStatusone')}}" >
-                          <i class="fa fa-bell"><span class="badge badge-danger"> @foreach($s1 as $row) {{$row->number}}</span></i>
+                          <a class="nav-link" href="{{url('/alertStatusone')}}" style="color : #FFFFFF;">
+                          <i class="fa fa-bell"><span class="badge badge-danger" > @foreach($s1 as $row) {{$row->number}}</span></i>
                       </a>@endforeach
                       </li>
                     @endif
-                    <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> 
-                                <i class="fa fa-fw fa-user"></i> {{ Auth::user()->username}} </a>
+                    <li class="nav-item dropdown" style="color : #FFFFFF;">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" 
+                                aria-haspopup="true" aria-expanded="false" v-pre style="color : #FFFFFF;"> 
+                                <i class="fa fa-fw fa-user" ></i> {{ Auth::user()->username}} </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> 
-                                    <a class="dropdown-item" href="{{url('/profile')}}" >
+                                    <a class="dropdown-item" href="{{url('/profile')}}"  >
                                         My Profile 
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

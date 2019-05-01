@@ -16,6 +16,7 @@ class MainDataRepairController extends Controller
     {
         
         $data = data::paginate(5);  /// User = ตัวใน http/controller/_name file
+        //dd($data);
         $s1 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=1'));
         $s2 = DB::select( 
