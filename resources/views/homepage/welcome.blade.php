@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>RepairServiceSystemProject</title>
+       
 
           <!--bootstrap 4-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -11,7 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--icon navbar-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   
@@ -20,14 +21,17 @@
 
     <!-- navbar -->
 <div class="container">
+
         <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
-            <div class="container" >
+           
                 <a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"> <i class="fa fa-wrench"></i></a>
 
                 @if (Auth::user()->roleCheck==0)
                 <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"> <i>Repairing</i>  </a>
                 <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i> History</i> </a>
-          
+                @include('modalCall/QR')
+
+
                 @elseif (Auth::user()->roleCheck==1)
                 <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i>Management Data</i></a>
                 <a class="navbar-brand" href="{{ url('/Piechart') }}" style="color : #FFFFFF;">   <i> Report Chart</i> </a>
@@ -54,28 +58,30 @@
                                 aria-haspopup="true" aria-expanded="false" v-pre style="color : #FFFFFF;"> 
                                 <i class="fa fa-fw fa-user" ></i> {{ Auth::user()->username}} </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> 
-                                    <a class="dropdown-item" href="{{url('/profile')}}"  >
-                                        My Profile 
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" > 
+                                    <a class="dropdown-item" href="{{url('/profile')}}" style="background-color: #63AED3"  >                  
+                                        <p align="center">
+                                        {{Auth::user()->name}}<br>
+                                          <small>Member since
+                                          {{date('M. Y',strtotime(Auth::user()->created_at))}}
+                                          </small> </p>
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <div class="dropdown-divider"></div>
+                                    <button  class="dropdown-item"  href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                       <span class="glyphicon glyphicon-log-in"></span> Logout
-                                    </a>
+                                       document.getElementById('logout-form').submit();">
+                                       <div align="right"> <i class="fas fa-sign-out-alt"></i> Sign out </div>
+                                    </button>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
-                            
+                            </li> 
                     </ul>
-                    
                 </div>
-            </div>
         </nav>
 </div>
-
+<br>
     <!-- start home page -->
     <div class="container" >
       <div class="mySlides">
@@ -190,8 +196,8 @@ $('#myCarousel').carousel({
 
 
 <!-- Footer  -fluid-->
-<div class="container"> 
-<footer class="jumbotron text-center" style="margin-bottom:0">
+<div class="container">
+<footer class="text-center" style=" background-color: #AFD0BF">
 
   <!-- Copyright -->
   <div class="col">

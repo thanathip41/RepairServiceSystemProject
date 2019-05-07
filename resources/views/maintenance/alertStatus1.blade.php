@@ -40,9 +40,10 @@
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
-					@endif 
 				</tr>
+    		@endif
 					@endforeach 
 		</table>
 </div>
+
 @stop

@@ -25,7 +25,7 @@ class editProfileController extends Controller
         $changeRole->name = $request->get('name');
         $changeRole->department = $request->get('department');
         $changeRole->email = $request->get('email');
-        $changeRole->save(); 
+        $changeRole->save();
         return back()->with('success', 'Successfully');
     }
 }

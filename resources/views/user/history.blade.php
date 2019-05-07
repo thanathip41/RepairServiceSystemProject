@@ -1,6 +1,5 @@
 @extends('layouts.navbar') 
 @section('content')
-@if (Auth::user()->deleted==0)
 <div class="container">
 <br>
 <div align="right">
@@ -49,9 +48,6 @@
 
 </table> 
  </div>
- {{$history->render()}} 
+
 </div>
-@endif
-
-
 @stop

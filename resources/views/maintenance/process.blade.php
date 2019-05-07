@@ -42,17 +42,17 @@
               <li >อยู่ระหว่างการรอคิว</li>    
               <li >อยู่ระหว่างการดำเนินการ</li> 
               <li >รอการยืนยันจากผู้แจ้ง</li>
-              <li class="active">ดำเนินการไม่สมบูรณ์</li>
+              <li class="fail">ดำเนินการไม่สมบูรณ์ <br> (รอทำรายการใหม่)</li>
             @elseif ($row->statusCheck==6)
               <li >อยู่ระหว่างการรอคิว</li>    
               <li >อยู่ระหว่างการดำเนินการ</li> 
               <li >รอการยืนยันจากผู้แจ้ง</li>
-              <li class="active">เคลมอุปกรณ์</li>
+              <li class="fail">ดำเนินการไม่สมบูรณ์ <br> (เคลมอุปกรณ์)</li>
             @elseif ($row->statusCheck==7)
               <li >อยู่ระหว่างการรอคิว</li>    
               <li >อยู่ระหว่างการดำเนินการ</li> 
               <li >รอการยืนยันจากผู้แจ้ง</li>
-              <li class="active">ซื้ออุปกรณ์ใหม่</li>
+              <li class="fail">ดำเนินการไม่สมบูรณ์ <br>(ซื้ออุปกรณ์ใหม่)</li>
             @endif
         </ul>
         </div>
@@ -70,7 +70,7 @@
             <td>{{date('d/m/Y',strtotime($row['created_at']))}}</td>
             <td> เวลาดำเนินการ</td>
             <td>@if ($row['created_at']==$row['updated_at'])  ไม่ได้ดำเนินการ
-            @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</td>
+            @else {{date('d/m/Y',strtotime($row['updated_at']))}} @endif</td>
           </tr>
             <tr>
                 <td>ประเภทอุปกรณ์ </td>
@@ -83,7 +83,8 @@
             <td>{{$row['productCode']}}</td>
         
             <td>วิธีแก้ไขปัญหา</td>
-            <td>{{$row['method']}}</td>
+             <td>{{$row['method']}}</td>
+             
 
           </tr>
           <tr>

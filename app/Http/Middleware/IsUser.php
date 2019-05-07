@@ -15,7 +15,7 @@ class IsUser
      */
     public function handle($request, Closure $next)
     {
-       if(auth()->check()&& $request->user()->roleCheck==0){
+       if(auth()->check()&& $request->user()->roleCheck==0 &&$request->user()->deleted==0){
         return $next($request);
         } abort(403);  
     }

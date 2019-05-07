@@ -1,97 +1,71 @@
-@extends('layouts.nav') 
-@section('title','Home')
+@extends('layouts.navbar') 
 @section('content')
-<div class="container">
-<div class="row"> 
-<div class="col-md-12"> 
 <br>
-<h3 align="center"> My Profile </h3> <br /> 
-
-@if(\Session::has('success')) <!-- ถ้าบันทึกสำเร็จ ค่า succes ใน userController -->
-<div class="alert alert-success"> 
-<p>{{ \Session::get('success') }}</p> 
-</div> 
-@endif
-
-
-
+<div class="container">
 @foreach($users as $row) 
+  @if ($row['name']==Auth::user()->name)
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+            @if(\Session::has('success')) <!-- ถ้าบันทึกสำเร็จ ค่า succes ใน userController -->
+            <div class="alert alert-success"> 
+            <p>{{ \Session::get('success') }}</p> 
+            </div> 
+            @endif 
+                <div class="card-header">My Profile</div>
 
-  @if ($row['name']==Auth::user()->name) 
+                <div class="card-body">
+                <form method="post" action="{{action('editProfileController@update',$row['id'])}}">{{csrf_field()}}  
+	              <input type="hidden" name="_method" value="PATCH"/>
+              
+               
+          
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">รหัสพนักงาน</label>
+                            <div class="col-md-6">
+                            <input type="text" name="id"  class="form-control" value="{{$row['id']}}" disabled />
+                            </div>
+                        </div>
 
-<!--<div class="container">
-<div class="row">
-   <div class="col-md-10 col-md-offset-1">
-   <img src="/uploads/avatars/{{$row->avatar}}" style="width : 250px; hight:250px; float: left;
-   border-radius:50%; margin-right:50px;">
-  </div>
-  </div> 
-   </div> 
-   <br><br> -->
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">ชื่อนาม - สกุล </label>
+                            <div class="col-md-6">
+                            <input type="text" name="name"  class="form-control" value="{{$row['name']}}" required />
+                            </div>
+                        </div>
 
-   <div class="form-group">
-   <label> รหัส : {{$row['id']}}</label>
-   <a type="้hidden" name="name" ></a>
-   </div> 
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">แผนกงาน </label>
+                            <div class="col-md-6">
+                            <input type="text" name="department"  class="form-control" value="{{$row['department']}}" required />
+                            </div>
+                        </div>
 
-   <div class="form-group">
-   <label> ชื่อ - นามสกุล : {{$row['name']}}</label>
-   <a type="้hidden" name="name" ></a>
-   </div> 
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Email </label>
+                            <div class="col-md-6">
+                            <input type="text" name="email"  class="form-control" value="{{$row['email']}}" required />
+                            </div>
+                        </div>
 
-   <div class="form-group">
-   <label> แผนกงาน : {{$row['department']}}</label>
-   <a type="้hidden" name="name" ></a>
-   </div> 
-
-   <div class="form-group">
-   <label> E-mail : {{$row['email']}}</label>
-   <a type="้hidden" name="name" ></a>
-   </div> 
-
-   <div class="form-group">
-   <label> สถานะ : {{$row->adminChecktest->role}}</label>
-   <a type="้hidden" name="name" ></a>
-   </div> 
-   
-    <button class="btn btn-warning"  data-toggle="modal" data-target="#ii{{ $row['id']}}">Edit your profile</button> 
-<div class="modal modal-danger fade" id="ii{{$row['id']}}"  role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      	</div>
-          <form method="post" action="{{action('editProfileController@update',$row['id'])}}">{{csrf_field()}}  
-	  <input type="hidden" name="_method" value="PATCH"/>
-	      <div class="modal-body">
-			<p class="text-center">
-			<label>ชื่อ - นามสกุล </label>
-			<input type="text"  name="name" value="{{$row['name']}}"> <br>
-			</p>
-
-       <p class="text-center">
-			<label>แผนกงาน </label>
-			<input type="text"  name="department" value="{{$row['department']}}"> <br>
-			</p>
-      <p class="text-center">
-			<label>E-mail</label>
-			<input type="text"  name="email" value="{{$row['email']}}"> <br>
-			</p>
-
-	     	  </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-	        <button type="submit" class="btn btn-danger">Yes </button> 
-	      </div>
-      </form>
-    </div>
-  </div>
-</div> @endif
-
-
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">สถานะในระบบ </label>
+                            <div class="col-md-6">
+                            <input type="text" name="role"  class="form-control" value="{{$row->adminChecktest->role}}" disabled />
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                            <button  onclick="check();"  type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+@endif
 @endforeach
-<div align="right"> 
-<a href=javascript:history.back(1) class="btn btn-primary">back</a> 
 </div>
 </div>
 </div> 

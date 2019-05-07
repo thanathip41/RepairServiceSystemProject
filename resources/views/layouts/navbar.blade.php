@@ -3,6 +3,7 @@
 <head>
   <title>Service Repair</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- CSRF Token -->
    <meta name="csrf-token" content="{{ csrf_token() }}">
    <!-- swlalert-->
@@ -15,7 +16,7 @@
 
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--icon navbar-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <!-- auto ref -->
@@ -23,18 +24,22 @@
   <!-- chart -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 
- 
+ <!-- Fonts -->
+ <link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 </head>
 <body >
 <div class="container">
 
 <!-- <nav class="navbar navbar-expand-md navbar-light navbar-laravel"> -->
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
 <a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"><i class="fa fa-wrench"></i> </a>
 <ul class="navbar-nav mr-auto">
                 @if (Auth::user()->roleCheck==0)
                 <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"> <i>Repairing</i>  </a>
                 <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i> History</i> </a>
+                
+                
           
                 @elseif (Auth::user()->roleCheck==1)
                 <div class="container">
@@ -75,10 +80,18 @@
          <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color : #FFFFFF;">
          <i class="fa fa-fw fa-user"></i>{{Auth::user()->username}}</a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a class="dropdown-item" href="{{url('/profile')}}" >My Profile </a>
-               <a class="dropdown-item" href="{{ route('logout') }}"
-                  onclick="event.preventDefault();document.getElementById('logout-form').submit();"> Logout</a>
+           
+         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" > 
+             <a class="dropdown-item" href="{{url('/profile')}}" style="background-color: #63AED3"  >                  
+                <p align="center">{{Auth::user()->name}}<br>
+                   <small>Member since {{date('M. Y',strtotime(Auth::user()->created_at))}}</small> </p>
+              </a>
+                                    <div class="dropdown-divider"></div>
+                                    <button  class="dropdown-item"  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                                       <div align="right"> <i class="fas fa-sign-out-alt"></i> Sign out </div>
+                                    </button>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
                 </form>
             </div>

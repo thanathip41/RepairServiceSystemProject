@@ -83,11 +83,26 @@
 					<div class="modal-body">
 					<p class="text-center">
 					<a> กรุณาตรวจสอบประกันของอุปกรณ์ก่อนยืนยัน</a><br>
-					<input type="radio"  name="statusCheck" value="6" required>มีประกัน ส่งเคลม<br>
-          <input type="radio"  name="statusCheck" value="7" required>หมดประกัน ซื้อใหม่<br>
 					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"> 
-					
-					</p>
+					<select onchange="typeAndproblem(this.value)" name="statusCheck">
+                 <option value="6">มีประกัน</option>
+                  <option value="7">หมดประกัน</option>
+									</select>
+                  <select id="sel2" name="repairman" visible>
+                     <option value="ส่งเคลม">ส่งเคลม</option>
+                   </select>   												
+										<script>
+										function typeAndproblem(val) {
+												var HTML = "";
+												if(val == "6") {
+														HTML += '<option value="ส่งเคลม">ส่งเคลม</option>';
+												} else if(val == "7") {
+													HTML += '<option value="ซื้ออุปกรณ์ใหม่">ซื้ออุปกรณ์ใหม่</option>'; 
+													
+												} document.getElementById("sel2").innerHTML = HTML;
+										}
+										</script>	
+
 					</div>
 					<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button>   

@@ -5,3 +5,9 @@ body {
 a.navbar-brand {
 color :#FFFFFF;
 }
+
+@ms-viewport{
+  width: device-width;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Nunito);

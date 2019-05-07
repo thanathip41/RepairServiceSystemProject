@@ -37,7 +37,7 @@ class UserInsertRepairController extends Controller
         //return redirect()->route('user.index')->with('success', 'บันทึกข้อมูลเรียบร้อย'); 
     }
     public function history() {
-        $history = data::paginate(5);
+        $history = data::all();
        // dd($history) ; //paginate() 
         return view('user.history', compact('history'))->with('success', 'Successfully'); 
     }
