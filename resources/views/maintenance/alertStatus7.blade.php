@@ -1,5 +1,5 @@
 @extends('layouts.navbar') 
-@section('content')
+@section('content') 
 <br> 
 <br> 
 		<div class="container">
@@ -9,7 +9,7 @@
         </div>  @endif 
 		</div>
 
-<div class="container" align="right">
+		<div class="container" align="right">
 @include('modalCall/sendmail')
 </div>
 <br>
@@ -29,7 +29,7 @@
 				<th>รายละเอียด</th>
 			</tr> 
 				@foreach($data as $row) 
-			<tr>@if ($row['deleted']==0)
+			<tr>
 				<td>{{$row['id']}}</td>  
 				<td>{{$row['productCode']}}</td> 
 				<td>{{$row->typeCheck->type_name}} : <br> <p style="color:red;">{{$row['problem']}}</p></td> 
@@ -39,11 +39,9 @@
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
-			</tr>
-			@endif
-					@endforeach
+				</tr>
+					@endforeach 
 		</table>
 		{{$data->links()}}
 </div>
-
 @stop

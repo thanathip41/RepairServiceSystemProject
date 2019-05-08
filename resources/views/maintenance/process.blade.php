@@ -11,8 +11,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <!-- css -->
+   <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
     </head>
-    <body  background="{{('/image/x.jpg')}}">
+    <body >
     <br>
         <div class="container">
         <div class="text-center"><h2>หมายเลขการแจ้งซ่อม {{$row['id']}}</h3></div>
@@ -57,7 +59,7 @@
         </ul>
         </div>
         <a  href="javascript:history.back()" class="close"><h1>&times;</h1></a>
-        <form action="{{action('MainDataRepairController@PDF',$row['id'])}}"> 
+        <form  target="_blank" action="{{action('MainDataRepairController@PDF',$row['id'])}}"> 
         <table class="table table-bordered"> 
           <tr >
             <th class="table-primary">ข้อมูลการแจ้งซ่อม</th>

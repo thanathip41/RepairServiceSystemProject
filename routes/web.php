@@ -19,8 +19,11 @@ Auth::routes();
      {
        $data =data::all();
         $s1 = DB::select( 
-         DB::raw('select count(*) as number from data where statusCheck=1'));
-       return view('homepage.welcome', compact('data','s1')); //,'s1','s2','s3','s5','s6','sAll'
+         DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+         $id=Auth::user()->id;
+         $send = DB::select( 
+        DB::raw("select count(*) as number from data where statusCheck=3 and idM='$id' and deleted=0"));
+       return view('homepage.welcome', compact('data','s1','send')); //,'s1','s2','s3','s5','s6','sAll'
      });
     Route::group(['middleware' =>'admin'], function()
     {
@@ -51,6 +54,7 @@ Auth::routes();
         Route::get('/alertStatusfour', 'MainStatusRepairController@alertfors4');
         Route::get('/alertStatusfive', 'MainStatusRepairController@alertfors5');
         Route::get('/alertStatussix', 'MainStatusRepairController@alertfors6');
+        Route::get('/alertStatusseven', 'MainStatusRepairController@alertfors7');
         Route::get('/process/{id}', 'MainStatusRepairController@process');
     });
     Route::group(['middleware' =>'user'], function()
@@ -58,7 +62,7 @@ Auth::routes();
         Route::get('/history', 'UserInsertRepairController@history');
         Route::get('/alertUser', 'UserInsertRepairController@alertUser');
         Route::resource('/statusUser', 'UserRepairVerifyController');
-        Route::get('/insert', 'UserInsertRepairController@create');
+        Route::get('/insert', 'UserInsertRepairController@index');
         Route::resource('/insertdata', 'UserInsertRepairController');
         Route::get('/processUser/{id}', 'UserInsertRepairController@process');
      });

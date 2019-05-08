@@ -33,10 +33,10 @@
 <div class="container">
 <nav class="navbar-fixed-top">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info" >
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                <i class="fa fa-home"></i>
+                <a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"> 
+                <h2><i class="fa fa-home"></i></h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -53,11 +53,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}" >{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}" style="color : #FFFFFF;">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}" style="color : #FFFFFF;">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

@@ -1,4 +1,4 @@
-<a class="navbar-brand" style="color : #FFFFFF;" href="#" data-toggle="modal" data-target="#QR"> bot </a>
+<a class="navbar-brand" style="color : #FFFFFF;" href="#" data-toggle="modal" data-target="#QR"> <i class="fas fa-robot"> Bot</i> </a>
   <div class="modal fade" id="QR"  role="dialog">
   <div class="modal-dialog">
   <div class="modal-content">

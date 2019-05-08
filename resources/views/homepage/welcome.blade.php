@@ -22,32 +22,38 @@
     <!-- navbar -->
 <div class="container">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-info" >
            
-                <a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"> <i class="fa fa-wrench"></i></a>
+                <a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"> <h3><i class="fa fa-home"></i></h3></a>
 
                 @if (Auth::user()->roleCheck==0)
-                <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"> <i>Repairing</i>  </a>
-                <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i> History</i> </a>
+                <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"> <i class="fa fa-wrench"> Repairing </i>  </a>
+                <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i class="fa fa-history" > History</i> </a>
                 @include('modalCall/QR')
 
 
                 @elseif (Auth::user()->roleCheck==1)
-                <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i>Management Data</i></a>
-                <a class="navbar-brand" href="{{ url('/Piechart') }}" style="color : #FFFFFF;">   <i> Report Chart</i> </a>
-                <a class="navbar-brand" href="{{ url('/stat') }}" style="color : #FFFFFF;"><i> Stat repair</i> </a>
+                <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i class="fa fa-database"> Management</i></a>
+                <a class="navbar-brand" href="{{ url('/Piechart') }}" style="color : #FFFFFF;"><i class="fas fa-chart-pie"> Chart</i>  </a>
+                <a class="navbar-brand" href="{{ url('/stat') }}" style="color : #FFFFFF;"><i class="fa fa-table"> Stat </i> </a>
                
                 @elseif (Auth::user()->roleCheck==2)
-                <a class="navbar-brand" href="{{ url('/Role') }}" style="color : #FFFFFF;"><i>Management User</i></a>
-                <a class="navbar-brand" href="{{ url('/Check') }}" style="color : #FFFFFF;"><i> Management Data</i></a>
-                
+                <a class="navbar-brand" href="{{ url('/Role') }}" style="color : #FFFFFF;"><i class="fas fa-user-edit"> Management User</i></a>
+                <a class="navbar-brand" href="{{ url('/Check') }}" style="color : #FFFFFF;"><i class="fa fa-database"> Management Data</i></a>
                  @endif
                 
                 <ul class="navbar-nav ml-auto">  <!-- mr ซ้าย-->
                   
 
-                  @if (Auth::user()->roleCheck==1  )
+                  @if (Auth::user()->roleCheck==0)
                     <li class="nav-item">
+                          <a class="nav-link" href="{{url('/alertUser')}}" style="color : #FFFFFF;">
+                          <i class="fa fa-bell"><span class="badge badge-danger" > @foreach($send as $row) {{$row->number}}</span></i>
+                      </a>@endforeach
+                      </li>
+                      @endif
+                  @if (Auth::user()->roleCheck==1 )
+                      <li class="nav-item">
                           <a class="nav-link" href="{{url('/alertStatusone')}}" style="color : #FFFFFF;">
                           <i class="fa fa-bell"><span class="badge badge-danger" > @foreach($s1 as $row) {{$row->number}}</span></i>
                       </a>@endforeach

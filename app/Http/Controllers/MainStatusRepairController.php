@@ -31,136 +31,185 @@ class MainStatusRepairController extends Controller
     }
     public function alertfors1()
     {
-        $data =data::all();
+        $data = data::WHERE('StatusCheck','=',1)->paginate (5);
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
-            $s2 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=2'));
-            $s3 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=3'));
-            $s4 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=4'));
-            $s5 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=5'));
-            $s6 = DB::select( 
-                    DB::raw('select count(*) as number from data where statusCheck=6'));
-            $sAll = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck'));
-            return view('maintenance.alertStatus1',compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+        $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
+            return view('maintenance.alertStatus1',compact('data','s1','s2','s3','s4','s5','s6','s7','sAll')); 
     }
     
     public function alertfors2()
     {
-        $data =data::all();
+        $data = data::WHERE('StatusCheck','=',2)->paginate (5);
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
-            $s2 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=2'));
-            $s3 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=3'));
-            $s4 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=4'));
-            $s5 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=5'));
-            $s6 = DB::select( 
-                    DB::raw('select count(*) as number from data where statusCheck=6'));
-            $sAll = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck'));
-            return view('maintenance.alertStatus2',compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+        $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
+                
+            return view('maintenance.alertStatus2',compact('data','s1','s2','s3','s4','s5','s6','s7','sAll')); 
     }
     public function alertfors3()
     {
-        $data =data::all();
+        $data = data::WHERE('StatusCheck','=',3)->paginate (5);
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
-            $s2 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=2'));
-            $s3 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=3'));
-            $s4 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=4'));
-            $s5 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=5'));
-            $s6 = DB::select( 
-                    DB::raw('select count(*) as number from data where statusCheck=6'));
-            $sAll = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck'));
-            return view('maintenance.alertStatus3',compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+        $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
+            return view('maintenance.alertStatus3',compact('data','s1','s2','s3','s4','s5','s6','s7','sAll')); 
     }
     public function alertfors4()
     {
-        $data =data::all();
+        $data = data::WHERE('StatusCheck','=',4)->paginate (5);
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
-            $s2 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=2'));
-            $s3 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=3'));
-            $s4 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=4'));
-            $s5 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=5'));
-            $s6 = DB::select( 
-                    DB::raw('select count(*) as number from data where statusCheck=6'));
-            $sAll = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck'));
-            return view('maintenance.alertStatus4',compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+        $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
+            return view('maintenance.alertStatus4',compact('data','s1','s2','s3','s4','s5','s6','s7','sAll')); 
     }
     public function alertfors5()
     {
-        $data =data::all();
+        $data = data::WHERE('StatusCheck','=',5)->paginate (5);
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
-            $s2 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=2'));
-            $s3 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=3'));
-            $s4 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=4'));
-            $s5 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=5'));
-            $s6 = DB::select( 
-                    DB::raw('select count(*) as number from data where statusCheck=6'));
-            $sAll = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck'));
-            return view('maintenance.alertStatus5',compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+        $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
+            return view('maintenance.alertStatus5',compact('data','s1','s2','s3','s4','s5','s6','s7','sAll')); 
     }
     public function alertfors6()
     {
-        $data =data::all();
+        $data = data::WHERE('StatusCheck','=',6)->paginate (5);
+        //dd($data);
+
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
-            $s2 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=2'));
-            $s3 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=3'));
-            $s4 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=4'));
-            $s5 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=5'));
-            $s6 = DB::select( 
-                    DB::raw('select count(*) as number from data where statusCheck=6'));
-            $sAll = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck'));
-            return view('maintenance.alertStatus6',compact('data','s1','s2','s3','s4','s5','s6','sAll')); 
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+        $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
+            return view('maintenance.alertStatus6',compact('data','s1','s2','s3','s4','s5','s6','s7','sAll')); 
+    }
+    public function alertfors7()
+    {
+       // $data =data::all();
+         $data = data::WHERE('StatusCheck','=',7)->paginate (5);
+        //     dd($data);
+
+        $s1 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+        $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
+            return view('maintenance.alertStatus7',compact('data','s1','s2','s3','s4','s5','s6','s7','sAll')); 
     }
     public function process($id){
         $row=data::find($id);
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
-            $s2 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=2'));
-            $s3 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=3'));
-            $s4 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=4'));
-            $s5 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=5'));
-            $s6 = DB::select( 
-                    DB::raw('select count(*) as number from data where statusCheck=6'));
-            $sAll = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck'));
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
+        $s2 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+        $s3 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+        $s4 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+        $s5 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+        $s6 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
         //dd($data);
-        return view('maintenance.process',compact('row','s1','s2','s3','s4','s5','s6','sAll'));
+        return view('maintenance.process',compact('row','s1','s2','s3','s4','s5','s6','s7','sAll'));
         }
 }

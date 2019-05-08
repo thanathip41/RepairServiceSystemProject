@@ -10,7 +10,7 @@
 <h4 align="right"><i>เลขแจ้งซ่อม {{$PDF->id}}</i></h4>
 <h1 align="center"><i>รายงานการแจ้งซ่อม</i></h1>
 <table>
-  <tr>
+<tr>
      <th><h3 ><u>รายละเอียดของผู้แจ้งซ่อม</u></h3></th>
      <th></th>
   </tr>
@@ -53,7 +53,7 @@
   <br>
   <tr>
     <td><h3> วันที่ซ่อมผลิตภัณฑ์ </h3></td>
-	<td>@if ($PDF->created_at==$PDF->updated_at) ไม่ได้ดำเนินการ </h2> 
+	<td>@if ($PDF->created_at==$PDF->updated_at) ไม่ได้ดำเนินการ  
         @else {{date('d/m/Y',strtotime($PDF->updated_at))}} @endif</td>
   </tr>
   <br>
@@ -90,5 +90,6 @@
   <td><h3 align="center">(ผู้ดำเนินการซ่อม)</h3></td>
   </tr>
 </table>
+
 </body> 
 </html> 

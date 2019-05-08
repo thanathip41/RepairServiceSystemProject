@@ -13,19 +13,22 @@ class MainStatController extends Controller
     {
         
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
+            DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+            //dd($s1);
         $s2 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=2'));
+            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
         $s3 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=3'));
+            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
         $s4 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=4'));
+            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
         $s5 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=5'));
+            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
         $s6 = DB::select( 
-                DB::raw('select count(*) as number from data where statusCheck=6'));
+            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+        $s7 = DB::select( 
+            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
         $sAll = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck'));
+            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
  $qq=DB::select( 
    DB::raw('select DATE_FORMAT(created_at , "%Y-%m")as date, type_id as type, count(*) as number from data group by date,type'));
                 $id1m1 = DB::select( 
@@ -101,7 +104,7 @@ $id3m1 = DB::select(
                                         $id3m12 = DB::select( 
                                             DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-12"'));
 
-            return view('maintenance.stat', compact('qq','s1','s2','s3','s4','s5','s6','sAll'
+            return view('maintenance.stat', compact('qq','s1','s2','s3','s4','s5','s6','s7','sAll'
         ,'id1m1','id1m2','id1m3','id1m4','id1m5','id1m6','id1m7','id1m8','id1m9','id1m10','id1m11','id1m12'
         ,'id2m1','id2m2','id2m3','id2m4','id2m5','id2m6','id2m7','id2m8','id2m9','id2m10','id2m11','id2m12'
         ,'id3m1','id3m2','id3m3','id3m4','id3m5','id3m6','id3m7','id3m8','id3m9','id3m10','id3m11','id3m12'

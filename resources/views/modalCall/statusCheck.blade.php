@@ -88,7 +88,7 @@
                  <option value="6">มีประกัน</option>
                   <option value="7">หมดประกัน</option>
 									</select>
-                  <select id="sel2" name="repairman" visible>
+                  <select id="sel2" name="method"  disabled >
                      <option value="ส่งเคลม">ส่งเคลม</option>
                    </select>   												
 										<script>

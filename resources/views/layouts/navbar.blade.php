@@ -3,7 +3,7 @@
 <head>
   <title>Service Repair</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
    <!-- CSRF Token -->
    <meta name="csrf-token" content="{{ csrf_token() }}">
    <!-- swlalert-->
@@ -16,11 +16,10 @@
 
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--icon navbar-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <!-- auto ref -->
-<meta http-equiv="refresh" content="120">
+<!-- <meta http-equiv="refresh" content="120"> -->
   <!-- chart -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 
@@ -33,23 +32,23 @@
 
 <!-- <nav class="navbar navbar-expand-md navbar-light navbar-laravel"> -->
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
-<a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"><i class="fa fa-wrench"></i> </a>
+<a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"><h3><i class="fa fa-home"> </i></h3> </a>
 <ul class="navbar-nav mr-auto">
                 @if (Auth::user()->roleCheck==0)
-                <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"> <i>Repairing</i>  </a>
+                <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"><i class="fa fa-wrench"> Repairing </i> </a>
                 <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i> History</i> </a>
-                
+                @include('modalCall/QR')
                 
           
                 @elseif (Auth::user()->roleCheck==1)
                 <div class="container">
-                <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i>Management Data</i></a>
-                <a class="navbar-brand" href="{{ url('/Piechart') }}" style="color : #FFFFFF;"><i> Report Chart</i> </a>
-                <a class="navbar-brand" href="{{ url('/stat') }}" style="color : #FFFFFF;"><i> Stat repair</i> </a>
+                <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i class="fa fa-database"> Management Data</i></a>
+                <a class="navbar-brand" href="{{ url('/Piechart') }}" style="color : #FFFFFF;"><i class="fas fa-chart-pie"> Chart</i>  </a>
+                <a class="navbar-brand" href="{{ url('/stat') }}" style="color : #FFFFFF;"><i class="fa fa-table"> Stat repair</i> </a>
               
                 @elseif (Auth::user()->roleCheck==2)
-                <a class="navbar-brand" href="{{ url('/Role') }}" style="color : #FFFFFF;"><i>Management User</i></a>
-                <a class="navbar-brand" href="{{ url('/Check') }}" style="color : #FFFFFF;"><i> Management Data</i></a>
+                <a class="navbar-brand" href="{{ url('/Role') }}" style="color : #FFFFFF;"><i class="fas fa-user-edit"> Management User</i></a>
+                <a class="navbar-brand" href="{{ url('/Check') }}" style="color : #FFFFFF;"><i class="fa fa-database"> Management Data</i></a>
                  @endif
                  </ul>
                
@@ -61,19 +60,23 @@
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color : #FFFFFF;">
                         สถานะการซ่อม @foreach($sAll as $row) <span class="badge badge-danger"> {{$row->number}}</span>@endforeach
                       </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                        <a class="dropdown-item" href="{{url('/alertStatusone')}}">รอคิว @foreach($s1 as $row)
-                         <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
+                        <div align="right">
+                        <a class="dropdown-item" href="{{url('/alertStatusone')}}" > รอคิว @foreach($s1 as $row)
+                         <span class="badge badge-danger" >{{$row->number}}</span>@endforeach </a>
                          <a class="dropdown-item" href="{{url('/alertStatustwo')}}">ระหว่างการดำเนินการ @foreach($s2 as $row)
                          <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a>
                          <a class="dropdown-item" href="{{url('/alertStatusthree')}}">รอยืนยันจากผู้แจ้งซ่อม @foreach($s3 as $row)
                          <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a>
                          <a class="dropdown-item" href="{{url('/alertStatusfour')}}">ดำเนินการสำเร็จ @foreach($s4 as $row)
                          <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a>
-                         <a class="dropdown-item" href="{{url('/alertStatusfive')}}">ดำเนินการไม่สำเร็จ @foreach($s5 as $row)
+                         <a class="dropdown-item" href="{{url('/alertStatusfive')}}">รอดำเนินการใหม่ @foreach($s5 as $row)
                          <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a>
                          <a class="dropdown-item" href="{{url('/alertStatussix')}}">ส่งเคลม @foreach($s6 as $row)
-                         <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a>
+                         <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a> 
+                         <a class="dropdown-item" href="{{url('/alertStatusseven')}}">ซื้ออุปกรณ์ใหม่ @foreach($s7 as $row)
+                         <span class="badge badge-danger"> {{$row->number}}</span>@endforeach </a> 
+                         </div>
                       </div>
                     </li>@endif
         <li class="nav-item dropdown">

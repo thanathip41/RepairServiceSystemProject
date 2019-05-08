@@ -20,7 +20,7 @@
 </div>
 <div class="container">
 	<table class="table table-bordered table-striped"> 
-		@if(isset($data))
+		@if(isset($datarepair ))
 			<tr>
 				<th>รหัสแจ้งซ่อม</th> 
 				<th>รหัสผลิตภัณฑ์</th> 
@@ -30,7 +30,7 @@
 				<th>ยืนยัน</th>
 				<th>รายละเอียด</th>
 			</tr> 
-				@foreach($data as $row) 
+				@foreach($datarepair  as $row) 
 			<tr>@if ($row['delete']==0)
 				<td>{{$row['id']}}</td>  
 				<td>{{$row['productCode']}}</td> 
@@ -40,14 +40,15 @@
 						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
-				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
-					@endif 
+				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td> 
 				</tr>
+				@endif
 					@endforeach 
 		</table>
-	{{$data->links()}}
+	{{$datarepair->links()}}
 </div>
 @endif 
+
 @if(isset($query))  
 
 <div class="container">
@@ -77,15 +78,14 @@
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
-				
-		@endif 
 		</tr>
+		@endif
 		@endforeach 
 		</table>
-					@if($query) {{ $query->render()}}
+					@if($query) {{ $query->links()}}
 					@endif
 					@elseif(isset($message))
 					<p>{{ $message }}</p>
-					@endif
+@endif
 </div> 
 @stop

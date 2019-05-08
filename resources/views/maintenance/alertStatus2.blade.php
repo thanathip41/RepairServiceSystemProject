@@ -2,7 +2,6 @@
 @section('content')
 <br> 
 <br> 
-<br> 
 		<div class="container">
 				@if(\Session::has('success')) 
         <div class="alert alert-success"> 
@@ -10,7 +9,7 @@
         </div>  @endif 
 		</div>
 
-<div class="container" >
+		<div class="container" align="right">
 @include('modalCall/sendmail')
 </div>
 <br>
@@ -30,7 +29,7 @@
 				<th>รายละเอียด</th>
 			</tr> 
 				@foreach($data as $row) 
-			<tr>@if ($row['delete']==0 && $row['statusCheck']==2)
+			<tr>
 				<td>{{$row['id']}}</td>  
 				<td>{{$row['productCode']}}</td> 
 				<td>{{$row->typeCheck->type_name}} : <br> <p style="color:red;">{{$row['problem']}}</p></td> 
@@ -40,9 +39,10 @@
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
-					@endif 
 				</tr>
-					@endforeach 
+					
+				@endforeach 
 		</table>
+		{{$data->links()}}
 </div>
 @stop

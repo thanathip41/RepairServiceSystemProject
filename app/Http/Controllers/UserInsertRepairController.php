@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\Session;
 class UserInsertRepairController extends Controller
 {
 
-    public function create()
+    public function index()
     {
+        $id=Auth::user()->id;
+
+    
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=1'));
+            DB::raw("select count(*) as number from data where statusCheck=1 and deleted=0"));
+           // dd($s1);
         return view('user.InsertRepair', compact('s1')); 
         //อ้างอิงตำแหน่งของ view 
     }
@@ -36,12 +40,20 @@ class UserInsertRepairController extends Controller
          return redirect('/insert')->with('success', 'Successfully');
         //return redirect()->route('user.index')->with('success', 'บันทึกข้อมูลเรียบร้อย'); 
     }
-    public function history() {
-        $history = data::all();
-       // dd($history) ; //paginate() 
+    public function history() 
+    {
+       $whereID=Auth::user()->id;
+       $history = data::WHERE('idM','=',$whereID)->paginate (5);
         return view('user.history', compact('history'))->with('success', 'Successfully'); 
     }
     
+    public function alertUser()
+    {
+        $whereID=Auth::user()->id;
+        $alertUser  = data::WHERE('idM','=',$whereID)->WHERE('StatusCheck','=',3)->WHERE('deleted','=',0)->paginate (5);
+       // dd($alertUser);
+        return view('user.alertUser', compact('alertUser')); 
+    }
     public function process($id){
         $row=data::find($id);
         //dd($data);
