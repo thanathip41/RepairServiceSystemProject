@@ -70,6 +70,8 @@
                                         {{Auth::user()->name}}<br>
                                           <small>Member since
                                           {{date('M. Y',strtotime(Auth::user()->created_at))}}
+                                          <br> @if (Auth::user()->activated==1) <i class="fa fa-circle text-success"></i>Activated
+                                          @elseif (Auth::user()->activated==0) <i class="fa fa-circle text-danger"></i>Inactivated @endif
                                           </small> </p>
                                     </a>
                                     <div class="dropdown-divider"></div>

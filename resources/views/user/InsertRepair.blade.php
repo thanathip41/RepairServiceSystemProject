@@ -45,12 +45,12 @@
                             <div class="col-md-8">
 
                             <select onchange="typeAndproblem(this.value)" name="type_id">
-                                <option value="1">คอมพิวเตอร์</option>
-                                <option value="2">ปริ้นเตอร์/สแกนเนอร์</option>
-                                <option value="3">ระบบเครือข่าย</option>
+                                <option value=1>คอมพิวเตอร์</option>
+                                <option value=2>ปริ้นเตอร์/สแกนเนอร์</option>
+                                <option value=3>ระบบเครือข่าย</option>
                                 </select>
                                 <select id="sel2" name="problem">
-                                <option value="เปิดไม่ติด">เปิดไม่ติด</option>
+                                <option value=เปิดไม่ติด">เปิดไม่ติด</option>
                                 <option value="รีสตาร์ท/ดับเอง">รีสตาร์ท/ดับเอง</option>
                                 <option value="เครื่องค้าง">เครื่องค้าง</option>
                                 <option  value="จอฟ้า/จอดำ">จอฟ้า/จอดำ</option>

@@ -108,10 +108,12 @@
           <td></td>
           </tr>
           </table>
-          <div class="text-right"><button type="submit" class="btn btn-primary"> พิมพ์รายงาน </button></div>
+         
+          <div align="right"> 
+          <button type="submit" class="btn btn-primary"> พิมพ์รายงาน </button>
+          <a href=javascript:history.back() class="btn btn-default">Close</a> 
+          </div>
           </form>
     </div>
-
-   
     </body>
 </html>

@@ -1,5 +1,33 @@
+ 
+<div  >
 
-<input type="radio" name="demo" value="One"/> Search ID   &nbsp;&nbsp;
+<form action="{{action('MainDataRepairController@searchCode')}}" method="post" >
+			{{ csrf_field() }}
+				  <input type="text"  name="searchCode"	 placeholder="Search Code"  > 
+					<button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+		</form>
+
+	<form action="{{action('MainDataRepairController@searchDate')}}" method="post" >
+			{{ csrf_field() }}
+					<input name="searchDate" type="date">
+					<button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+		</form>
+
+
+		<form id="MyForm" action="{{action('MainDataRepairController@searchDateBetween')}}" method="post" > {{ csrf_field() }}
+					<input name="searchDatefrom" type="date">
+					date to 
+					<input name="searchDateto" type="date">
+					<button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+			
+		</form>
+</div>
+
+
+
+<!-- 
+
+ <input type="radio" name="demo" value="One"/> Search ID   &nbsp;&nbsp;
 <input type="radio" name="demo" value="Two"/> Search Code &nbsp;&nbsp;
 <input type="radio" name="demo" value="Three"/> Search Date &nbsp;&nbsp;
 <input type="radio" name="demo" value="Four"/> Search Date Between Date  
@@ -53,4 +81,4 @@ $("div.myDiv").hide();
 $("#show"+demovalue).show();
 });
 });
-</script>
+</script>  --> 

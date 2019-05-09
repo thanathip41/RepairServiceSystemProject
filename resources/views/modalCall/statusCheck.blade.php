@@ -84,7 +84,8 @@
 					<p class="text-center">
 					<a> กรุณาตรวจสอบประกันของอุปกรณ์ก่อนยืนยัน</a><br>
 					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"> 
-					<select onchange="typeAndproblem(this.value)" name="statusCheck">
+
+				 <select onchange="typeAndproblem(this.value)" name="statusCheck">
                  <option value="6">มีประกัน</option>
                   <option value="7">หมดประกัน</option>
 									</select>
@@ -101,7 +102,7 @@
 													
 												} document.getElementById("sel2").innerHTML = HTML;
 										}
-										</script>	
+										</script>	 
 
 					</div>
 					<div class="modal-footer">

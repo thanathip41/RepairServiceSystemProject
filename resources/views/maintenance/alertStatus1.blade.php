@@ -1,19 +1,18 @@
 @extends('layouts.navbar') 
 @section('content')
 <br> 
-<br> 
 		<div class="container">
 				@if(\Session::has('success')) 
         <div class="alert alert-success"> 
         <p>{{ \Session::get('success') }}</p> 
         </div>  @endif 
 		</div>
-
 <div class="container" align="right">
 @include('modalCall/sendmail')
 </div>
 <br>
-<div class="container" align="center">
+<br>
+<div class="container" align="right">
 @include('search/search')
 </div>
 

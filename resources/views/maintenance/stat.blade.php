@@ -11,10 +11,8 @@
     <tr class="table-primary">
         <th >เดือน</th>
         <th>คอมพิวเตอร์</th>
-        <th>ปริ้นเตอร์/สแกนเนอร์</th>
+        <th>เครื่องพิมพ์และสแกนเนอร์</th>
         <th>ระบบเครือข่าย</th>
-       
-        
       </tr>
     </thead>
     <tbody>
@@ -135,6 +133,17 @@
         @foreach($id2m12 as $row)
         <td>{{$row->number}}</td>@endforeach
         @foreach($id3m12 as $row)
+        <td>{{$row->number}}</td>@endforeach
+       
+      </tr>
+      <tr class="table-info">
+      @foreach($idAll as $row)
+        <td align="center">รวม ({{$row->number}})</td>@endforeach
+        @foreach($id1All as $row)
+        <td>{{$row->number}}</td>@endforeach
+        @foreach($id2All as $row)
+        <td>{{$row->number}}</td>@endforeach
+        @foreach($id3All as $row)
         <td>{{$row->number}}</td>@endforeach
        
       </tr>

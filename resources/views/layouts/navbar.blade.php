@@ -36,7 +36,7 @@
 <ul class="navbar-nav mr-auto">
                 @if (Auth::user()->roleCheck==0)
                 <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"><i class="fa fa-wrench"> Repairing </i> </a>
-                <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i> History</i> </a>
+                <a class="navbar-brand" href="{{ url('/history') }}" style="color : #FFFFFF;"> <i class="fa fa-history" > History</i></a>
                 @include('modalCall/QR')
                 
           
@@ -58,7 +58,7 @@
                 <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" 
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color : #FFFFFF;">
-                        สถานะการซ่อม @foreach($sAll as $row) <span class="badge badge-danger"> {{$row->number}}</span>@endforeach
+                      <i class="fa fa-wrench">@foreach($sAll as $row) <span class="badge badge-danger"> {{$row->number}}</span></i> @endforeach
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
                         <div align="right">
@@ -87,7 +87,10 @@
          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" > 
              <a class="dropdown-item" href="{{url('/profile')}}" style="background-color: #63AED3"  >                  
                 <p align="center">{{Auth::user()->name}}<br>
-                   <small>Member since {{date('M. Y',strtotime(Auth::user()->created_at))}}</small> </p>
+                   <small>Member since {{date('M. Y',strtotime(Auth::user()->created_at))}}
+                   <br> @if (Auth::user()->activated==1) <i class="fa fa-circle text-success"></i>Activated
+                   @elseif (Auth::user()->activated==0) <i class="fa fa-circle text-danger"></i>Inactivated @endif
+                   </small> </p>
               </a>
                                     <div class="dropdown-divider"></div>
                                     <button  class="dropdown-item"  href="{{ route('logout') }}"

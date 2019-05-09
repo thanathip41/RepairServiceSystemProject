@@ -12,7 +12,8 @@
 @include('modalCall/sendmail')
 </div>
 <br>
-<div class="container" align="center">
+<br>
+<div class="container" align="right">
 @include('search/search')
 </div>
 

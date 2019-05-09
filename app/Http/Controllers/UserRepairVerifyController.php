@@ -15,7 +15,6 @@ class UserRepairVerifyController extends Controller
         [ 
           'statusCheck'=>'required',
         ]); 
-       
         $update = data::find($id); 
         $update->statusCheck =$request->get('statusCheck');
         $update->save(); 
