@@ -30,7 +30,6 @@ Auth::routes();
         Route::resource('/Role', 'AdminRoleController');
         Route::resource('/Check', 'AdminController');
         Route::resource('/deleted', 'AdminDelUserController');
-        Route::resource('/profile', 'editProfileController');
     });
 
     Route::group(['middleware' =>'maintenance'], function()
@@ -57,7 +56,7 @@ Auth::routes();
         Route::get('/alertStatussix', 'MainStatusRepairController@alertfors6');
         Route::get('/alertStatusseven', 'MainStatusRepairController@alertfors7');
         Route::get('/process/{id}', 'MainStatusRepairController@process');
-        Route::resource('/profile', 'editProfileController');
+      
     });
     Route::group(['middleware' =>'user'], function()
      {
@@ -67,8 +66,8 @@ Auth::routes();
         Route::get('/insert', 'UserInsertRepairController@index');
         Route::resource('/insertdata', 'UserInsertRepairController');
         Route::get('/processUser/{id}', 'UserInsertRepairController@process');
-        Route::resource('/profile', 'editProfileController');
+        
      });
-     
+     Route::resource('/profile', 'editProfileController');
     
 });

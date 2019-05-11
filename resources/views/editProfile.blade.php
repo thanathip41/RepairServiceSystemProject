@@ -19,36 +19,59 @@
                 <form method="post" action="{{action('editProfileController@update',$row['id'])}}">{{csrf_field()}}  
 	              <input type="hidden" name="_method" value="PATCH"/>
               
-               
-          
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">รหัสพนักงาน</label>
                             <div class="col-md-6">
                             <input type="text" name="id"  class="form-control" value="{{$row['id']}}" disabled />
                             </div>
                         </div>
-
+                  
+                        @if (Auth::user()->activated==1)
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">ชื่อนาม - สกุล </label>
                             <div class="col-md-6">
                             <input type="text" name="name"  class="form-control" value="{{$row['name']}}" required />
                             </div>
                         </div>
-
+                        @elseif (Auth::user()->activated==0)
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">ชื่อนาม - สกุล </label>
+                            <div class="col-md-6">
+                            <input type="text" name="name"  class="form-control" value="{{$row['name']}}" disabled />
+                            </div>
+                        </div>
+                        @endif
+                      
+                        @if (Auth::user()->activated==1)
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">แผนกงาน </label>
                             <div class="col-md-6">
                             <input type="text" name="department"  class="form-control" value="{{$row['department']}}" required />
                             </div>
                         </div>
-
+                        @elseif (Auth::user()->activated==0)
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">แผนกงาน </label>
+                            <div class="col-md-6">
+                            <input type="text" name="department"  class="form-control" value="{{$row['department']}}" disabled />
+                            </div>
+                        </div>
+                        @endif
+                        @if (Auth::user()->activated==1)
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Email </label>
                             <div class="col-md-6">
                             <input type="text" name="email"  class="form-control" value="{{$row['email']}}" required />
                             </div>
                         </div>
-
+                        @elseif (Auth::user()->activated==0)
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Email </label>
+                            <div class="col-md-6">
+                            <input type="text" name="email"  class="form-control" value="{{$row['email']}}" disabled />
+                            </div>
+                        </div>
+                        @endif
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">สถานะในระบบ </label>
                             <div class="col-md-6">

@@ -30,7 +30,7 @@ class MainMailController extends Controller
             'bodyMessage'=>$request->message,
         ];
          Mail::send('Maintenance.mail',$data,function($message) use($data) {
-         $message->from('thanathip@gmail.com','maintenace');
+         $message->from('thanathip.luis@gmail.com','maintenace');
          $message->to($data['email']);
          $message->subject($data['subject']);
         // $message->cc($data['cc']);

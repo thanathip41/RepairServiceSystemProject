@@ -1,4 +1,4 @@
-@extends('layouts.navbar') 
+@extends('layouts.side') 
 @section('content')
 <div class="container">
 <br>

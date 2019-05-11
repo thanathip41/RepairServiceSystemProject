@@ -14,6 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
 <!--icon navbar-->
@@ -32,7 +33,7 @@
 
 <!-- <nav class="navbar navbar-expand-md navbar-light navbar-laravel"> -->
 <nav class="navbar navbar-expand-lg navbar-light bg-info">
-<a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"><h3><i class="fa fa-home"> </i></h3> </a>
+<a class="navbar-item" href="{{ url('/') }}"  style="color : #FFFFFF;"> <h2><i class="fa fa-home"> &nbsp;&nbsp;</i></h2></a>
 <ul class="navbar-nav mr-auto">
                 @if (Auth::user()->roleCheck==0)
                 <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"><i class="fa fa-wrench"> Repairing </i> </a>
@@ -42,9 +43,9 @@
           
                 @elseif (Auth::user()->roleCheck==1)
                 <div class="container">
-                <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i class="fa fa-database"> Management Data</i></a>
+                <a class="navbar-brand" href="{{ url('/datarepair') }}" style="color : #FFFFFF;"><i class="fa fa-database"> Management</i></a>
                 <a class="navbar-brand" href="{{ url('/Piechart') }}" style="color : #FFFFFF;"><i class="fas fa-chart-pie"> Chart</i>  </a>
-                <a class="navbar-brand" href="{{ url('/stat') }}" style="color : #FFFFFF;"><i class="fa fa-table"> Stat repair</i> </a>
+                <a class="navbar-brand" href="{{ url('/stat') }}" style="color : #FFFFFF;"><i class="fa fa-table"> Stat </i> </a>
               
                 @elseif (Auth::user()->roleCheck==2)
                 <a class="navbar-brand" href="{{ url('/Role') }}" style="color : #FFFFFF;"><i class="fas fa-user-edit"> Management User</i></a>

@@ -1,4 +1,4 @@
-@extends('layouts.navbar') 
+@extends('layouts.side') 
 @section('title','จัดการฐานข้อมูล')
 @section('content')
  <div class="container">
@@ -50,13 +50,14 @@
                                 <option value=3>ระบบเครือข่าย</option>
                                 </select>
                                 <select id="sel2" name="problem">
-                                <option value=เปิดไม่ติด">เปิดไม่ติด</option>
+                                <option value="เปิดไม่ติด">เปิดไม่ติด</option>
                                 <option value="รีสตาร์ท/ดับเอง">รีสตาร์ท/ดับเอง</option>
                                 <option value="เครื่องค้าง">เครื่องค้าง</option>
                                 <option  value="จอฟ้า/จอดำ">จอฟ้า/จอดำ</option>
                                 <option  value="ลงโปรแกรมใหม่">ลงโปรแกรมใหม่</option>
                                 <option  value="ลง window ใหม่">ลง window ใหม่</option>
                                 <option  value="เมาส์/คีย์บอร์ด">เมาส์/คีย์บอร์ด</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
                             </select>            
                             </div>
                         </div>
@@ -81,15 +82,18 @@
          HTML += '<option  value="ลงโปรแกรมใหม่">ลงโปรแกรมใหม่</option>';
          HTML += '<option  value="ลง window ใหม่">ลง window ใหม่</option>';
         HTML += '<option  value="เมาส์/คีย์บอร์ด">เมาส์/คีย์บอร์ด</option>'; 
+        HTML += '<option  value="อื่นๆ">อื่นๆ</option>'; 
     } else if(val == "2") {
       HTML += '<option value="ปริ้นเตอร์ไม่ทำงาน">ปริ้นเตอร์ไม่ทำงาน</option>'; 
       HTML += '<option value="ปริ้นไม่ได้">ปริ้นไม่ได้</option>';
       HTML += '<option value="สแกนเนอร์ไม่ทำงาน">สแกนเนอร์ไม่ทำงาน</option>';
+      HTML += '<option  value="อื่นๆ">อื่นๆ</option>'; 
     } else if(val == "3") {
       HTML += '<option value="อินเทอร์เน็ต">อินเทอร์เน็ต</option>';
       HTML += '<option value="ระบบเครือข่าย">ระบบเครือข่าย</option>';
       HTML += '<option value="ระบบ LAN">ระบบ LAN</option>';
       HTML += '<option value="ระบบ Wi-Fi">ระบบ Wi-Fi</option>';
+      HTML += '<option  value="อื่นๆ">อื่นๆ</option>'; 
     }document.getElementById("sel2").innerHTML = HTML;
 }
 </script>        
@@ -109,8 +113,8 @@ function validation()
 
   type: 'success',
   title: 'มีคิวก่อนหน้าคุณจำนวน {{$row->number}} คน',
-  showConfirmButton: false,
-  timer: 1500
+  showConfirmButton: true,
+  //timer: 5000
 })
 }
 </script>

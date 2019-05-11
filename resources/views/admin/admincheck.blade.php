@@ -1,9 +1,7 @@
-@extends('layouts.navbar') 
+@extends('layouts.side') 
 @section('title','Home')
 @section('content')
 <div class="container">
-<div class="row"> 
-<div class="col-md-12"> 
 <br> 
 <h3 align="center">Table management</h3> <br />  
 
@@ -26,7 +24,7 @@
 </tr> 
 
 @foreach($admin as $row) <!-- ดึงข้อมูล data ใน datacontroller@index = $row -->
-<tr>@if ($row['delete']==0)
+<tr>@if ($row['deleted']==0)
 <td>{{$row['id']}}</td> 
 <td>{{$row['productCode']}}</td> 
 <td>{{$row->typeCheck->type_name}} : <br> <p style="color:red;">{{$row['problem']}}</p></td> 

@@ -12,11 +12,11 @@ class AdminDelUserController extends Controller
         $this->validate($request, 
         [ 
           
-          'deleted'=>'required',
+          'activated'=>'required',
           
         ]); 
         $del = User::find($id); 
-        $del->deleted = $request->get('deleted');
+        $del->activated = $request->get('activated');
         $del->save(); 
         return back()->with('success', 'Successfully'); 
     }

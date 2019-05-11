@@ -1,9 +1,7 @@
-@extends('layouts.navbar') 
+@extends('layouts.side') 
 @section('title','Home')
 @section('content')
 <div class="container">
-<div class="row"> 
-<div class="col-md-12"> 
 <br>
 <h3 align="center"> Management Data </h3> <br /> 
 
@@ -24,7 +22,7 @@
 
 </tr> 
 @foreach($users as $row) 
-<tr>@if ($row['roleCheck']!=2 && $row['deleted']==0)
+<tr>@if ($row['roleCheck']!=2 && $row['activated']==1)
     <td>{{$row['name']}}</td> 
 		<td>{{$row['department']}}</td>
     <td>{{$row['email']}}</td>
@@ -37,7 +35,6 @@
 </table> 
 <div align="right"> 
 <a href=javascript:history.back(1) class="btn btn-primary">back</a> 
-</div>
 </div>
 </div> 
 @stop

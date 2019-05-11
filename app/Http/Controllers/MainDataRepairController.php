@@ -62,25 +62,6 @@ class MainDataRepairController extends Controller
         //  ชื่อ database data.. แสดงข้อมูลใน database
     }
 
-   
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, 
-        [ 
-          'repairman'=>'required' ,
-          'statusCheck'=>'required',
-          'method'=>'required',
-          'remark'=>''
-        ]); 
-        $update = data::find($id); 
-        dd($id);
-        $update->repairman = $request->get('repairman'); 
-        $update->statusCheck = $request->get('statusCheck');
-        $update->method = $request->get('method');
-        $update->remark = $request->get('remark');
-        $update->save(); 
-        return redirect('maintenance.index')->with('success', 'Successfully');
-    }
     public function PDF($id) {
         $PDF=data::find($id);
         $view=\View::make('maintenance.pdf',compact('PDF'));

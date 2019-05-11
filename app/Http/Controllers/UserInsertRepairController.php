@@ -36,7 +36,7 @@ class UserInsertRepairController extends Controller
               
             ]);
          $input->save();
-         sleep(1.5);
+         sleep(3);
          return redirect('/insert')->with('success', 'Successfully');
         //return redirect()->route('user.index')->with('success', 'บันทึกข้อมูลเรียบร้อย'); 
     }

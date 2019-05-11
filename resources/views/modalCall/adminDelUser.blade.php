@@ -1,5 +1,5 @@
 
-<button class="btn btn-danger"  data-toggle="modal" data-target="#del{{ $row['id']}}"><i class="far fa-trash-alt"></i></button> 
+<button class="btn btn-danger"  data-toggle="modal" data-target="#del{{ $row['id']}}"><i class="fa fa-trash-o"></i></button> 
 <div class="modal fade" id="del{{$row['id']}}" role="dialog">
   <div class="modal-dialog" >
     <div class="modal-content">
@@ -10,7 +10,7 @@
 					<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body" align="center">
 					คุณต้องการลบคุณ {{$row['name']}} ออกจากระบบ ใช่หรือไม่
-					<input type="hidden"  name="deleted" value="1">
+					<input type="hidden"  name="activated" value="0">
 	     	  </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>

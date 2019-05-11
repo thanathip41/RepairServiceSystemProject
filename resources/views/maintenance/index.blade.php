@@ -1,7 +1,5 @@
 @extends('layouts.navbar') 
 @section('content')
-
-<br> 
 		<div class="container">
 				@if(\Session::has('success')) 
         <div class="alert alert-success"> 
@@ -9,18 +7,17 @@
         </div>  @endif 
 		</div>
 
-<div class="container" >
+ <div class="container">
 <p class="text-right">
 @include('modalCall/sendmail')
 </p>
-</div>
-<br>
-<div class="container" align="right">
+</div> 
+<div class="container" align="center">
 @include('search/search')
-</div>
+</div> 
 <div class="container">
 	<table class="table table-bordered table-striped"> 
-		@if(isset($datarepair ))
+		@if(isset($datarepair))
 			<tr>
 				<th>รหัสแจ้งซ่อม/ผลิตภัณฑ์</th> 
 				<th>อุปกรณ์/ปัญหาที่พบ</th>

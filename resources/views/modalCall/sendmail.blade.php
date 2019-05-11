@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Mail"> <i class="fas fa-envelope"> Wirte Mail</i></button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Mail"> <i class="fa fa-envelope"> Wirte Mail</i></button>
 <div class="modal fade" id="Mail"  role="dialog" >
   <div class="modal-dialog">
     <div class="modal-content">

@@ -1,4 +1,4 @@
-@extends('layouts.navbar') 
+@extends('layouts.side') 
 @section('title','จัดการฐานข้อมูล')
 @section('content')
 <br>

@@ -18,11 +18,11 @@ class AdminController extends Controller
     {
         $this->validate($request, 
         [ 
-          'delete'=>'required'
+          'deleted'=>'required'
         
         ]); 
         $update = data::find($id); 
-        $update->delete = $request->get('delete');
+        $update->deleted = $request->get('deleted');
         $update->save(); 
         return back()->with('success', 'Successfully');
     }

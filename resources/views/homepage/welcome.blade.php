@@ -3,9 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>RepairServiceSystemProject</title>
-       
-
-          <!--bootstrap 4-->
+  <!--bootstrap 4-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -14,8 +12,8 @@
   <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--icon navbar-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     </head>
     <body >
 
@@ -24,7 +22,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-info" >
            
-                <a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"> <h3><i class="fa fa-home"></i></h3></a>
+                <a class="navbar-item" href="{{ url('/') }}"  style="color : #FFFFFF;"> <h2><i class="fa fa-home"> &nbsp;&nbsp;&nbsp;</i></h2></a>
 
                 @if (Auth::user()->roleCheck==0)
                 <a class="navbar-brand" href="{{ url('/insert') }}" style="color : #FFFFFF;"> <i class="fa fa-wrench"> Repairing </i>  </a>
@@ -43,8 +41,6 @@
                  @endif
                 
                 <ul class="navbar-nav ml-auto">  <!-- mr ซ้าย-->
-                  
-
                   @if (Auth::user()->roleCheck==0)
                     <li class="nav-item">
                           <a class="nav-link" href="{{url('/alertUser')}}" style="color : #FFFFFF;">
