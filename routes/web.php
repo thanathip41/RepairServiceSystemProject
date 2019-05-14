@@ -66,6 +66,8 @@ Auth::routes();
         Route::get('/insert', 'UserInsertRepairController@index');
         Route::resource('/insertdata', 'UserInsertRepairController');
         Route::get('/processUser/{id}', 'UserInsertRepairController@process');
+        Route::get('/img', 'UserInsertRepairController@img');
+
         
      });
      Route::resource('/profile', 'editProfileController');

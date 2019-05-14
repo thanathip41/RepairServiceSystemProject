@@ -4,14 +4,7 @@
  <div class="container">
  <br>
 
-@if(count($errors) > 0) 
-<div class="alert alert-danger"> 
-<ul> @foreach($errors->all() as $error) 
-<li>{{$error}}</li> 
-@endforeach 
-</ul> 
-</div> 
-@endif 
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -21,10 +14,19 @@
             <p>{{ \Session::get('success') }}</p> 
             </div> 
             @endif 
+            @if(count($errors) > 0) 
+                <div class="alert alert-danger"> 
+                <ul> @foreach($errors->all() as $error) 
+                <li>{{$error}}</li> 
+                @endforeach 
+                </ul> 
+                </div> 
+                @endif 
                 <div class="card-header">Insert Data</div>
 
                 <div class="card-body">
-                <form method="post" action="{{action('UserInsertRepairController@store')}}" > {{csrf_field()}}
+               
+                <form method="post" action="{{action('UserInsertRepairController@store')}}" enctype="multipart/form-data" > {{csrf_field()}}
               
                 <div class="form-group row">
                  <label for="name" class="col-md-4 col-form-label text-md-right"><h5>{{date('d-m-Y')}} </h5></label>
@@ -35,7 +37,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">รหัสผลิตภัณฑ์</label>
 
                             <div class="col-md-6">
-                            <input type="text" name="productCode" id="productCode" class="form-control" placeholder="รหัสผลิตภัณฑ์" required />
+                            <input type="text" name="productCode" id="productCode" class="form-control" placeholder="NP2019-xxxx (กรุณากรอกเฉพาะ xxxx)"  />
                
                             </div>
                         </div>
@@ -60,6 +62,19 @@
                                 <option value="อื่นๆ">อื่นๆ</option>
                             </select>            
                             </div>
+                        </div>
+                        <div class="form-group">
+                        <table class="table">
+                            <tr>
+                            <td width="40%" align="right"><label> เลือกไฟล์เพื่ออัพโหลด </label></td>
+                            <td width="30"><input type="file" name="img" /></td>
+                        </tr>
+                            <tr>
+                            <td width="40%" align="right"></td>
+                            <td width="30"><span class="text-muted">jpg, png, gif</span></td>
+                            <td width="30%" align="left"></td>
+                        </tr>
+                        </table>
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

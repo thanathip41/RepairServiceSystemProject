@@ -7,6 +7,7 @@ use App\data;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 class UserInsertRepairController extends Controller
 {
 
@@ -25,18 +26,26 @@ class UserInsertRepairController extends Controller
     {
 
         $this->validate($request, 
-        [   'productCode' => 'required', 'problem' => 'required', 
+        [   'productCode' => 'required|max:12', 'problem' => 'required', 
+             'img'=>  'image|mimes:jpg,jpeg,png,gif|max:2048'
         ]); 
         $input = new data(
             [ 'idM'=>Auth::user()->id,
-              'productCode' => $request->get('productCode'), 
+              'productCode' =>('NP2019-').$request->get('productCode'), 
               'problem' => $request->get('problem'),
               'type_id'=>$request->get('type_id'),
-              'id'=>('MT-').date('mdHis') ,//mt_rand(000,999)   Ymdhis //str.random(3) //.date('dhis')
-              
+              'id'=>('MT-').date('mdHis') ,
+ 
             ]);
-         $input->save();
-         sleep(3);
+            if ($request->has('img')){
+                //$input->update(['img'=>$request->file('img')->store('image')]);
+           //$input->img =$request->file('img')->store('public');
+          $input->img=$request->file('img')->store('image','public');
+            }
+            
+            //$input = Storage::putFile('img', $request->file('img'));
+            $input->save();
+         sleep(1.5);
          return redirect('/insert')->with('success', 'Successfully');
         //return redirect()->route('user.index')->with('success', 'บันทึกข้อมูลเรียบร้อย'); 
     }
@@ -59,5 +68,7 @@ class UserInsertRepairController extends Controller
         //dd($data);
         return view('user.process',compact('row'));
         }
-    
+    public function img(){
+        return view('user.img');
+    }
 }

@@ -14,7 +14,8 @@
             @endif 
             </div>
 
-<div class="container">            
+<div class="container">
+ 
 <table class="table table-bordered table-striped"> 
 <tr>
     <th>รหัสแจ้งซ่อม</th>
@@ -23,6 +24,7 @@
     <th>เวลาแจ้งซ่อม/รับซ่อม</th>
     <th>สถานะ</th>
     <th>ยืนยันการซ่อม</th>
+    <th>Image</th>
     <th>รายละเอียด </th>
 </tr>
 
@@ -38,6 +40,7 @@
         @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
     <td>{{$row->statusCheckname->status}}</td>
     <td> @include('modalCall/userHistory')</td>
+    <td><a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" ><img src="{{asset('storage').'/'.$row['img']}}" width="70" height="50"></a></td>
     <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 </tr>
 

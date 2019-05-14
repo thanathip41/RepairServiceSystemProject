@@ -71,7 +71,7 @@
             <td>{{date('d/m/Y',strtotime($row['created_at']))}}</td>
             <td> เวลาดำเนินการ</td>
             <td>@if ($row['created_at']==$row['updated_at'])  ไม่ได้ดำเนินการ
-            @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</td>
+            @else {{date('d/m/Y',strtotime($row['updated_at']))}} @endif</td>
           </tr>
             <tr>
                 <td>ประเภทอุปกรณ์ </td>

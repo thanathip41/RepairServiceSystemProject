@@ -24,6 +24,7 @@
 				<th>เวลาแจ้งซ่อม/รับซ่อม</th>
 				<th>สถานะ</th>
 				<th>ยืนยัน</th>
+				<th>Image</th>
 				<th>รายละเอียด</th>
 			</tr> 
 				@foreach($datarepair  as $row) 
@@ -36,6 +37,7 @@
 						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
+				<td><a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" ><img src="{{asset('storage').'/'.$row['img']}}" width="70" height="50"></a></td>
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td> 
 				</tr>
 				@endif
