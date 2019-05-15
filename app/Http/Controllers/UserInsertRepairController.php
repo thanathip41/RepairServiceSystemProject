@@ -8,6 +8,8 @@ use Auth;
 use DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 class UserInsertRepairController extends Controller
 {
 

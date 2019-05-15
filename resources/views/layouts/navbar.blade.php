@@ -3,6 +3,8 @@
 <head>
   <title>Service Repair</title>
   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
    <!-- CSRF Token -->
    <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -19,8 +21,7 @@
   <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
 <!--icon navbar-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-<!-- auto ref -->
-<!-- <meta http-equiv="refresh" content="120"> -->
+
   <!-- chart -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
 

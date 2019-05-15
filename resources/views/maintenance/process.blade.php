@@ -16,6 +16,10 @@
     </head>
     <body >
     <br>
+    <div class="container">
+    
+    
+    </div>
         <div class="container">
         <div class="text-center"><h2>หมายเลขการแจ้งซ่อม {{$row['id']}}</h3></div>
         <div class="container">
@@ -60,6 +64,7 @@
         </div>
         <a  href="javascript:history.back()" class="close"><h1>&times;</h1></a>
         <form  target="_blank" action="{{action('MainDataRepairController@PDF',$row['id'])}}"> 
+       
         <table class="table table-bordered"> 
           <tr >
             <th class="table-primary">ข้อมูลการแจ้งซ่อม</th>
@@ -102,8 +107,12 @@
             <td>{{$row['remark']}}</td>
           </tr>
           <tr>
-          <td>แผนกงาน</td>
-          <td>{{$row->users->department}}</td>
+          <td>รูปภาพประกอบ</td>
+       
+          <td>@if ($row['img']=="") <img src="#" width="100" height="50"></a>
+          @else<a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" >
+          <img src="{{asset('storage').'/'.$row['img']}}" width="100" height="50"></a></td>
+          @endif
           <td></td>
           <td></td>
           </tr>

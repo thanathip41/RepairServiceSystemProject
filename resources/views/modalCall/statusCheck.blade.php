@@ -5,14 +5,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}} 
 					<input type="hidden" name="_method" value="PATCH">
 	      			<div class="modal-body">
 									<p class="text-center">
-										<label>สถานะการซ่อม : </label>
-										<input type="hidden"  name="statusCheck" value="2"> อยู่ระหว่างการดำเนินการ<br>
+										<input type="hidden"  name="statusCheck" value="2"> การต้องดำเนินการซ่อม <br> ของคุณ {{$row->users->name}} ใช่หรือไม่
 									</p>
 							</div>
 							<div class="modal-footer">
@@ -27,35 +27,29 @@
 
 @elseif ($row['statusCheck']==2)
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#two{{$row['id']}}">การซ่อม</i></button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#two{{$row['id']}}">จัดการ</i></button>
 <div class="modal fade" id="two{{$row['id']}}"  role="dialog" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
 				<input type="hidden" name="_method" value="PATCH">
 	      <div class="modal-body">
-				<p class="text-center">
-						<label> รหัสการแจ้งซ่อม : {{$row['id']}}</label> </p>
-						<div class="form-group"> 
-						<label> รหัสผลิตภัณท์ : {{$row['productCode']}}</label>
-						</div>
-						<div class="form-group"> 
-						<label> สาเหตุ/ปัญหาที่พบ : {{$row['problem']}}</label>
-						</div>
-						<div class="form-group"> 
-						<label> ชื่อผู้แก้ไขปัญหา : {{Auth::user()->name}}
+						<div > 
+						<p>รหัสผลิตภัณท์ : {{$row['productCode']}}</p>
+						<p>สาเหตุ/ปัญหาที่พบ : {{$row['problem']}}</p>
+						<p>ชื่อผู้แก้ไขปัญหา : {{Auth::user()->name}}</p>
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"> 
-						</label>
 						</div>
 						<div class="form-group"> 
-						<label> วิธีการแก้ไขปัญหา : </label>
+						<p> วิธีการแก้ไขปัญหา : </p> 
 						<textarea   name="method" class="form-control"  required></textarea>
 						</div>
 						<div class="form-group"> 
-						<label> หมายเหตุ : </label>
+						<p> หมายเหตุ : </p>
 						<textarea   name="remark" class="form-control"></textarea>
 						</div>
 						<input type="hidden"  name="statusCheck" value="3">

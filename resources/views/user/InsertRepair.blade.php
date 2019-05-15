@@ -37,7 +37,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">รหัสผลิตภัณฑ์</label>
 
                             <div class="col-md-6">
-                            <input type="text" name="productCode" id="productCode" class="form-control" placeholder="NP2019-xxxx (กรุณากรอกเฉพาะ xxxx)"  />
+                            <input type="text" name="productCode" id="productCode" class="form-control" maxlength="5" placeholder="NP2019-xxxxx"  />
                
                             </div>
                         </div>
@@ -129,7 +129,7 @@ function validation()
   type: 'success',
   title: 'มีคิวก่อนหน้าคุณจำนวน {{$row->number}} คน',
   showConfirmButton: true,
-  //timer: 5000
+  //timer: 2000
 })
 }
 </script>

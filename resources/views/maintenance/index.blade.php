@@ -1,11 +1,20 @@
-@extends('layouts.navbar') 
+@extends('layouts.side') 
 @section('content')
+<br>
 		<div class="container">
 				@if(\Session::has('success')) 
         <div class="alert alert-success"> 
         <p>{{ \Session::get('success') }}</p> 
         </div>  @endif 
 		</div>
+		@if(count($errors) > 0) 
+      <div class="alert alert-danger"> 
+        <ul> @foreach($errors->all() as $error) 
+          <li>{{$error}}</li> 
+           @endforeach 
+            </ul> 
+             </div> 
+             @endif 
 
  <div class="container">
 <p class="text-right">
@@ -24,7 +33,7 @@
 				<th>เวลาแจ้งซ่อม/รับซ่อม</th>
 				<th>สถานะ</th>
 				<th>ยืนยัน</th>
-				<th>Image</th>
+	
 				<th>รายละเอียด</th>
 			</tr> 
 				@foreach($datarepair  as $row) 
@@ -37,7 +46,13 @@
 						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
-				<td><a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" ><img src="{{asset('storage').'/'.$row['img']}}" width="70" height="50"></a></td>
+				<!-- <td> @if ($row['img']=="")
+				<a  href="#" >
+          <img src="#" width="100" height="50"></a>
+          @else
+          <a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" >
+          <img src="{{asset('storage').'/'.$row['img']}}" width="100" height="50"></a></td>
+          @endif -->
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td> 
 				</tr>
 				@endif
