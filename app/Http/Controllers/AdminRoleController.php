@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 class AdminRoleController extends Controller
 {
     public function index()
     {
-        $users = User::all(); 
-       // dd($users);
+        $users= User::WHERE('activated','=',1)->WHERE('RoleCheck','!=',2)->paginate(5);
+    
         return view('admin.manageUser', compact('users')); 
     }
     public function update(Request $request, $id)

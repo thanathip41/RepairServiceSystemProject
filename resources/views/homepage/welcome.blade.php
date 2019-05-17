@@ -18,9 +18,9 @@
     <body >
 
     <!-- navbar -->
+<!-- <div class="container-fluid"> -->
 <div class="container">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-info" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
            
                 <a class="navbar-item" href="{{ url('/') }}"  style="color : #FFFFFF;"> <h2><i class="fa fa-home"> &nbsp;&nbsp;&nbsp;</i></h2></a>
 

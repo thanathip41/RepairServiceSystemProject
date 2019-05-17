@@ -1,5 +1,5 @@
 
-@extends('layouts.nav') 
+@extends('layouts.navside') 
 @section('title','จัดการฐานข้อมูล')
 @section('content')
  <div class="container">

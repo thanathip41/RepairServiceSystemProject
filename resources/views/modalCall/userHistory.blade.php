@@ -24,13 +24,13 @@
   </div>
 </div>
 @elseif ($row['statusCheck']==1)
-<a class="text-dark"> <i class="fa fa-spinner" ></i>  wait</a>
+<a class="text-dark">  รอดำเนินการ</a>
 @elseif ($row['statusCheck']==2)
-<a class="text-dark"> <i class="fa fa-spinner" ></i>  wait</a>
+<a class="text-dark">  รอดำเนินการ</a>
 @elseif ($row['statusCheck']==4)
-<a class="text-success"> Success</a>
+<a class="text-success"> เสร็จเรียบร้อย</a>
 @elseif ($row['statusCheck']==5)
-<a class="text-dark"> <i class="fa fa-spinner" ></i>  wait</a>
+<a class="text-dark">  รอดำเนินการ</a>
 
 @elseif ($row['statusCheck']==6) 
 <a class="text-danger">  ส่งเคลม</a>

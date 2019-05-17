@@ -1,5 +1,5 @@
 
-<button class="btn btn-danger"  data-toggle="modal" data-target="#del{{ $row['id']}}"><i class="fa fa-trash-o"></i></button> 
+<button class="btn btn-danger"  data-toggle="modal" data-target="#del{{ $row['id']}}"><i class="fa fa-trash"></i></button> 
 <div class="modal fade" id="del{{$row['id']}}" role="dialog">
   <div class="modal-dialog" >
     <div class="modal-content">

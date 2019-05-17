@@ -61,6 +61,9 @@ body {
 .progressbar li.active:before {
   border-color: #55b776;
 }
+.progressbar li.fail + li:after {
+  background-color:  #e50b0b;
+}
 .progressbar li.active + li:after {
   background-color: #55b776;
 }

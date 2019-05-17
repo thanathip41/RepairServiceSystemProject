@@ -112,7 +112,7 @@
 
 @elseif ($row['statusCheck']==3)
 <a class="text-dark">  รอการยืนยัน</a>
-<button type="button" data-toggle="modal" data-target="#three{{$row['id']}}"><i class="fa fa-envelope"></i></button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#three{{$row['id']}}"><i class="fa fa-envelope"></i></button>
 <div class="modal fade" id="three{{$row['id']}}"  role="dialog" >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -122,11 +122,11 @@
 				<form method="post" action="{{action('MainMailController@post')}}">{{csrf_field()}}  
 	      <div class="modal-body">
 					<p class="text-center">
-					<label>คุณต้องการส่ง E-mail : {{$row->users->email}} ใช่หรือไม่ </label>
-      	<input type="hidden" name="email" value="{{$row->users->email}}">
-				<input type="hidden" name="subject" value="การแจ้งซ่อม {{$row['id']}}">
-				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row->typeCheck->type_name}} ดำเนินเสร็จสมบูรณ์"> 
+				 คุณต้องการส่ง E-mail : {{$row->users->email}} ใช่หรือไม่ 
 					</p>
+				<input type="hidden" name="email" value="{{$row->users->email}}">
+				<input type="hidden" name="subject" value="การแจ้งซ่อม {{$row['id']}}">
+				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row->typeCheck->type_name}} ดำเนินเสร็จสมบูรณ์">
 	     	  </div>
 	      <div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button> 
@@ -139,7 +139,7 @@
 
 @elseif ($row['statusCheck']==4)
 <a class="text-success">  เสร็จสมบูรณ์</a>
-<button type="button" data-toggle="modal" data-target="#four{{$row['id']}}"><i class="fa fa-envelope"></i></button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#four{{$row['id']}}"><i class="fa fa-envelope"></i></button>
 <div class="modal fade" id="four{{$row['id']}}"  role="dialog" >
   <div class="modal-dialog">
     <div class="modal-content">

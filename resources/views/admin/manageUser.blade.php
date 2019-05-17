@@ -1,4 +1,4 @@
-@extends('layouts.side') 
+@extends('layouts.navside') 
 @section('title','Home')
 @section('content')
 <div class="container">
@@ -30,7 +30,7 @@
 
 </tr> 
 @foreach($users as $row) 
-<tr>@if ($row['roleCheck']!=2 && $row['activated']==1)
+<tr>
     <td>{{$row['name']}}</td> 
 		<td>{{$row['department']}}</td>
     <td>{{$row['email']}}</td>
@@ -38,11 +38,9 @@
     <td> @include('modalCall/adminAdd')</td>
     <td> @include('modalCall/adminDelUser')</td>
 	
-</tr>@endif
+</tr>
 @endforeach
-</table> 
-<div align="right"> 
-<a href=javascript:history.back(1) class="btn btn-primary">back</a> 
-</div>
+</table>
+{{$users->links()}}
 </div> 
 @stop

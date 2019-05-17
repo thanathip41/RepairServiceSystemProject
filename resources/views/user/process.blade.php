@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,13 +100,18 @@
             <td>{{$row['remark']}}</td>
           </tr>
           <tr>
-          <td>แผนกงาน</td>
-          <td>{{$row->users->department}}</td>
+          <td>รูปภาพประกอบ</td>
+          <td>@if ($row['img']=="") <img src="#" width="100" height="50"></a>
+          @else<a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" >
+          <img src="{{asset('storage').'/'.$row['img']}}" width="100" height="50"></a></td>
+          @endif
           <td></td>
           <td></td>
           </tr>
           </table>
-
+          <div align="right"> 
+          <a href=javascript:history.back() class="btn btn-default">Close</a> 
+          </div>
     </div>
 
    @endif

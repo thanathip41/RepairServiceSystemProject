@@ -43,7 +43,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{url('/')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -57,9 +57,7 @@
         @foreach($sAll as $row)
           <i class="fa fa-wrench"> <span class="badge badge-danger navbar-badge"> {{$row->number}}</span></i>
         </a> @endforeach
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right"  style="background-color: #63AED3">
-          <span class="dropdown-item dropdown-header">สถานะในระบบ</span>
-          <div class="dropdown-divider"></div>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right"  style="background-color: #2989D8">
                   <div align="right">
                         <a class="dropdown-item" href="{{url('/alertStatusone')}}"> รอคิว @foreach($s1 as $row)
                          <span class="badge badge-danger" >{{$row->number}}</span>@endforeach </a>
@@ -107,10 +105,10 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="##"  class="brand-image img-circle elevation-3"
+    <a href="{{url('/')}}" class="brand-link">
+      <img src="{{asset('image/service.png')}}"  class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Service Computer</span>
+      <span class="brand-text font-weight-light">Service Repair</span>
     </a>
 
     <!-- Sidebar -->
@@ -215,13 +213,13 @@
               <li class="nav-item">
                 <a href="{{ url('/Role') }}" class="nav-link">
                   <i class="fa fa-database"> </i>
-                  <p>Management Data</p>
+                  <p>Management User</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ url('/Check') }}" class="nav-link">
                 <i class="fa fa-user"></i>
-                  <p> Management User</p>
+                  <p> Management Data</p>
                 </a>
               </li>
             </ul>

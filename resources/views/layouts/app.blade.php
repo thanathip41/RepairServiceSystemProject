@@ -33,10 +33,10 @@
 <div class="container">
 <nav class="navbar-fixed-top">
     <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-info" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color : #FFFFFF;"> 
-                <h2><i class="fa fa-home"></i></h2>
+                <i class="fa fa-home"></i>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

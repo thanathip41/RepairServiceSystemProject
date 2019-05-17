@@ -30,6 +30,7 @@ Auth::routes();
         Route::resource('/Role', 'AdminRoleController');
         Route::resource('/Check', 'AdminController');
         Route::resource('/deleted', 'AdminDelUserController');
+        Route::get('/processAdmin/{id}', 'AdminController@process');
     });
 
     Route::group(['middleware' =>'maintenance'], function()

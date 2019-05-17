@@ -1,6 +1,5 @@
-@extends('layouts.side') 
+@extends('layouts.navside') 
 @section('content')
-<br>
 		<div class="container">
 				@if(\Session::has('success')) 
         <div class="alert alert-success"> 
@@ -15,12 +14,12 @@
             </ul> 
              </div> 
              @endif 
-
+<!-- 
  <div class="container">
 <p class="text-right">
 @include('modalCall/sendmail')
 </p>
-</div> 
+</div>  -->
 <div class="container" align="center">
 @include('search/search')
 </div> 

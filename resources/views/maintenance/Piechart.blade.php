@@ -1,4 +1,4 @@
-@extends('layouts.side') 
+@extends('layouts.navside') 
 @section('content')
 
 <script type="text/javascript">

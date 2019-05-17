@@ -44,7 +44,6 @@ class MainDataRepairController extends Controller
     {
         $s1 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
-            //dd($s1);
         $s2 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
         $s3 = DB::select( 
@@ -76,30 +75,28 @@ class MainDataRepairController extends Controller
         $pdf::Output('report.pdf');
     }
  public function searchID()
-
-   {     $s1 = DB::select( 
-    DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
-    //dd($s1);
-        $s2 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
-        $s3 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
-        $s4 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
-        $s5 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
-        $s6 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
-        $s7 = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
-        $sAll = DB::select( 
-            DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
-     
+   {      
     $searching = Input::get ('searchID');
     if($searching != "")
     {
     $query=data::WHERE( 'id', 'like', '%' . $searching . '%' )->paginate (5);
      $pagination = $query->appends(array('searchID'=> Input::get ( 'searchID' )));
+     $s1 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
+    $s2 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
+    $s3 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=3 and deleted=0'));
+    $s4 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=4 and deleted=0'));
+    $s5 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=5 and deleted=0'));
+    $s6 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=6 and deleted=0'));
+    $s7 = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck=7 and deleted=0'));
+    $sAll = DB::select( 
+        DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
 if (count ($query) > 0)
     return view ( 'maintenance.index',compact('s1','s2','s3','s4','s5','s6','s7','sAll'))->withquery($query)->withq($searching);
 }
@@ -125,8 +122,6 @@ public function searchCode()
         $sAll = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
         
-
-
     $searching = Input::get ('searchCode');
     if($searching != "")
     {
@@ -189,7 +184,7 @@ $sAll = DB::select(
      
     $searching = Input::get ('searchDatefrom');
     $search = Input::get ('searchDateto');
-    if($searching != "" &&$search != "")
+    if($searching != "" && $search != "")
     {
     $query=data::WHEREDATE( 'created_at', '>=',$searching)->WHEREDATE('created_at', '<=',$search)->paginate (5);
     $pagination = $query->appends(array('searchDatefrom'=> Input::get ( 'searchDatefrom' )));

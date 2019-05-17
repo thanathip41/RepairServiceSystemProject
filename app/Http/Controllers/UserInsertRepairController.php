@@ -15,12 +15,8 @@ class UserInsertRepairController extends Controller
 
     public function index()
     {
-        $id=Auth::user()->id;
-
-    
         $s1 = DB::select( 
             DB::raw("select count(*) as number from data where statusCheck=1 and deleted=0"));
-           // dd($s1);
         return view('user.InsertRepair', compact('s1')); 
         //อ้างอิงตำแหน่งของ view 
     }
@@ -40,12 +36,8 @@ class UserInsertRepairController extends Controller
  
             ]);
             if ($request->has('img')){
-                //$input->update(['img'=>$request->file('img')->store('image')]);
-           //$input->img =$request->file('img')->store('public');
           $input->img=$request->file('img')->store('image','public');
             }
-            
-            //$input = Storage::putFile('img', $request->file('img'));
             $input->save();
          sleep(1.5);
          return redirect('/insert')->with('success', 'Successfully');
@@ -67,10 +59,6 @@ class UserInsertRepairController extends Controller
     }
     public function process($id){
         $row=data::find($id);
-        //dd($data);
         return view('user.process',compact('row'));
         }
-    public function img(){
-        return view('user.img');
-    }
 }
