@@ -1,9 +1,8 @@
-@extends('layouts.navbar') 
+@extends('layouts.navside') 
 @section('content')
 <br>
 <div class="container">
-@foreach($users as $row) 
-  @if ($row['name']==Auth::user()->name)
+@foreach($editPro as $row) 
   <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -87,7 +86,6 @@
                 </div>
             </div>
         </div>
-@endif
 @endforeach
 </div>
 </div>

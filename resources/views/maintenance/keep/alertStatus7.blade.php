@@ -1,5 +1,5 @@
-@extends('layouts.navside') 
-@section('content')
+@extends('layouts.side') 
+@section('content') 
 <br> 
 <br> 
 		<div class="container">
@@ -14,7 +14,7 @@
 </div>
 <br>
 <br>
-<div class="container" align="right">
+<div class="container" align="center">
 @include('search/search')
 </div>
 

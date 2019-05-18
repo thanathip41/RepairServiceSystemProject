@@ -46,7 +46,7 @@ class UserInsertRepairController extends Controller
     public function history() 
     {
        $whereID=Auth::user()->id;
-       $history = data::WHERE('idM','=',$whereID)->paginate (5);
+       $history = data::WHERE('idM','=',$whereID)->WHERE('deleted','=',0)->paginate (5);
         return view('user.history', compact('history'))->with('success', 'Successfully'); 
     }
     

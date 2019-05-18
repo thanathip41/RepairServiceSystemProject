@@ -31,87 +31,87 @@ class MainStatController extends Controller
             DB::raw('select count(*) as number from data where statusCheck and deleted=0'));
  $qq=DB::select( 
    DB::raw('select DATE_FORMAT(created_at , "%Y-%m")as date, type_id as type, count(*) as number from data group by date,type'));
-  // dd($qq);
+   //dd($qq);
                 $id1m1 = DB::select( 
-                    DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-01"'));
+                    DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-01" and deleted=0'));
                     $id1m2  = DB::select( 
-                       DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-02"'));               
+                       DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-02" and deleted=0'));               
                        $id1m3 = DB::select( 
-                           DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-03"'));
+                           DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-03" and deleted=0'));
                            $id1m4 = DB::select( 
-                               DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-04"'));
+                               DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-04" and deleted=0'));
                                $id1m5 = DB::select( 
-                                   DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-05"'));
+                                   DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-05" and deleted=0'));
                                    $id1m6 = DB::select( 
-                                       DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-06"'));
+                                       DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-06" and deleted=0'));
                                        $id1m7 = DB::select( 
-                                           DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-07"'));
+                                           DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-07" and deleted=0'));
                                            $id1m8 = DB::select( 
-                                               DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-08"'));
+                                               DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-08" and deleted=0'));
                                                $id1m9 = DB::select( 
-                                                   DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-9"'));
+                                                   DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-9" and deleted=0'));
                                                    $id1m10 = DB::select( 
-                                                       DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-10"'));
+                                                       DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-10" and deleted=0'));
                                                        $id1m11 = DB::select( 
-                                                           DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-11"'));
+                                                           DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-11" and deleted=0'));
                                                            $id1m12 = DB::select( 
-                                                               DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-12"'));
+                                                               DB::raw('select count(*) as number from data where type_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-12" and deleted=0'));
                                                                $id1All = DB::select( 
-                                                                DB::raw('select count(*) as number from data where type_id="1"'));
+                                                                DB::raw('select count(*) as number from data where type_id="1" and deleted=0'));
 $id2m1 = DB::select( 
- DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-01"'));
+ DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-01" and deleted=0'));
  $id2m2  = DB::select( 
-    DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-02"'));               
+    DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-02" and deleted=0'));               
     $id2m3 = DB::select( 
-        DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-03"'));
+        DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-03" and deleted=0'));
         $id2m4 = DB::select( 
-            DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-04"'));
+            DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-04" and deleted=0'));
             $id2m5 = DB::select( 
-                DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-05"'));
+                DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-05" and deleted=0'));
                 $id2m6 = DB::select( 
-                    DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-06"'));
+                    DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-06" and deleted=0'));
                     $id2m7 = DB::select( 
-                        DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-07"'));
+                        DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-07" and deleted=0'));
                         $id2m8 = DB::select( 
-                            DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-08"'));
+                            DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-08" and deleted=0'));
                             $id2m9 = DB::select( 
-                                DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-9"'));
+                                DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-9" and deleted=0'));
                                 $id2m10 = DB::select( 
-                                    DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-10"'));
+                                    DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-10" and deleted=0'));
                                     $id2m11 = DB::select( 
-                                        DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-11"'));
+                                        DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-11" and deleted=0'));
                                         $id2m12 = DB::select( 
-                                            DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-12"'));
+                                            DB::raw('select count(*) as number from data where type_id="2" and DATE_FORMAT(created_at , "%Y-%m")="2019-12" and deleted=0'));
                                             $id2All = DB::select( 
-                                                DB::raw('select count(*) as number from data where type_id=2'));
+                                                DB::raw('select count(*) as number from data where type_id=2  and deleted=0'));
 $id3m1 = DB::select( 
- DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-01"'));
+ DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-01" and deleted=0'));
  $id3m2  = DB::select( 
-    DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-02"'));               
+    DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-02" and deleted=0'));               
     $id3m3 = DB::select( 
-        DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-03"'));
+        DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-03" and deleted=0'));
         $id3m4 = DB::select( 
-            DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-04"'));
+            DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-04" and deleted=0'));
             $id3m5 = DB::select( 
-                DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-05"'));
+                DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-05" and deleted=0'));
                 $id3m6 = DB::select( 
-                    DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-06"'));
+                    DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-06" and deleted=0'));
                     $id3m7 = DB::select( 
-                        DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-07"'));
+                        DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-07" and deleted=0'));
                         $id3m8 = DB::select( 
-                            DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-08"'));
+                            DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-08" and deleted=0'));
                             $id3m9 = DB::select( 
-                                DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-9"'));
+                                DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-9" and deleted=0'));
                                 $id3m10 = DB::select( 
-                                    DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-10"'));
+                                    DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-10" and deleted=0'));
                                     $id3m11 = DB::select( 
-                                        DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-11"'));
+                                        DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-11" and deleted=0'));
                                         $id3m12 = DB::select( 
-                                            DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-12"'));
+                                            DB::raw('select count(*) as number from data where type_id="3" and DATE_FORMAT(created_at , "%Y-%m")="2019-12" and deleted=0'));
                                             $id3All = DB::select( 
-                                                DB::raw('select count(*) as number from data where type_id=3'));
+                                                DB::raw('select count(*) as number from data where type_id=3 and deleted=0'));
                                                 $idAll = DB::select( 
-                                                    DB::raw('select count(*) as number from data where type_id'));
+                                                    DB::raw('select count(*) as number from data where type_id  and deleted=0'));
 
 
             return view('maintenance.stat', compact('qq','s1','s2','s3','s4','s5','s6','s7','sAll','idAll'

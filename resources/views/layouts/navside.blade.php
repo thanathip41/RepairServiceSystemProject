@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>SB Admin 2 - Blank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service Repair</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('/navside/css/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -38,11 +38,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/')}}">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <i class="fas fa-desktop"></i> &nbsp;
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text"> Service Repair</div>
       </a>
 
       <!-- Divider -->
@@ -50,9 +50,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+        <a class="nav-link" href="{{url('/')}}">
+          <i class="fas fa-home"></i>
+          <span>Home</span></a>
       </li>
 
       <!-- Divider -->
@@ -66,18 +66,18 @@
           @if (Auth::user()->roleCheck==0)
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/insert') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fa fa-wrench"></i>
           <span>แจ้งซ่อม</span></a>
       </li> 
         <li class="nav-item">
         <a class="nav-link" href="{{ url('/history') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fa fa-history"></i>
           <span>ประวัติการแจ้งซ่อม</span></a>
       </li>
 
          <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="modal" data-target="#QR">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <i class="fas fa-robot"></i>
           <span>บอท</span></a>
       </li>
        <div class="modal fade" id="QR"  role="dialog">
@@ -92,44 +92,17 @@
                   </div>
                  
        @elseif (Auth::user()->roleCheck==1)
+      
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          @foreach($sAll as $row)
-          <span>ข้อมูลแจ้งซ่อม </span> <span class="badge badge-danger"> {{$row->number}} @endforeach</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-         
-            <p class="collapse-header" align="center">สถานะในระบบ: </p>
-            <div align="right">
-            @foreach($s1 as $row)
-            <a class="collapse-item" href="{{url('/alertStatusone')}}">รอคิว <span class="badge badge-danger"> {{$row->number}} @endforeach </span> </a>
-            @foreach($s2 as $row)
-            <a class="collapse-item" href="{{url('/alertStatustwo')}}">ระหว่างการดำเนินการ <span class="badge badge-danger" > {{$row->number}} @endforeach </span> </a>
-            @foreach($s3 as $row)
-            <a class="collapse-item" href="{{url('/alertStatusthree')}}">รอยืนยันจากผู้แจ้งซ่อม <span class="badge badge-danger" > {{$row->number}} @endforeach </span> </a>
-            @foreach($s4 as $row)
-            <a class="collapse-item" href="{{url('/alertStatusfour')}}">ดำเนินการสำเร็จ <span class="badge badge-danger" > {{$row->number}} @endforeach </span> </a>
-            @foreach($s5 as $row)
-            <a class="collapse-item" href="{{url('/alertStatusfive')}}">รอดำเนินการใหม่ <span class="badge badge-danger" > {{$row->number}} @endforeach </span> </a>
-            @foreach($s6 as $row)
-            <a class="collapse-item" href="{{url('/alertStatussix')}}">ส่งเคลม <span class="badge badge-danger" > {{$row->number}} @endforeach </span> </a>
-            @foreach($s7 as $row)
-            <a class="collapse-item" href="{{url('/alertStatusseven')}}">ซื้ออุปกรณ์ใหม่ <span class="badge badge-danger" > {{$row->number}} @endforeach </span> </a>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
+      
         <a class="nav-link" href="{{ url('/datarepair') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fa fa-wrench"></i>
           <span>จัดการข้อมูลแจ้งซ่อม</span></a>
       </li> 
 
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/Piechart') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <i class="fas fa-chart-pie"></i> 
           <span>กราฟ</span></a>
       </li> 
 
@@ -140,16 +113,25 @@
       </li> 
       
         @elseif (Auth::user()->roleCheck==2)
+        <li class="nav-item">
+        <a class="nav-link" href="{{ url('/Check') }}">
+        <i class="fa fa-wrench"></i>
+          <span>จัดการข้อมูลการแจ้งซ่อม</span></a>
+      </li> 
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/Role') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
+        <i class="fas fa-users"></i>
           <span>จัดการสมาชิก</span></a>
       </li> 
-
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/Check') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>จัดการข้อมูลการแจ้งซ่อม</span></a>
+        <a class="nav-link" href="{{ url('/restoreData') }}">
+        <i class="fas fa-trash-restore"></i>
+          <span>กู้ข้อมูลแจ้งซ่อม</span></a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/restoreUser') }}">
+        <i class="fas fa-trash-restore"></i>
+          <span>กู้ข้อมูลสมาชิก</span></a>
       </li> 
       @endif
       <!-- Divider -->
@@ -183,9 +165,7 @@
           <ul class="navbar-nav ml-auto">
                  
             
-            
-
-           
+             
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown">
          <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
@@ -204,7 +184,7 @@
                                     <button  class="dropdown-item"  href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
-                                       <div align="right"> <i class="fa fa-sign-out"></i> Sign out </div>
+                                       <div align="right"> <i class="fas fa-sign-out-alt"></i> Sign out </div>
                                     </button>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
                 </form>

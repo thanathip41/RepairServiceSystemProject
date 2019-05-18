@@ -26,34 +26,34 @@
               <li >รอการยืนยันจากผู้แจ้ง</li>
               <li >ดำเนินการเสร็จสิ้น</li>
             @elseif ($row->statusCheck==2)
-              <li >อยู่ระหว่างการรอคิว</li>
+              <li class="active">อยู่ระหว่างการรอคิว</li>
               <li class="active">อยู่ระหว่างการดำเนินการ</li> 
               <li >รอการยืนยันจากผู้แจ้ง</li>
               <li >ดำเนินการเสร็จสิ้น</li>
             @elseif ($row->statusCheck==3)
-              <li >อยู่ระหว่างการรอคิว</li>
-              <li >อยู่ระหว่างการดำเนินการ</li> 
+              <li class="active">อยู่ระหว่างการรอคิว</li>
+              <li class="active">อยู่ระหว่างการดำเนินการ</li> 
               <li class="active">รอการยืนยันจากผู้แจ้ง</li>
               <li >ดำเนินการเสร็จสิ้น</li>
             @elseif ($row->statusCheck==4)
-              <li >อยู่ระหว่างการรอคิว</li>    
-              <li >อยู่ระหว่างการดำเนินการ</li> 
-              <li >รอการยืนยันจากผู้แจ้ง</li>
+              <li class="active">อยู่ระหว่างการรอคิว</li>    
+              <li class="active">อยู่ระหว่างการดำเนินการ</li> 
+              <li class="active">รอการยืนยันจากผู้แจ้ง</li>
               <li class="active">ดำเนินการเสร็จสิ้น</li>
-              @elseif ($row->statusCheck==5)
-              <li >อยู่ระหว่างการรอคิว</li>    
-              <li >อยู่ระหว่างการดำเนินการ</li> 
-              <li >รอการยืนยันจากผู้แจ้ง</li>
+            @elseif ($row->statusCheck==5)
+              <li class="fail">อยู่ระหว่างการรอคิว</li>    
+              <li class="fail">อยู่ระหว่างการดำเนินการ</li> 
+              <li class="fail">รอการยืนยันจากผู้แจ้ง</li>
               <li class="fail">ดำเนินการไม่สมบูรณ์ <br> (รอทำรายการใหม่)</li>
             @elseif ($row->statusCheck==6)
-              <li >อยู่ระหว่างการรอคิว</li>    
-              <li >อยู่ระหว่างการดำเนินการ</li> 
-              <li >รอการยืนยันจากผู้แจ้ง</li>
+              <li class="fail">อยู่ระหว่างการรอคิว</li>    
+              <li class="fail">อยู่ระหว่างการดำเนินการ</li> 
+              <li class="fail">รอการยืนยันจากผู้แจ้ง</li>
               <li class="fail">ดำเนินการไม่สมบูรณ์ <br> (เคลมอุปกรณ์)</li>
             @elseif ($row->statusCheck==7)
-              <li >อยู่ระหว่างการรอคิว</li>    
-              <li >อยู่ระหว่างการดำเนินการ</li> 
-              <li >รอการยืนยันจากผู้แจ้ง</li>
+              <li class="fail">อยู่ระหว่างการรอคิว</li>    
+              <li class="fail">อยู่ระหว่างการดำเนินการ</li> 
+              <li class="fail">รอการยืนยันจากผู้แจ้ง</li>
               <li class="fail">ดำเนินการไม่สมบูรณ์ <br>(ซื้ออุปกรณ์ใหม่)</li>
             @endif
         </ul>
@@ -103,10 +103,7 @@
           </tr>
           <tr>
           <td>รูปภาพประกอบ</td>
-          <td>@if ($row['img']=="") <img src="#" width="100" height="50"></a>
-          @else<a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" >
-          <img src="{{asset('storage').'/'.$row['img']}}" width="100" height="50"></a></td>
-          @endif
+          <td> @include('modalCall/img') </td>
           <td></td>
           <td></td>
           </tr>

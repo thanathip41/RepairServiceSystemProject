@@ -11,9 +11,15 @@ class AdminRoleController extends Controller
     public function index()
     {
         $users= User::WHERE('activated','=',1)->WHERE('RoleCheck','!=',2)->paginate(5);
-    
         return view('admin.manageUser', compact('users')); 
     }
+
+    public function restoreUser()
+    {
+        $users= User::WHERE('activated','=',0)->WHERE('RoleCheck','!=',2)->paginate(5);
+        return view('admin.restoreUser', compact('users')); 
+    }
+
     public function update(Request $request, $id)
     {   
         $this->validate($request, 

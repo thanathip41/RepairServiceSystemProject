@@ -106,10 +106,8 @@
           </tr>
           <tr>
           <td>รูปภาพประกอบ</td>
-          <td>@if ($row['img']=="") <img src="#" width="100" height="50"></a>
-          @else<a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" >
-          <img src="{{asset('storage').'/'.$row['img']}}" width="100" height="50"></a></td>
-          @endif
+          <td> @include('modalCall/img') </td>
+          
           <td></td>
           <td></td>
           </tr>

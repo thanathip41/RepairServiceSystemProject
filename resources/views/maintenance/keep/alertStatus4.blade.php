@@ -1,5 +1,5 @@
-@extends('layouts.side') 
-@section('content') 
+@extends('layouts.navside') 
+@section('content')
 <br> 
 <br> 
 		<div class="container">
@@ -8,13 +8,12 @@
         <p>{{ \Session::get('success') }}</p> 
         </div>  @endif 
 		</div>
-
 		<div class="container" align="right">
 @include('modalCall/sendmail')
 </div>
 <br>
 <br>
-<div class="container" align="right">
+<div class="container" align="center">
 @include('search/search')
 </div>
 
@@ -33,7 +32,7 @@
 			<tr>
 				<td>{{$row['id']}}</td>  
 				<td>{{$row['productCode']}}</td> 
-				<td>{{$row->typeCheck->type_name}} : <br> <p style="color:red;">{{$row['problem']}}</p></td> 
+				<td>{{$row->typeCheck->type_name}}: <br> <p style="color:red;">{{$row['problem']}}</p></td> 
 				<td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> <p style="color:red;">
 						@if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
 						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>

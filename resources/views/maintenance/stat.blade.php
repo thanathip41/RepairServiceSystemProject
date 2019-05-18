@@ -1,7 +1,6 @@
 @extends('layouts.navside') 
 @section('title','จัดการฐานข้อมูล')
 @section('content')
-<br>
 <div class="container" align="center">   
 <h3>สถิติการแจ้งซ่อมคอมพิวเตอร์ อุปกรณ์ต่อพ่วงและระบบเครือข่าย</h3>
 </div>

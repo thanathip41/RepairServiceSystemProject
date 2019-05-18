@@ -14,7 +14,11 @@ class AdminController extends Controller
         $admin=data::WHERE('deleted','=',0)->paginate(5);
         return view('admin.manageData', compact('admin')); 
     }
-    
+    public function restoreData()
+    {
+        $admin=data::WHERE('deleted','=',1)->paginate(5);
+        return view('admin.manageData', compact('admin')); 
+    }
     public function update(Request $request, $id)
     {
         $this->validate($request, 

@@ -1,24 +1,22 @@
-
 @if ($row['statusCheck']==1) 
 <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#one{{$row['id']}}">  ดำเนินการ</button>
-<div class="modal fade" id="one{{$row['id']}}"  role="dialog" >
-  <div class="modal-dialog">
+<div class="modal fade" id="one{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
 			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}} 
-					<input type="hidden" name="_method" value="PATCH">
+					<input type="hidden" name="_method" value="PATCH"/>
 	      			<div class="modal-body">
 									<p class="text-center">
-										<input type="hidden"  name="statusCheck" value="2"> การต้องดำเนินการซ่อม <br> ของคุณ {{$row->users->name}} ใช่หรือไม่
+										<input type="hidden"  name="statusCheck" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใช่หรือไม่
 									</p>
 							</div>
 							<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">Yes </button> 
-								<button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-								
+							<button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
 	      			</div>
       </form>
     </div>
@@ -26,33 +24,32 @@
 </div>
 
 @elseif ($row['statusCheck']==2)
-
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#two{{$row['id']}}">จัดการ</i></button>
-<div class="modal fade" id="two{{$row['id']}}"  role="dialog" >
-  <div class="modal-dialog">
+<div class="modal fade" id="two{{$row['id']}}"  tabindex="-1"role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"> 
     <div class="modal-content">
       <div class="modal-header">
 			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
-				<input type="hidden" name="_method" value="PATCH">
+				<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body">
-						<div > 
-						<p>รหัสผลิตภัณท์ : {{$row['productCode']}}</p>
-						<p>สาเหตุ/ปัญหาที่พบ : {{$row['problem']}}</p>
-						<p>ชื่อผู้แก้ไขปัญหา : {{Auth::user()->name}}</p>
-						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"> 
+						<div> 
+						<label>รหัสผลิตภัณท์ : {{$row['productCode']}}</label><br/>
+						<label>สาเหตุ/ปัญหาที่พบ : {{$row['problem']}}</label><br/>
+						<label>ชื่อผู้แก้ไขปัญหา : {{Auth::user()->name}}</label>
+						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 						</div>
 						<div class="form-group"> 
-						<p> วิธีการแก้ไขปัญหา : </p> 
+						<label> วิธีการแก้ไขปัญหา : </label> 
 						<textarea   name="method" class="form-control"  required></textarea>
 						</div>
 						<div class="form-group"> 
-						<p> หมายเหตุ : </p>
+						<label> หมายเหตุ : </label>
 						<textarea   name="remark" class="form-control"></textarea>
 						</div>
-						<input type="hidden"  name="statusCheck" value="3">
+						<input type="hidden"  name="statusCheck" value="3"/>
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 
@@ -62,22 +59,20 @@
     </div>
   </div>
 </div>
-
 <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#twot{{$row['id']}}">ซ่อมไม่ได้</button> 
-<div class="modal fade" id="twot{{$row['id']}}" role="dialog">
-  <div class="modal-dialog">
+<div class="modal fade" id="twot{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
 			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}" > {{csrf_field()}}
-					<input type="hidden" name="_method" value="PATCH">
+					<input type="hidden" name="_method" value="PATCH"/>
 					<div class="modal-body">
 					<p class="text-center">
-					<a> กรุณาตรวจสอบประกันของอุปกรณ์ก่อนยืนยัน</a><br>
-					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"> 
-
+					<a> กรุณาตรวจสอบประกันของอุปกรณ์ก่อนยืนยัน</a><br/>
+					
 				 <select onchange="typeAndproblem(this.value)" name="statusCheck">
                  <option value="6">มีประกัน</option>
                   <option value="7">หมดประกัน</option>
@@ -98,8 +93,9 @@
 													
 												} document.getElementById("show").innerHTML = HTML;
 										}
-										</script>	 
-
+										</script>
+										</p>
+					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 					</div>
 					<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button>   
@@ -109,12 +105,11 @@
 		</div>
 	</div>
 </div>
-
 @elseif ($row['statusCheck']==3)
 <a class="text-dark">  รอการยืนยัน</a>
 <button class="btn btn-primary" data-toggle="modal" data-target="#three{{$row['id']}}"><i class="fa fa-envelope"></i></button>
-<div class="modal fade" id="three{{$row['id']}}"  role="dialog" >
-  <div class="modal-dialog">
+<div class="modal fade" id="three{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -124,9 +119,9 @@
 					<p class="text-center">
 				 คุณต้องการส่ง E-mail : {{$row->users->email}} ใช่หรือไม่ 
 					</p>
-				<input type="hidden" name="email" value="{{$row->users->email}}">
-				<input type="hidden" name="subject" value="การแจ้งซ่อม {{$row['id']}}">
-				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row->typeCheck->type_name}} ดำเนินเสร็จสมบูรณ์">
+				<input type="hidden" name="email" value="{{$row->users->email}}"/>
+				<input type="hidden" name="subject" value="การแจ้งซ่อม {{$row['id']}}"/>
+				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row->typeCheck->type_name}} ดำเนินเสร็จสมบูรณ์"/>
 	     	  </div>
 	      <div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button> 
@@ -140,8 +135,8 @@
 @elseif ($row['statusCheck']==4)
 <a class="text-success">  เสร็จสมบูรณ์</a>
 <button class="btn btn-primary" data-toggle="modal" data-target="#four{{$row['id']}}"><i class="fa fa-envelope"></i></button>
-<div class="modal fade" id="four{{$row['id']}}"  role="dialog" >
-  <div class="modal-dialog">
+<div class="modal fade" id="four{{$row['id']}}" tabindex="-1"  role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -166,18 +161,18 @@
 
 @elseif ($row['statusCheck']==5)
 <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#five{{$row['id']}}"> รายการใหม่</button> 
-<div class="modal fade" id="five{{$row['id']}}"  role="dialog">
-  <div class="modal-dialog">
+<div class="modal fade" id="five{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
-				<input type="hidden" name="_method" value="PATCH">
+				<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body">
 					<p class="text-center">
 					<label>สถานะการซ่อม : </label>
-					<input type="hidden"  name="statusCheck" value="2"> อยู่ระหว่างการดำเนินการ<br>
+					<input type="hidden"  name="statusCheck" value="2"/> อยู่ระหว่างการดำเนินการ<br/>
 					</p>
 	     	  </div>
 	      <div class="modal-footer">

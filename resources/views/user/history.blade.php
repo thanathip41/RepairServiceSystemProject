@@ -1,7 +1,6 @@
 @extends('layouts.navside') 
 @section('content')
 <div class="container">
-<br>
 <div align="right">
 		<a href="{{url('/insert')}}" class="btn btn-primary">แจ้งซ่อม</a>
 </div>
@@ -18,29 +17,24 @@
  
 <table class="table table-bordered table-striped"> 
 <tr>
-    <th>รหัสแจ้งซ่อม</th>
-    <th>รหัสผลิตภัณฑ์</th> 
+    <th>รหัสแจ้งซ่อม/ผลิตภัณฑ์</th> 
     <th>อุปกรณ์/ปัญหา</th>
     <th>เวลาแจ้งซ่อม/รับซ่อม</th>
     <th>สถานะ</th>
     <th>ยืนยันการซ่อม</th>
-    <th>Image</th>
     <th>รายละเอียด </th>
 </tr>
 
 @foreach($history as $row)
 
 <tr> 
-    <td>{{$row['id']}} </td> 
-    <td>{{$row['productCode']}}</td> 
-    <td>{{$row->typeCheck->type_name}}: <br> <p style="color:red;">{{$row['problem']}}</p></td>
-    <td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> 
-        <p style="color:red;">
-        @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
-        @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
-    <td>{{$row->statusCheckname->status}}</td>
+    <td>{{$row['id']}} <br> <p style="color:red;"> {{$row['productCode']}}</td>  
+	<td>{{$row->typeCheck->type_name}}  <br> <p style="color:red;">{{$row['problem']}}</p></td> 
+	<td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> <p style="color:red;">
+						@if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
+						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>
+	<td>{{$row->statusCheckname->status}}</td>  
     <td> @include('modalCall/userHistory')</td>
-    <td><a  target="_blank" href="{{asset('storage').'/'.$row['img']}}" ><img src="{{asset('storage').'/'.$row['img']}}" width="70" height="50"></a></td>
     <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 </tr>
 

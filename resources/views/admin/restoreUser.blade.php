@@ -34,7 +34,7 @@
 		<td>{{$row['department']}}</td>
     <td>{{$row['email']}}</td>
 		<td> {{$row->adminChecktest->role}}</td>
-    <td> @include('modalCall/adminAdd') @include('modalCall/adminDelUser')</td>
+    <td>@include('modalCall/adminDelUser')</td>
 
 	
 </tr>

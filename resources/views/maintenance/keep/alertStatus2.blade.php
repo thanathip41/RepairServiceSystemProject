@@ -13,7 +13,7 @@
 </div>
 <br>
 <br>
-<div class="container" align="right">
+<div class="container" align="center">
 @include('search/search')
 </div>
 

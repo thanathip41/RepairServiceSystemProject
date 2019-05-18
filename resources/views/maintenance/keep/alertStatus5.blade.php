@@ -14,7 +14,7 @@
 </div>
 <br>
 <br>
-<div class="container" align="right">
+<div class="container" align="center">
 @include('search/search')
 </div>
 
@@ -40,7 +40,7 @@
 				<td>{{$row->statusCheckname->status}}</td>  
 				<td>@include('modalCall/statusCheck')</td>
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td>
-				
+			
 				</tr>
 					@endforeach 
 		</table>
