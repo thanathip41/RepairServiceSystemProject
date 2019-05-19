@@ -2,53 +2,72 @@
 @extends('layouts.navside') 
 @section('title','จัดการฐานข้อมูล')
 @section('content')
- <div class="container">
-<div class="row"> 
-<div class="col-md-12"> <br /> 
-<h3 align="center">Send Email</h3> <br/> 
+<div class="container">
+ <br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+            @if(\Session::has('success')) <!-- ถ้าบันทึกสำเร็จ ค่า succes ใน userController -->
+            <div class="alert alert-success"> 
+            <p>{{ \Session::get('success') }}</p> 
+            </div> 
+            @endif 
+            @if(count($errors) > 0) 
+                <div class="alert alert-danger"> 
+                <ul> @foreach($errors->all() as $error) 
+                <li>{{$error}}</li> 
+                @endforeach 
+                </ul> 
+                </div> 
+                @endif 
+                <div class="card-header">ส่ง E-Mail</div>
 
-@if(count($errors) > 0) 
-<div class="alert alert-danger"> 
-<ul> @foreach($errors->all() as $error) 
-<li>{{$error}}</li> 
-@endforeach 
-</ul> 
-</div> 
-@endif 
+                <div class="card-body">
+               
+                <form method="post" action="{{action('MainMailController@post')}}">{{csrf_field()}} 
+              <br>         
+                        <div class="form-group row">
+                            <label for="name" class="col-md-2 col-form-label text-md-right">Email</label>
 
-@if(\Session::has('success')) 
-<div class="alert alert-success"> 
-<p>{{ \Session::get('success') }}</p> 
-</div> 
-@endif 
+                            <div class="col-md-8">
+                            
+                                
+                                <input type="text" name="email" class="form-control">
+                                
+                           
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-2 col-form-label text-md-right">หัวข้อ</label>
 
-<form method="post" action="{{action('MainMailController@post')}}">{{csrf_field()}}  
-<div class="form-group"> 
-<label>Email</label>
-      <input type="text" name="email" class="form-control">
-      </div>
-<div class="form-group"> 
-<label>Subject</label>
-<input type="text" name="subject" class="form-control"/>
-</div> 
-
- <!-- <div class="form-group"> 
-<label>CC</label>
-<input type="text" name="cc" class="form-control" /> 
-</div> -->
+                            <div class="col-md-8">
+                               
+                                    
+                                    <textarea type="text" name="subject" class="form-control"></textarea>
+                                   
+                              
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <div class="row">
+                        <label for="name" class="col-md-2 col-form-label text-md-right">ข้อความ</label>
+                            
+                            <div class="col-md-8">
+                            <textarea type="text" name="message" class="form-control" rows="8"></textarea> 
+                        </div>
+                        </div>
+                        <br>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button> 
+                            <button type="reset" class="btn btn-default"> Reset</button> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
  
-<div class="form-group"> 
-<label>Message</label>
-<textarea type="text" name="message" class="form-control" row="8"></textarea> 
-</div>
- 
-<div class="form-group"> 
-<button type="submit" class="btn btn-primary" ><i class="fa fa-save"></i> Send</button> 
-</div> 
-</form> 
-</div> 
-</div>
-<div align="right"> 
-<a href="{{url('/')}}" class="btn btn-primary">back</a>  
-</div>
 @endsection

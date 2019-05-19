@@ -50,12 +50,12 @@
             @elseif ($row->statusCheck==6)
               <li class="fail">อยู่ระหว่างการรอคิว</li>    
               <li class="fail">อยู่ระหว่างการดำเนินการ</li> 
-              <li class="fail">รอการยืนยันจากผู้แจ้ง</li>
+              <li class="fail">รอการยืนยันจากช่างซ่อม</li>
               <li class="fail">ดำเนินการไม่สมบูรณ์ <br> (เคลมอุปกรณ์)</li>
             @elseif ($row->statusCheck==7)
               <li class="fail">อยู่ระหว่างการรอคิว</li>    
               <li class="fail">อยู่ระหว่างการดำเนินการ</li> 
-              <li class="fail">รอการยืนยันจากผู้แจ้ง</li>
+              <li class="fail">รอการยืนยันจากช่างซ่อม</li>
               <li class="fail">ดำเนินการไม่สมบูรณ์ <br>(ซื้ออุปกรณ์ใหม่)</li>
             @endif
         </ul>
@@ -63,7 +63,7 @@
         <a  href="javascript:history.back()" class="close"><h1>&times;</h1></a>
         <form  target="_blank" action="{{action('MainDataRepairController@PDF',$row['id'])}}"> 
        
-        <table class="table table-bordered"> 
+        <table class="table table-striped">
           <tr >
             <th class="table-primary">ข้อมูลการแจ้งซ่อม</th>
             <th class="table-primary"></th>

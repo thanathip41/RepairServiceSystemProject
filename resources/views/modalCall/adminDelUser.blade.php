@@ -1,5 +1,5 @@
 @if ($row['activated']==1)
-<button class="btn btn-danger"  data-toggle="modal" data-target="#del{{ $row['id']}}"><i class="fa fa-trash"></i></button> 
+<button class="btn btn-danger"  data-toggle="modal" data-target="#del{{ $row['id']}}"><i class="fa fa-user-times"></i></button> 
 <div class="modal fade" id="del{{$row['id']}}" role="dialog">
   <div class="modal-dialog" >
     <div class="modal-content">
@@ -13,8 +13,8 @@
 					<input type="hidden"  name="activated" value="0">
 	     	  </div>
 	      <div class="modal-footer">
+				<button  type="submit" class="btn btn-primary">Yes </button> 
 	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
-	        <button  type="submit" class="btn btn-danger">Yes </button> 
 	      </div>
       </form>
     </div>

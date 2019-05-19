@@ -1,5 +1,5 @@
 @if ($row['roleCheck']==0)
-<button class="btn btn-primary"  data-toggle="modal" data-target="#add{{ $row['id']}}"> <i class="fa fa-plus"></i></button> 
+<button class="btn btn-primary"  data-toggle="modal" data-target="#add{{ $row['id']}}"> <i class="fa fa-user-plus"></i></button> 
 <div class="modal modal-danger fade" id="add{{$row['id']}}"   role="dialog" >
   <div class="modal-dialog" >
     <div class="modal-content">
@@ -23,7 +23,7 @@
   </div>
 </div>
 @elseif ($row['roleCheck']==1)
-<button class="btn btn-primary" data-toggle="modal" data-target="#down{{ $row['id']}}"><i class="fa fa-arrow-down" ></i></button>  
+<button class="btn btn-primary" data-toggle="modal" data-target="#down{{ $row['id']}}"><i class="fa fa-user" ></i></button>  
 <div class="modal modal-danger fade" id="down{{$row['id']}}"   role="dialog" >
   <div class="modal-dialog" >
     <div class="modal-content">

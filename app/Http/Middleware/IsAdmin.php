@@ -17,7 +17,8 @@ class IsAdmin
     {
        if(auth()->check()&& $request->user()->roleCheck==2 && $request->user()->activated==1){
         return $next($request);
-        }abort(403);  
+        }
+        abort(403);  
     }
     
 }

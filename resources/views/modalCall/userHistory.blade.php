@@ -1,5 +1,5 @@
 @if ($row['statusCheck']==3)
-    <button class="btn btn-primary"  data-toggle="modal" data-target="#m{{ $row['id']}}"> ยืนยันการซ่อม</button> 
+    <button class="btn btn-success btn-block"  data-toggle="modal" data-target="#m{{ $row['id']}}"><i class="fa fa-check"></i> ยืนยัน</button> 
 <div class="modal modal-danger fade" id="m{{$row['id']}}"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

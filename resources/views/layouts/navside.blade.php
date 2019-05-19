@@ -67,12 +67,12 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/insert') }}">
           <i class="fa fa-wrench"></i>
-          <span>แจ้งซ่อม</span></a>
+          <span> แจ้งซ่อม</span></a>
       </li> 
         <li class="nav-item">
         <a class="nav-link" href="{{ url('/history') }}">
           <i class="fa fa-history"></i>
-          <span>ประวัติการแจ้งซ่อม</span></a>
+          <span> ประวัติการแจ้งซ่อม</span></a>
       </li>
 
          <li class="nav-item">
@@ -94,11 +94,15 @@
        @elseif (Auth::user()->roleCheck==1)
       
       <li class="nav-item">
-      
         <a class="nav-link" href="{{ url('/datarepair') }}">
           <i class="fa fa-wrench"></i>
           <span>จัดการข้อมูลแจ้งซ่อม</span></a>
       </li> 
+      <li class="nav-item">
+      <a class="nav-link" href="{{ url('/mail') }}">
+      <i class="fa fa-envelope"></i>
+        <span>ส่ง E-mail</span></a>
+    </li> 
 
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/Piechart') }}">
@@ -115,7 +119,7 @@
         @elseif (Auth::user()->roleCheck==2)
         <li class="nav-item">
         <a class="nav-link" href="{{ url('/Check') }}">
-        <i class="fa fa-wrench"></i>
+        <i class="fa fa-wrench"></i> 
           <span>จัดการข้อมูลการแจ้งซ่อม</span></a>
       </li> 
       <li class="nav-item">
@@ -169,7 +173,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown">
          <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color : #000000;">
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color : #FFFFFF;">
          <i class="fa fa-fw fa-user"></i>{{Auth::user()->username}}</a>
            
          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" > 

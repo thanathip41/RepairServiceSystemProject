@@ -9,10 +9,9 @@ use Mail;
 
 class MainMailController extends Controller
 {
-    // function index(){
-    //     $mail=User::all();
-    //     return view('maintenance.index', compact('mail'));
-    // }
+    function index(){
+        return view('maintenance.formmail');
+    }
 
     function post(Request $request)
     {
@@ -33,6 +32,6 @@ class MainMailController extends Controller
          $message->subject($data['subject']);
 
      });
-     return redirect('/datarepair')->with('success', 'Send E-mail Successfully');
+     return back()->with('success', 'Send E-mail Successfully');
     }
 }

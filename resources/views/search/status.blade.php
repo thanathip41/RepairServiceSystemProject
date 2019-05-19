@@ -1,6 +1,6 @@
 <div class="dropdown">
   <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	@foreach($sAll as $row) ข้อมูลแจ้งซ้อม<span class="badge badge-danger"> {{$row->number}} @endforeach</span>
+	@foreach($sAll as $row) ข้อมูลแจ้งซ่อม&nbsp;<span class="badge badge-danger"> {{$row->number}} @endforeach</span>
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
   <div align="right">

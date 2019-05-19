@@ -30,49 +30,54 @@
                  <label for="name" class="col-md-4 col-form-label text-md-right"><h5>{{date('d-m-Y')}} </h5></label>
                         </div>
                         
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">รหัสผลิตภัณฑ์</label>
 
-                            <div class="col-md-6">
-                            <input type="text" name="productCode" id="productCode" class="form-control" maxlength="5" placeholder="NP2019-xxxxx"  />
-               
+                            <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-4"><input class="form-control" value="  NP2019" disabled></div>
+                                <div class="col-1"><h3>-</h3></div>
+                                <div class="col-7"> <input type="text" name="productCode" id="productCode" class="form-control" maxlength="5" placeholder="xxxxx"  /></div>
+                            </div>
+
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">รายการแจ้งซ่อม</label>
 
                             <div class="col-md-8">
-
-                            <select onchange="typeAndproblem(this.value)" name="type_id">
-                                <option value=1>คอมพิวเตอร์</option>
-                                <option value=2>ปริ้นเตอร์/สแกนเนอร์</option>
-                                <option value=3>ระบบเครือข่าย</option>
+                                <div class="row">
+                                    <div class="col-6">
+                                <select onchange="typeAndproblem(this.value)" name="type_id" class="form-control">
+                                    <option value=1>คอมพิวเตอร์</option>
+                                    <option value=2>ปริ้นเตอร์/สแกนเนอร์</option>
+                                    <option value=3>ระบบเครือข่าย</option>
                                 </select>
-                                <select id="sel2" name="problem">
-                                <option value="เปิดไม่ติด">เปิดไม่ติด</option>
-                                <option value="รีสตาร์ท/ดับเอง">รีสตาร์ท/ดับเอง</option>
-                                <option value="เครื่องค้าง">เครื่องค้าง</option>
-                                <option  value="จอฟ้า/จอดำ">จอฟ้า/จอดำ</option>
-                                <option  value="ลงโปรแกรมใหม่">ลงโปรแกรมใหม่</option>
-                                <option  value="ลง window ใหม่">ลง window ใหม่</option>
-                                <option  value="เมาส์/คีย์บอร์ด">เมาส์/คีย์บอร์ด</option>
-                                <option value="อื่นๆ">อื่นๆ</option>
+                                    </div>
+                                    <div class="col-6">
+                                <select id="sel2" name="problem" class="form-control">
+                                    <option value="เปิดไม่ติด">เปิดไม่ติด</option>
+                                    <option value="รีสตาร์ท/ดับเอง">รีสตาร์ท/ดับเอง</option>
+                                    <option value="เครื่องค้าง">เครื่องค้าง</option>
+                                    <option  value="จอฟ้า/จอดำ">จอฟ้า/จอดำ</option>
+                                    <option  value="ลงโปรแกรมใหม่">ลงโปรแกรมใหม่</option>
+                                    <option  value="ลง window ใหม่">ลง window ใหม่</option>
+                                    <option  value="เมาส์/คีย์บอร์ด">เมาส์/คีย์บอร์ด</option>
+                                    <option value="อื่นๆ">อื่นๆ</option>
                             </select>            
+                                    </div>
+                                </div>
+                            
+                                
                             </div>
                         </div>
                         <div class="form-group">
-                        <table class="table">
-                            <tr>
-                            <td width="40%" align="right"><label> เลือกไฟล์เพื่ออัพโหลด </label></td>
-                            <td width="30"><input type="file" name="img" /></td>
-                        </tr>
-                            <tr>
-                            <td width="40%" align="right"></td>
-                            <td width="30"><span class="text-muted">jpg, png, gif</span></td>
-                            <td width="30%" align="left"></td>
-                        </tr>
-                        </table>
+                        <div class="row">
+                        <label for="name" class="col-md-4 col-form-label text-md-right">เลือกไฟล์เพื่ออัพโหลด</label>
+                            
+                            <div class="col-md-8"><input type="file" name="img" accept="image/*"/> <br><span class="text-muted">รองรับไฟล์นามสกุล jpg, png </span></div>
+                        </div>
+                    
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -126,7 +131,7 @@ function validation()
 
   type: 'success',
   title: 'มีคิวก่อนหน้าคุณจำนวน {{$row->number}} คน',
-  showConfirmButton: true,
+  showConfirmButton: false,
   //timer: 2000
 })
 }

@@ -19,7 +19,6 @@ class MainDataRepairController extends Controller
         $datarepair = data::WHERE('deleted','=',0)->paginate(5);
         $s1 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
-            //dd($s1);
         $s2 = DB::select( 
             DB::raw('select count(*) as number from data where statusCheck=2 and deleted=0'));
         $s3 = DB::select( 

@@ -31,7 +31,7 @@
 
                             <div class="col-md-6">
                                 <input id="" type="text" class="form-control{{ $errors->has('department') ? ' is-invalid' : '' }}" 
-                                name="department" value="{{ old('department') }}" required autofocus placeholder="แผนกงานปัจจุบัน">
+                                name="department" value="{{ old('department') }}" required autofocus placeholder="แผนกงาน">
 
                                 @if ($errors->has('department'))
                                     <span class="invalid-feedback" role="alert">
