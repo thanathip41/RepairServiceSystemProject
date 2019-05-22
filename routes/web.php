@@ -14,9 +14,10 @@ use App\User;
 use App\data;
 use Illuminate\Support\Facades\Input;
 Auth::routes();
-   Route::group(['middleware' =>['auth']], function(){
-   Route::get('/',function ()
+    Route::group(['middleware' =>['auth']], function(){   //['ban','auth']]
+     Route::get('/',function () 
      {
+      if(Auth::user()->activated==1){
         $data =data::all();
         $s1 = DB::select( 
          DB::raw('select count(*) as number from data where statusCheck=1 and deleted=0'));
@@ -24,7 +25,11 @@ Auth::routes();
          $s3 = DB::select( 
         DB::raw("select count(*) as number from data where statusCheck=3 and idM='$id' and deleted=0"));
        return view('homepage.welcome', compact('data','s1','s3'));
-     });
+      }
+      elseif (Auth::user()->activated==0 )
+      return view('errors.login');
+   });
+
     Route::group(['middleware' =>'admin'], function()
     {
         Route::resource('/Role', 'AdminRoleController');

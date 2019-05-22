@@ -1,4 +1,4 @@
-@if ($row['img']=="") <img src="#" width="100" height="50"></a>
+@if ($row['img']=="") <img src="#" width="100" height="50">
 @else
 <a  href="#" data-toggle="modal" data-target="#img"><img src="{{asset('storage').'/'.$row['img']}}" width="100" height="50"></a>
           <div class="modal" id="img"  role="dialog" >

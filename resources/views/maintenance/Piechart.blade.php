@@ -1,6 +1,13 @@
 @extends('layouts.navside') 
 @section('content')
-<div class="text-center"> <h2> รายงานผลปัญญาต่างๆที่มีการแจ้งซ่อมในบริษัท </h2></div>
+<div class="text-center"> 
+<h2> รายงานผลปัญญาต่างๆที่มีการแจ้งซ่อมในบริษัท </h2>
+<br>
+<p> @foreach ($problemAll as $p) 
+จำนวนปัญหาทั้งหมดในบริษัท {{$p->number}} ปัญหา
+@endforeach
+</p>
+</div>
 <script type="text/javascript">
    var analytics = <?php echo $problem; ?>
 

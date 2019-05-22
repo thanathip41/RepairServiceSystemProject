@@ -1,7 +1,18 @@
-<input type="radio" name="demo" value="one"/> Search Name &nbsp;&nbsp;
-<input type="radio" name="demo" value="Two"/> Search Code &nbsp;&nbsp;
-<input type="radio" name="demo" value="Three"/> Search Date &nbsp;&nbsp;
-<input type="radio" name="demo" value="Four"/> Search Date Between
+<div class="btn-group btn-group-toggle" data-toggle="radio">
+<label class="btn btn-success active">
+<input type="radio" name="demo" value="one" autocomplete="off" /><i class="fa fa-search"></i> ชื่อ &nbsp;&nbsp;
+</label>
+<label class="btn btn-success ">
+<input type="radio" name="demo" value="Two" autocomplete="off"/><i class="fa fa-search"></i> ผลิตภัณฑ์ &nbsp;&nbsp;
+</label>
+<label class="btn btn-info active">
+<input type="radio" name="demo" value="Three" autocomplete="off"/><i class="fa fa-search"></i> วันที่ &nbsp;&nbsp;
+</label>
+<label class="btn btn-info ">
+<input type="radio" name="demo" value="Four" autocomplete="off"/><i class="fa fa-search"></i> ระหว่างวันที่
+</label>
+</div>
+
 <br>
 <br>
 <div id="showone" class="myDiv" align="center" style="margin-left:25% ; margin-right:25%">
@@ -38,7 +49,7 @@
 		<div class="input-group">
 		
 			<input name="searchDatefrom" type="date" class="form-control">
-			&nbsp; Date to  &nbsp;
+			&nbsp; ถึง  &nbsp;
 			<input name="searchDateto" type="date" class="form-control">
 			<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
 		</div>

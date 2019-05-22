@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,6 +58,8 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:100', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:3', 'confirmed'],
+            //'img' =>['nullable','string'],
+            
            
         ]);
     }
@@ -67,6 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         return User::create([
             'id'=>('MN-').date('dHis'),
             'name' => $data['name'],
@@ -74,6 +80,14 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => $data['password'],
-        ]);
+            'img'=>isset($data['img'])?$data['img']->store('profile', 'public'):''
+        ]); 
+        
+       
+         if ($data->has('img')){
+             'img'->$data('img')->store('profile','public');
+         }
+       
+        
     }
 }

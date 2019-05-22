@@ -26,9 +26,9 @@
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary  " id="mainNav">
+  <nav class="navbar navbar-expand-lg bg-primary " id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Service Repair</a>
+      <a class="navbar-brand" href="#" >Service Repair</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -36,45 +36,45 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
         @if (Auth::user()->roleCheck==0)
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/insert') }}"><i class="fa fa-wrench"></i> แจ้งซ้อม</a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/insert') }}"><i class="fa fa-wrench"></i> แจ้งซ้อม</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/history') }}"><i class="fa fa-history"></i> ประวัติการใช้งาน</a>
+          <li class="nav-item">
+            <a class="nav-link " href="{{ url('/history') }}"><i class="fa fa-history"></i> ประวัติการใช้งาน</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
+          <li class="nav-item">
           @include('modalCall/QR')
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" 
+          <li class="nav-item">
+            <a class="nav-link" 
             href="{{ url('/alertUser') }}"><i class="fa fa-bell"></i>
             <span class="badge badge-danger">@foreach($s3 as $row) {{$row->number}} @endforeach</span></a>
           </li>
        
           @elseif (Auth::user()->roleCheck==1)
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/datarepair') }}"><i class="fa fa-wrench"></i> จัดการข้อมูล</a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/datarepair') }}"><i class="fa fa-wrench"></i> จัดการข้อมูล</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/mail') }}"><i class="fa fa-envelope"></i> ส่งE-mail</a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/mail') }}"><i class="fa fa-envelope"></i> ส่งE-mail</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/Piechart') }}"><i class="fas fa-chart-pie"></i>  กราฟแจ้งซ่อม</a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/Piechart') }}"><i class="fas fa-chart-pie"></i>  กราฟแจ้งซ่อม</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/stat') }}"><i class="fas fa-fw fa-chart-area"></i> สถิติแจ้งซ่อม</a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/stat') }}"><i class="fas fa-fw fa-chart-area"></i> สถิติแจ้งซ่อม</a>
           </li>
           @elseif (Auth::user()->roleCheck==2)
-          <li class="nav-item dropdown mx-0 mx-lg-1">
-        <a class="nav-link py-3 px-0 px-lg-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li class="nav-item dropdown">
+        <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-database"></i> จัดการข้อมูล
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item"href="{{ url('/Check') }}"><i class="fa fa-wrench"></i> จัดการข้อมูลข้อมูล</a>
           <a class="dropdown-item" href="{{ url('/Role') }}"><i class="fas fa-users"></i> จัดการข้อมูลผู้ใช้</a>
         </div>
-      <li class="nav-item dropdown mx-0 mx-lg-1">
-        <a class="nav-link py-3 px-0 px-lg-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item dropdown">
+        <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-trash-restore"></i>  กู้ข้อมูล
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -82,14 +82,17 @@
           <a class="dropdown-item" href="{{ url('/restoreData') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลแจ้งซ่อม</a>
         </div>
       </li>
-          <!-- <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/restoreUser') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลผู้ใช้</a>
-          </li> -->
           @endif
-          <li class="nav-item dropdown mx-0 mx-lg-1">
-           <a id="navbarDropdown" class="nav-link dropdown-toggle py-3 px-0 px-lg-3" href="#" role="button" data-toggle="dropdown" 
+          <li class="nav-item dropdown">
+           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" 
                                 aria-haspopup="true" aria-expanded="false" v-pre style="color : #FFFFFF;"> 
-                                <i class="fa fa-fw fa-user" ></i> {{ Auth::user()->username}} </a>
+                                @if (Auth::user()->img=="") 
+                                    <img src="{{('/image/user.png')}}" 
+                                    style="width:45px; height:45px; float:left;border-radius: 50%;margin-left:5px;"></a> 
+                                    @else
+                                    <img src="{{asset('storage').'/'.Auth::user()->img}}" 
+                                    style="width:45px; height:45px; float:left;border-radius: 50%;margin-left:5px;"></a> 
+                                    @endif
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" > 
                                     <a class="dropdown-item" href="{{url('/profile')}}" style="background-color: #63AED3"  >                  
@@ -164,21 +167,11 @@ $('#myCarousel').carousel({
       </div>
     </div>
   </footer>
-
   <div class="copyright py-4 text-center text-white">
     <div class="container">
       <small>Copyright &copy; Computer Service Repair</small>
     </div>
   </div>
-
-  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-  <div class="scroll-to-top d-lg-none position-fixed ">
-    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-      <i class="fa fa-chevron-up"></i>
-    </a>
-  </div>
-
-
 </body>
 
 </html>

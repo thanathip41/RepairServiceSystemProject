@@ -65,10 +65,10 @@
        
         <table class="table table-striped">
           <tr >
-            <th class="table-primary">ข้อมูลการแจ้งซ่อม</th>
-            <th class="table-primary"></th>
-            <th class="table-danger">ข้อมูลการซ่อม</th>
+            <th class="table-danger">ข้อมูลการแจ้งซ่อม</th>
             <th class="table-danger"></th>
+            <th class="table-success">ข้อมูลการซ่อม</th>
+            <th class="table-success"></th>
           </tr>
           <tr>
             <td>เวลาแจ้งซ่อม</td>
@@ -95,7 +95,7 @@
           <tr>
             <td>สาเหตุ/ปัญหาที่พบ </td>
             <td>{{$row['problem']}}</td>
-            <td> ชื่อผู้แก้ไขปัญหา</td>
+            <td> ชื่อผู้ดำเนินการ</td>
             <td>{{$row['repairman']}}</td>
           </tr>
           <tr >

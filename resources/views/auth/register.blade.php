@@ -39,7 +39,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Service Repair</h1>
                   </div>
-                  <form method="POST" action="{{ route('register') }}">
+                  <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                     <div class="form-group">
                     <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
@@ -95,6 +95,9 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="ยืนยันรหัสผ่าน">
                     </div>
                 
+                    <div class="form-group">
+                    <input id="img" type="file" class="form-control" name="img">
+                                </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">
                     {{ __('Register') }}
                      </button>

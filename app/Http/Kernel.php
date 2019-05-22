@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'maintenance'=> \App\Http\Middleware\IsMaintenance::class,
         'user'=> \App\Http\Middleware\IsUser::class,
         'admin'=> \App\Http\Middleware\IsAdmin::class,
+        'ban'=> \App\Http\Middleware\IsBan::class,
         
        
     ];
@@ -76,6 +77,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewarePriority = [
+        \App\Http\Middleware\IsBan::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\Authenticate::class,

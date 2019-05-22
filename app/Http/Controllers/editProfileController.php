@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Storage;
 class editProfileController extends Controller
 {
     public function index()
@@ -22,13 +23,18 @@ class editProfileController extends Controller
           'name'=>'required',
           'department'=>'required',
           'email'=>'required',
-          
+          'img'=>'image|mimes:jpg,jpeg,png|max:2048',
         ]); 
-        $changeRole = User::find($id); 
-        $changeRole->name = $request->get('name');
-        $changeRole->department = $request->get('department');
-        $changeRole->email = $request->get('email');
-        $changeRole->save();
+        $edit = User::find($id); 
+        $edit->name = $request->get('name');
+        $edit->department = $request->get('department');
+        $edit->email = $request->get('email');
+        if ($request->has('img')){
+        $edit->img = $request->file('img')->store('profile','public');
+        }
+        $edit->save();
         return back()->with('success', 'Successfully');
     }
+
+    
 }

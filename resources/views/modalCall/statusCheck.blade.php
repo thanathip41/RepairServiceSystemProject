@@ -3,20 +3,21 @@
 <div class="modal fade" id="one{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+		<div class="modal-header bg-info text-white">
 			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}} 
 					<input type="hidden" name="_method" value="PATCH"/>
 	      			<div class="modal-body">
 									<p class="text-center">
 										<input type="hidden"  name="statusCheck" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใช่หรือไม่
+										<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 									</p>
 							</div>
 							<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">Yes </button> 
-							<button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
 	      			</div>
       </form>
     </div>
@@ -28,9 +29,9 @@
 <div class="modal fade" id="two{{$row['id']}}"  tabindex="-1"role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document"> 
     <div class="modal-content">
-      <div class="modal-header">
+		<div class="modal-header bg-info text-white">
 			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
 				<input type="hidden" name="_method" value="PATCH"/>
@@ -53,7 +54,7 @@
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 
-	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
 	      </div>
       </form>
     </div>
@@ -64,9 +65,9 @@
 <div class="modal fade" id="twot{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+		<div class="modal-header bg-info text-white">
 			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}" > {{csrf_field()}}
 					<input type="hidden" name="_method" value="PATCH"/>
@@ -75,40 +76,49 @@
 				<div class="col-md-12">
             <div class="row">
               <div class="col-6">
-										<select onchange="typeAndproblem(this.value)" name="statusCheck" class="form-control">
+										<select onchange="typeAndproblem(this.value, '{{$row['id']}}')" name="statusCheck" class="form-control" id="selectTandP">
 									     <option value="6">มีประกัน</option>
 										   <option value="7">หมดประกัน</option>
 										</select>
 									</div>
               	 <div class="col-6">
-										<select id="s" name="method" class="form-control" >
+										<select id="s1{{$row['id']}}" name="method" class="form-control" >
 											<option value="ส่งเคลม">เคลมอุปกรณ์</option>
-											<option value="อื่นๆ">อื่นๆ</option>
+											<option value="อื่นๆ">อื่นๆ</option> 
+										</select>
+										<select id="s2{{$row['id']}}" name="method" class="form-control" hidden disabled >
+											<option value="ซื้ออุปกรณ์ใหม่">ซื้ออุปกรณ์ใหม่</option>
+											<option value="อื่นๆ">อื่นๆ</option> 
 										</select>
 									</div>
 							</div>
 					</div>
 										<script>
-										function typeAndproblem(val) {
-												var HTML = "";
-												if(val == "6") {
-														HTML += '<option value="ส่งเคลม">เคลมอุปกรณ์</option>';
-														HTML += '<option value="อื่นๆ">อื่นๆ</option>';
-												} else if(val == "7") {
-													HTML += '<option value="ซื้ออุปกรณ์ใหม่">ซื้ออุปกรณ์ใหม่</option>';
-													HTML += '<option value="อื่นๆ">อื่นๆ</option>'; 
-													
+										function typeAndproblem(val, id) {
+												//var HTML = "";
+												if(val == 6) {
+														document.getElementById("s2"+id).setAttribute("hidden", true);
+														document.getElementById("s2"+id).setAttribute("disabled", true);
+														document.getElementById("s1"+id).removeAttribute("hidden");
+														document.getElementById("s1"+id).removeAttribute("disabled");
+														
+												} else if(val == 7) {
+
+													document.getElementById("s1"+id).setAttribute("hidden", true);
+													document.getElementById("s1"+id).setAttribute("disabled", true);
+														document.getElementById("s2"+id).removeAttribute("hidden");
+														document.getElementById("s2"+id).removeAttribute("disabled");
+
 												} 
 												
-												document.getElementById("s").innerHTML = HTML;
-												// alert(document.getElementsById("show")[0].innerHTML);
+											
 										}
 										</script>					
 					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 					</div>
 					<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button>   
-					<button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
 					</div>                
 				</form>
 		</div>
@@ -119,8 +129,9 @@
 <div class="modal fade" id="three{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<div class="modal-header bg-info text-white">
+			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
+			<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainMailController@post')}}">{{csrf_field()}}  
 	      <div class="modal-body">
@@ -133,7 +144,7 @@
 	     	  </div>
 	      <div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button> 
-	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
 	      </div>
       </form>
     </div>
@@ -145,24 +156,26 @@
 <p class="text-success" align="center">  เสร็จสมบูรณ์</p>
 
 @elseif ($row['statusCheck']==5)
-<button type="button" class="btn btn-danger btn-block"  data-toggle="modal" data-target="#five{{$row['id']}}"> รายการใหม่</button> 
+<button type="button" class="btn btn-danger btn-block"  data-toggle="modal" data-target="#five{{$row['id']}}"><i class="fas fa-undo"></i> ทำรายการใหม่</button> 
 <div class="modal fade" id="five{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="modal-content ">
+      <div class="modal-header bg-info text-white">
+			<div class="modal-title ">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
+			<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
 				<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body">
 					<p class="text-center">
-					<label>สถานะการซ่อม : </label>
-					<input type="hidden"  name="statusCheck" value="2"/> อยู่ระหว่างการดำเนินการ<br/>
+						<input type="hidden"  name="statusCheck" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใหม่อีกครั้งใช่หรือไม่
+						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+						<input type="hidden" name="method" value="{{$row['method']}}" />
 					</p>
 	     	  </div>
 	      <div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Yes </button> 
-	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
+				<button type="submit" class="btn btn-primary">Yes </button> 
+	      <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
 	      </div>
       </form>
     </div>
@@ -176,9 +189,9 @@
 <div class="modal fade" id="six{{$row['id']}}"  tabindex="-1"role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document"> 
     <div class="modal-content">
-      <div class="modal-header">
+		<div class="modal-header bg-info text-white">
 			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
 				<input type="hidden" name="_method" value="PATCH"/>
@@ -187,25 +200,26 @@
 					ได้รับอุปกรณ์จากเคลมแล้ว
 						</div>
 						<input type="hidden"  name="statusCheck" value="3"/>
+						<input type="hidden" name="method" value="{{$row['method']}}" />
+						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 
-	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
 	      </div>
       </form>
     </div>
   </div>
 </div>
 @elseif ($row['statusCheck']==7) 
-
 <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#seven{{$row['id']}}" ><i class="fas fa-shopping-cart"></i>  ซื้ออุปกรณ์ใหม่</i>
 </button>
 <div class="modal fade" id="seven{{$row['id']}}"  tabindex="-1"role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document"> 
     <div class="modal-content">
-      <div class="modal-header">
+		<div class="modal-header bg-info text-white">
 			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<button type="button" class="close text-while" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
 				<input type="hidden" name="_method" value="PATCH"/>
@@ -213,11 +227,13 @@
 						<div> 
 					ซื้ออุปกรณ์ใหม่เรียบร้อยแล้ว
 						</div>
+						<input type="hidden" name="method" value="{{$row['method']}}" />
+						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 						<input type="hidden"  name="statusCheck" value="3"/>
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 
-	        <button type="button" class="btn btn-default" data-dismiss="modal">No, Cancel</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
 	      </div>
       </form>
     </div>

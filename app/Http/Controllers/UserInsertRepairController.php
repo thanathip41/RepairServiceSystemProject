@@ -18,21 +18,21 @@ class UserInsertRepairController extends Controller
         $s1 = DB::select( 
             DB::raw("select count(*) as number from data where statusCheck=1 and deleted=0"));
         return view('user.InsertRepair', compact('s1')); 
-        //อ้างอิงตำแหน่งของ view 
     }
     public function store(Request $request)
     {
-
+        $s1 = DB::select( 
+            DB::raw("select count(*) as number from data"));
         $this->validate($request, 
         [   'productCode' => 'required|max:12', 'problem' => 'required', 
-             'img'=>  'image|mimes:jpg,jpeg,png,gif|max:2048'
+             'img'=>  'image|mimes:jpg,jpeg,png|max:2048'
         ]); 
         $input = new data(
             [ 'idM'=>Auth::user()->id,
               'productCode' =>('NP2019-').$request->get('productCode'), 
               'problem' => $request->get('problem'),
               'type_id'=>$request->get('type_id'),
-              'id'=>('MT-').date('mdHis') ,
+              'id'=>('MT-').date('mdHis'),
  
             ]);
             if ($request->has('img')){
