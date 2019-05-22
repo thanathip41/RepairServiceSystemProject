@@ -31,7 +31,7 @@
 @foreach($users as $row) 
 <tr>
     <td>{{$row['name']}}</td> 
-		<td>{{$row['department']}}</td>
+		<td>{{$row->departCheck->department}}</td>
     <td>{{$row['email']}}</td>
 		<td> {{$row->adminChecktest->role}}</td>
     <td> @include('modalCall/adminAdd') @include('modalCall/adminDelUser')</td>

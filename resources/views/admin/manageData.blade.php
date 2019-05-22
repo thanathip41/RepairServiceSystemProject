@@ -28,6 +28,7 @@
 <th>เวลาแจ้ง/รับซ่อม</th>
 <th>สถานะการซ่อม</th>
 <th>รายละเอียด</th>
+<th>ลบข้อมูล</th>
 </tr> 
 
 @foreach($admin as $row) <!-- ดึงข้อมูล data ใน datacontroller@index = $row -->
@@ -41,8 +42,8 @@
 		@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
 <td>{{$row->statusCheckname->status}}</td>
 <td>
-<a href="{{action('AdminController@process',$row['id'])}}">รายละเอียด</a> @include('modalCall/adminDel')
-</td>
+<a href="{{action('AdminController@process',$row['id'])}}">รายละเอียด</a></td>
+<td> @include('modalCall/adminDel')</td>
 </tr>
 @endforeach 
 </table>

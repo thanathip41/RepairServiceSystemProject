@@ -21,7 +21,7 @@
   </div>
 </div>
 @elseif ($row['activated']==0)
-<button class="btn btn-danger"  data-toggle="modal" data-target="#dd{{ $row['id']}}"><i class="fas fa-trash-restore"></i></button> 
+<button class="btn btn-warning"  data-toggle="modal" data-target="#dd{{ $row['id']}}"><i class="fas fa-trash-restore"></i></button> 
 <div class="modal fade" id="dd{{$row['id']}}" role="dialog">
   <div class="modal-dialog" >
     <div class="modal-content">

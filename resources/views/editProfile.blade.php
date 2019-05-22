@@ -61,21 +61,7 @@
                         </div>
                         @endif
                       
-                        @if (Auth::user()->activated==1)
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">แผนกงาน </label>
-                            <div class="col-md-6">
-                            <input type="text" name="department"  class="form-control" value="{{$row['department']}}" required />
-                            </div>
-                        </div>
-                        @elseif (Auth::user()->activated==0)
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">แผนกงาน </label>
-                            <div class="col-md-6">
-                            <input type="text" name="department"  class="form-control" value="{{$row['department']}}" disabled />
-                            </div>
-                        </div>
-                        @endif
+                     
                         @if (Auth::user()->activated==1)
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Email </label>
@@ -91,6 +77,14 @@
                             </div>
                         </div>
                         @endif
+                          
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">แผนกงาน </label>
+                            <div class="col-md-6">
+                            <input type="text" name="department"  class="form-control" value="{{$row->departCheck->department}}" disabled />
+                            </div>
+                        </div>
+                        
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">สถานะในระบบ </label>
                             <div class="col-md-6">

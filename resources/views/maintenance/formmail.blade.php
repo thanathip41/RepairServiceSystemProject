@@ -60,7 +60,7 @@
                         <br>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button> 
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-envelope"></i> Send</button> 
                             <button type="reset" class="btn btn-default"> Reset</button> 
                             </div>
                         </div>

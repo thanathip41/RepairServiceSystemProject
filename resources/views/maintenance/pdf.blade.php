@@ -31,7 +31,14 @@
   <br>
   <tr>
     <td><h3> แผนกงาน</h3></td>
-     <td>{{$PDF->users->department}}</td>
+     <td>@if ($PDF->users->department==1) ฝ่ายขาย 
+            @elseif ($PDF->users->department==2) ฝ่ายไอที
+            @elseif ($PDF->users->department==3) ฝ่ายบุคคล
+            @elseif ($PDF->users->department==4) ฝ่ายการตลาด
+            @elseif ($PDF->users->department==5) ฝ่ายบริหาร
+            @elseif ($PDF->users->department==6) ฝ่ายบัญชี
+            @elseif ($PDF->users->department==7) ฝ่ายซ่อมบำรุง
+            @endif </td>
   </tr>
   <br>
   <tr>

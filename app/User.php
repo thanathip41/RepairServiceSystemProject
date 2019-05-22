@@ -22,7 +22,11 @@ class User extends Authenticatable
         return $this->hasmany(data::class,'id');   //('App\Data','id')
         //เรียก modal data :: class ให้ id ของ users = idM
     }
-
+    public function departCheck()
+    {   
+        return $this->belongsTo(depart_id::class,'department');   
+        
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

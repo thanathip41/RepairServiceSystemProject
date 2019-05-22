@@ -21,13 +21,11 @@ class editProfileController extends Controller
     $this->validate($request, 
         [ 
           'name'=>'required',
-          'department'=>'required',
           'email'=>'required',
           'img'=>'image|mimes:jpg,jpeg,png|max:2048',
         ]); 
         $edit = User::find($id); 
         $edit->name = $request->get('name');
-        $edit->department = $request->get('department');
         $edit->email = $request->get('email');
         if ($request->has('img')){
         $edit->img = $request->file('img')->store('profile','public');

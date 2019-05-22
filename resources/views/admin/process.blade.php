@@ -62,10 +62,10 @@
         
         <table class="table table-bordered"> 
           <tr >
-            <th class="table-primary">ข้อมูลการแจ้งซ่อม</th>
-            <th class="table-primary"></th>
+            <th class="table-danger">ข้อมูลการแจ้งซ่อม</th>
+            <th class="table-danger"></th>
             <th class="table-success">ข้อมูลการซ่อม</th>
-            <th class="table-sucees"></th>
+            <th class="table-success"></th>
           </tr>
           <tr>
             <td>เวลาแจ้งซ่อม</td>
@@ -75,14 +75,15 @@
             @else {{date('d/m/Y',strtotime($row['updated_at']))}} @endif</td>
           </tr>
             <tr>
-                <td>ประเภทอุปกรณ์ </td>
-                <td>{{$row->typeCheck->type_name}}</td>
+            <td > รหัสผลิตภัณท์ </td>
+            <td>{{$row['productCode']}}</td>
+               
                 <td> สถานะการซ่อม  </td>
             <td>{{$row->statusCheckname->status}}</td>
           </tr>
           <tr>
-          <td > รหัสผลิตภัณท์ </td>
-            <td>{{$row['productCode']}}</td>
+            <td>ประเภทอุปกรณ์ </td>
+            <td>{{$row->typeCheck->type_name}}</td>
         
             <td>วิธีแก้ไขปัญหา</td>
            
@@ -96,8 +97,16 @@
             <td>{{$row['repairman']}}</td>
           </tr>
           <tr >
-            <td> ชื่อ-นามสกุล   </td>
-            <td> {{$row->users->name}}  </td>
+            <td> ชื่อ-นามสกุล /แผนก   </td>
+            <td> {{$row->users->name}} / 
+            @if ($row->users->department==1) ฝ่ายขาย 
+            @elseif ($row->users->department==2) ฝ่ายไอที
+            @elseif ($row->users->department==3) ฝ่ายบุคคล
+            @elseif ($row->users->department==4) ฝ่ายการตลาด
+            @elseif ($row->users->department==5) ฝ่ายบริหาร
+            @elseif ($row->users->department==6) ฝ่ายบัญชี
+            @elseif ($row->users->department==7) ฝ่ายซ่อมบำรุง
+            @endif </td>
             <td> หมายเหตุ</td>
             <td>{{$row['remark']}}</td>
           </tr>

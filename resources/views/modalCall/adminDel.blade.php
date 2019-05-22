@@ -22,7 +22,7 @@
   </div>
 </div>
 @elseif ($row['deleted']==1)
-<button class="btn btn-danger"  data-toggle="modal" data-target="#d{{ $row['id']}}"><i class="fas fa-trash-restore"></i></button> 
+<button class="btn btn-warning"  data-toggle="modal" data-target="#d{{ $row['id']}}"><i class="fas fa-trash-restore"></i></button> 
 <div class="modal modal-danger fade" id="d{{$row['id']}}"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

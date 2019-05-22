@@ -37,7 +37,7 @@
                             <div class="row">
                                 <div class="col-4"><input class="form-control" value="  NP2019" disabled></div>
                                 <div class="col-1"><h3>-</h3></div>
-                                <div class="col-7"> <input type="text" name="productCode" id="productCode" class="form-control" maxlength="5"  placeholder="xxxxx"  /></div>
+                                <div class="col-7"> <input type="number" name="productCode" id="productCode" class="form-control" maxlength="5"  placeholder="xxxxx"  /></div>
                             </div>
 
                             </div>
