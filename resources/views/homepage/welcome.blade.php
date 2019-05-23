@@ -26,7 +26,7 @@
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-primary " id="mainNav">
+  <nav class="navbar navbar-expand-lg bg-secondary " id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="#" >Service Repair</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,30 +58,32 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url('/mail') }}"><i class="fa fa-envelope"></i> ส่งE-mail</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url('/Piechart') }}"><i class="fas fa-chart-pie"></i>  กราฟแจ้งซ่อม</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url('/stat') }}"><i class="fas fa-fw fa-chart-area"></i> สถิติแจ้งซ่อม</a>
+          
           </li>
           @elseif (Auth::user()->roleCheck==2)
           <li class="nav-item dropdown">
         <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-database"></i> จัดการข้อมูล
+        <i class="fa fa-database"></i> จัดการข้อมูลแจ้งซ่อม
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item"href="{{ url('/Check') }}"><i class="fa fa-wrench"></i> จัดการข้อมูลข้อมูล</a>
-          <a class="dropdown-item" href="{{ url('/Role') }}"><i class="fas fa-users"></i> จัดการข้อมูลผู้ใช้</a>
+          <a class="dropdown-item"href="{{ url('/Check') }}"><i class="fa fa-wrench"></i> จัดการข้อมูลแจ้งซ่อม</a>
+          <a class="dropdown-item" href="{{ url('/restoreData') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลแจ้งซ่อม</a>
+     
         </div>
       <li class="nav-item dropdown">
         <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-trash-restore"></i>  กู้ข้อมูล
+        <i class="fas fa-users"></i>  จัดการข้อมูลผู้ใช้
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item"href="{{ url('/restoreUser') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลผู้ใช้</a>
-          <a class="dropdown-item" href="{{ url('/restoreData') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลแจ้งซ่อม</a>
+          <a class="dropdown-item" href="{{ url('/Role') }}"><i class="fas fa-user"></i> จัดการข้อมูลผู้ใช้</a>
+          <a class="dropdown-item"href="{{ url('/restoreUser') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลผู้ใช้</a>   
         </div>
       </li>
+      <li class="nav-item">
+            <a class="nav-link" href="{{ url('/Piechart') }}"><i class="fas fa-chart-pie"></i>  กราฟ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/stat') }}"><i class="fas fa-fw fa-chart-area"></i> สถิติ</a>
           @endif
           <li class="nav-item dropdown">
            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" 
@@ -100,8 +102,8 @@
                                         {{Auth::user()->name}}<br>
                                           <small>Member since
                                           {{date('M. Y',strtotime(Auth::user()->created_at))}}
-                                          <br> @if (Auth::user()->activated==1) <i class="fa fa-circle text-success"></i>Activated
-                                          @elseif (Auth::user()->activated==0) <i class="fa fa-circle text-danger"></i>Inactivated @endif
+                                          <br> @if (Auth::user()->activated==1) <i class="fa fa-circle text-success"></i> ใช้งาน
+                                          @elseif (Auth::user()->activated==0) <i class="fa fa-circle text-danger"></i> ปิดการใช้งาน @endif
                                           </small> </p>
                                     </a>
                                     <div class="dropdown-divider"></div>
@@ -160,8 +162,8 @@ $('#myCarousel').carousel({
       
         
         <div class="col-md-12">
-          <h4 class="text-uppercase mb-4">About Freelancer</h4>
-          <p class="lead mb-0">Freelance is a free to use, open source Bootstrap theme created by
+          <h4 class="text-uppercase mb-4">About Computer Service Repair</h4>
+          <p class="lead mb-0">บริษัท ทีที เน็ตเวิร์ค อินทิเกรชั่น (ประเทศไทย) จำกัด ตั้งอยู่ที่ ชั้น 49 ออลซีซั่นส์เพลส ซีอาร์ซีทาวเวอร์ 87/2 ถนนวิทยุ กรุงเทพมหานคร 
            
         </div>
       </div>

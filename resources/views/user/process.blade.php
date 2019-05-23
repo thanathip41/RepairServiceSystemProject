@@ -82,16 +82,7 @@
           <tr>
           <td > รหัสผลิตภัณท์ </td>
             <td>{{$row['productCode']}}</td>
-               
-                <td> สถานะการซ่อม  </td>
-            <td>{{$row->statusCheckname->status}}</td>
-          </tr>
-          <tr>
-            <td>ประเภทอุปกรณ์ </td>
-            <td>{{$row->typeCheck->type_name}}</td>
-        
             <td>วิธีแก้ไขปัญหา</td>
-           
             <td>{{$row['method']}}</td>
 
           </tr>

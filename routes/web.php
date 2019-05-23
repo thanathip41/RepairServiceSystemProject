@@ -38,6 +38,8 @@ Auth::routes();
         Route::get('/processAdmin/{id}', 'AdminController@process');
         Route::get('/restoreUser', 'AdminRoleController@restoreUser');
         Route::get('/restoreData', 'AdminController@restoreData');
+        Route::get('/Piechart', 'AdminGraphController@Piechart'); 
+        Route::resource('/stat', 'AdminStatController');
     });
 
     Route::group(['middleware' =>'maintenance'], function()
@@ -51,12 +53,12 @@ Auth::routes();
           Route::any('/searchDate', 'MainDataRepairController@searchDate');
         Route::resource('/status', 'MainStatusRepairController');
           Route::get('/process/{id}', 'MainStatusRepairController@process');
-        Route::get('/finally', 'MainRepairGraphController@index'); 
-          Route::get('/Piechart', 'MainRepairGraphController@Piechart'); 
+        
+        //Route::get('/Piechart', 'MainRepairGraphController@Piechart'); 
         Route::get('/mail', 'MainMailController@index');
           Route::post('/postMail', 'MainMailController@post');
-          Route::post('/postMailCC', 'MainMailController@postCC');
-        Route::resource('/stat', 'MainStatController');
+        //  Route::post('/postMailCC', 'MainMailController@postCC');
+        //Route::resource('/stat', 'MainStatController');
        
       
     });

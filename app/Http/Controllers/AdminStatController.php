@@ -7,7 +7,7 @@ use App\data;
 use App\User;
 use DB;
 
-class MainStatController extends Controller
+class AdminStatController extends Controller
 {
     public function index()
     {
@@ -114,7 +114,7 @@ $id3m1 = DB::select(
                                                     DB::raw('select count(*) as number from data where type_id  and deleted=0'));
 
 
-            return view('maintenance.stat', compact('qq','s1','s2','s3','s4','s5','s6','s7','sAll','idAll'
+            return view('admin.stat', compact('qq','s1','s2','s3','s4','s5','s6','s7','sAll','idAll'
         ,'id1m1','id1m2','id1m3','id1m4','id1m5','id1m6','id1m7','id1m8','id1m9','id1m10','id1m11','id1m12','id1All'
         ,'id2m1','id2m2','id2m3','id2m4','id2m5','id2m6','id2m7','id2m8','id2m9','id2m10','id2m11','id2m12','id2All'
         ,'id3m1','id3m2','id3m3','id3m4','id3m5','id3m6','id3m7','id3m8','id3m9','id3m10','id3m11','id3m12','id3All'

@@ -78,7 +78,7 @@
          <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="modal" data-target="#QR">
         <i class="fas fa-robot"></i>
-          <span>บอท</span></a>
+          <span> บอท</span></a>
       </li>
        <div class="modal fade" id="QR"  role="dialog">
                     <div class="modal-dialog">
@@ -96,46 +96,51 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/datarepair') }}">
           <i class="fa fa-wrench"></i>
-          <span>จัดการข้อมูลแจ้งซ่อม</span></a>
+          <span> จัดการข้อมูลแจ้งซ่อม</span></a>
       </li> 
       <li class="nav-item">
       <a class="nav-link" href="{{ url('/mail') }}">
       <i class="fa fa-envelope"></i>
-        <span>ส่ง E-mail</span></a>
+        <span> ส่ง E-mail</span></a>
     </li> 
 
+        @elseif (Auth::user()->roleCheck==2)
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseone" aria-expanded="true" aria-controls="collapseone">
+          <i class="fa fa-database"></i>
+          <span> จัดการข้อมูลการแจ้งซ่อม</span>
+        </a>
+        <div id="collapseone" class="collapse">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header"> จัดการข้อมูล : </h6>
+            <a class="collapse-item" href="{{ url('/Check') }}"><i class="fa fa-wrench"></i> จัดการข้อมูลแจ้งซ่อม</a>
+            <a class="collapse-item" href="{{ url('/restoreData') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลแจ้งซ่อม</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fa fa-users"></i>
+          <span> จัดการข้อมูลผู้ใช้</span>
+        </a>
+        <div id="collapseTwo" class="collapse" >
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">จัดการผู้ใช้ : </h6>
+            <a class="collapse-item" href="{{ url('/Role') }}"><i class="fa fa-user"></i> จัดการข้อมูลผู้ใช้</a>
+            <a class="collapse-item" href="{{ url('/restoreUser') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลผู้ใช้</a>
+          </div>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/Piechart') }}">
         <i class="fas fa-chart-pie"></i> 
-          <span>กราฟ</span></a>
+          <span> กราฟ</span></a>
       </li> 
 
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/stat') }}">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>สถิติการใข้งาน</span></a>
-      </li> 
-      
-        @elseif (Auth::user()->roleCheck==2)
-        <li class="nav-item">
-        <a class="nav-link" href="{{ url('/Check') }}">
-        <i class="fa fa-wrench"></i> 
-          <span>จัดการข้อมูลการแจ้งซ่อม</span></a>
-      </li> 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/Role') }}">
-        <i class="fas fa-users"></i>
-          <span>จัดการสมาชิก</span></a>
-      </li> 
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/restoreData') }}">
-        <i class="fas fa-trash-restore"></i>
-          <span>กู้ข้อมูลแจ้งซ่อม</span></a>
-      </li>  
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/restoreUser') }}">
-        <i class="fas fa-trash-restore"></i>
-          <span>กู้ข้อมูลสมาชิก</span></a>
+          <span> สถิติการใข้งาน</span></a>
       </li> 
       @endif
       <!-- Divider -->
@@ -185,8 +190,8 @@
              <a class="dropdown-item" href="{{url('/profile')}}" style="background-color: #63AED3"  >                  
                 <p align="center"> {{Auth::user()->name}}<br>
                    <small>Member since {{date('M. Y',strtotime(Auth::user()->created_at))}}
-                   <br> @if (Auth::user()->activated==1) <i class="fa fa-circle text-success"></i>Activated
-                   @elseif (Auth::user()->activated==0) <i class="fa fa-circle text-danger"></i>Inactivated @endif
+                   <br> @if (Auth::user()->activated==1) <i class="fa fa-circle text-success"></i> ใช้งาน
+                   @elseif (Auth::user()->activated==0) <i class="fa fa-circle text-danger"></i> ปิดการใช้งาน@endif
                    </small> </p>
               </a>
                                     <div class="dropdown-divider"></div>
@@ -225,10 +230,6 @@
   </div>
   <!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
    <!-- Custom scripts for all pages-->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="{{asset('/navside/js/navside.min.js')}}"></script> 

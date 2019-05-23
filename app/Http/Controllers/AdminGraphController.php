@@ -7,7 +7,7 @@ use App\data;
 use App\users;
 use DB;
 
-class MainRepairGraphController extends Controller
+class AdminGraphController extends Controller
 {
     function Piechart()
     {
@@ -27,6 +27,6 @@ class MainRepairGraphController extends Controller
           $array[++$key] = [$value->problem, $value->number];
         }
         // dd($array);
-        return view('maintenance.Piechart',compact('problemAll'))->with('problem', json_encode($array));
+        return view('admin.Piechart',compact('problemAll'))->with('problem', json_encode($array));
         }
 }

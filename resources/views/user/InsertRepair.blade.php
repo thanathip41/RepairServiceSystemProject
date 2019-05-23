@@ -35,9 +35,9 @@
 
                             <div class="col-md-8">
                             <div class="row">
-                                <div class="col-4"><input class="form-control" value="  NP2019" disabled></div>
+                                <div class="col-3"><input class="form-control" value="  NPC" disabled></div>
                                 <div class="col-1"><h3>-</h3></div>
-                                <div class="col-7"> <input type="number" name="productCode" id="productCode" class="form-control" maxlength="5"  placeholder="xxxxx"  /></div>
+                                <div class="col-4"> <input type="text" name="productCode" id="productCode" class="form-control" minlength="6" maxlength="6"  placeholder="123456"  /></div>
                             </div>
 
                             </div>
@@ -121,7 +121,7 @@ function check(){
 
     var productCode=document.getElementById("productCode").value;
     //console.log(productCode);
-    if (productCode){
+    if (productCode.length == 6){
         validation();
     }
 }

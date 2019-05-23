@@ -25,6 +25,16 @@
   </tr>
   <br>
   <tr>
+    <td><h3> ประเภทอุปกรณ์</h3></td>
+    <td>{{$PDF->typeCheck->type_name}}</td>
+  </tr>
+  <br>
+  <tr>
+    <td><h3> สาเหตุ/ปัญหาที่พบ</h3></td>
+    <td>{{$PDF->problem}}</td>
+  </tr>
+  <br>
+  <tr>
     <td><h3> ผู้แจ้งซ่อม</h3></td>
      <td>{{$PDF->users->name}}</td>
   </tr>
@@ -39,11 +49,6 @@
             @elseif ($PDF->users->department==6) ฝ่ายบัญชี
             @elseif ($PDF->users->department==7) ฝ่ายซ่อมบำรุง
             @endif </td>
-  </tr>
-  <br>
-  <tr>
-    <td><h3> สาเหตุ/ปัญหาที่พบ</h3></td>
-    <td>{{$PDF->problem}}</td>
   </tr>
   <br>
 <br>

@@ -105,18 +105,18 @@
                     </div>
                 
                     <div class="form-group">
-                    <input id="img" type="file" class="form-control" name="img">
-                                </div>
+                      <input id="img" type="file" class="form-control" name="img"  accept="image/*">
+                    </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">
                     {{ __('Register') }}
                      </button>
-                     <button type="reset" class="btn btn-default btn-user btn-block">
+                     <button type="reset" class="btn btn-secondary btn-user btn-block">
                                 Reset
                                 </button> 
                     <hr>
                   </form>
                   <div class="text-center">
-                    <a class="small"href="{{ route('login') }}">Login!</a>
+                    <a class="small"href="{{ route('login') }}">Login</a>
                   </div>
                 </div>
               </div>
