@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class data extends Model
 {
-    protected $fillable=['productCode','problem','type_id','id','idM','img'];// 'repairman','statusCheck', 'method','remark' ไม่ได้ถูกส่ง
+    protected $fillable=['productCode','problem','type_id','id','idM','img','type_return'];// 'repairman','statusCheck', 'method','remark' ไม่ได้ถูกส่ง
     
      public function idMtest()
     {   

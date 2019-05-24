@@ -10,10 +10,26 @@
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}} 
 					<input type="hidden" name="_method" value="PATCH"/>
 	      			<div class="modal-body">
+							<div class="text-right">
+							<label> </label><br>
+							</div>
 									<p class="text-center">
 										<input type="hidden"  name="statusCheck" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใช่หรือไม่
-										<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+										<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> <br>
+										
 									</p>
+									<div class="row">
+										<div class="col-6">
+										<label> วันที่คาดว่าจะได้รับอุปกรณ์  	 <br> 
+										<small>	เวลาที่แจ้งซ่อม : {{date('d/M/Y',strtotime($row['created_at']))}} </small>
+										</label>
+									
+										</div>
+										<div class="col-6">
+										<input  type="date" name="type_return" class="form-control" required/>
+										</div>
+										
+									</div>
 							</div>
 							<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">Yes </button> 
@@ -136,7 +152,7 @@
 				<form method="post" action="{{action('MainMailController@post')}}">{{csrf_field()}}  
 	      <div class="modal-body">
 					<p class="text-center">
-				 คุณต้องการส่ง E-mail : {{$row->users->email}} ใช่หรือไม่ 
+				 		คุณต้องการส่ง E-mail : {{$row->users->email}} ใช่หรือไม่ 
 					</p>
 				<input type="hidden" name="email" value="{{$row->users->email}}"/>
 				<input type="hidden" name="subject" value="การแจ้งซ่อม {{$row['id']}}"/>
@@ -196,7 +212,7 @@
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
 				<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body">
-						<div> 
+						<div align="center"> 
 					ได้รับอุปกรณ์จากเคลมแล้ว
 						</div>
 						<input type="hidden"  name="statusCheck" value="3"/>
@@ -224,7 +240,7 @@
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}}  
 				<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body">
-						<div> 
+						<div align="center"> 
 					ซื้ออุปกรณ์ใหม่เรียบร้อยแล้ว
 						</div>
 						<input type="hidden" name="method" value="{{$row['method']}}" />

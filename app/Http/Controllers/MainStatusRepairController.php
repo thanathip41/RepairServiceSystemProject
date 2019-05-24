@@ -20,13 +20,15 @@ class MainStatusRepairController extends Controller
           'statusCheck'=>'required',
           'repairman'=>'' ,
           'method'=>'',
-          'remark'=>''
+          'remark'=>'',
+          'type_return'=> '',
         ]); 
         $update = data::find($id); 
         $update->repairman = $request->get('repairman'); 
         $update->statusCheck = $request->get('statusCheck');
         $update->method = $request->get('method');
         $update->remark = $request->get('remark');
+        $update->type_return = $request->get('type_return');
         $update->save(); 
         return back()->with('success', 'successfully');
     }

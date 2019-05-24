@@ -45,9 +45,11 @@ class UserInsertRepairController extends Controller
     }
     public function history() 
     {
+        $s1 = DB::select( 
+            DB::raw("select count(*) as number from data where statusCheck=1 and deleted=0"));
        $whereID=Auth::user()->id;
        $history = data::WHERE('idM','=',$whereID)->WHERE('deleted','=',0)->paginate (5);
-        return view('user.history', compact('history'))->with('success', 'Successfully'); 
+        return view('user.history', compact('history','s1'))->with('success', 'Successfully'); 
     }
     
     public function alertUser()

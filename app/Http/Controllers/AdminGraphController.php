@@ -12,7 +12,7 @@ class AdminGraphController extends Controller
     function Piechart()
     {
       $problemAll = DB::select( 
-        DB::raw('select count(*) as number from data problem'));  
+        DB::raw('select count(*) as number from data  problem '));  
         //dd($problemAll);
       $input = DB::table('data')
           ->select(
