@@ -72,33 +72,34 @@
           </tr>
           <tr>
             <td>เวลาแจ้งซ่อม</td>
-            <td>{{date('d/m/Y',strtotime($row['created_at']))}}</td>
+            <td>{{date('d/M/Y',strtotime($row['created_at']))}}</td>
             <td> เวลาดำเนินการ</td>
             <td>@if ($row['created_at']==$row['updated_at'])  ไม่ได้ดำเนินการ
-            @else {{date('d/m/Y',strtotime($row['updated_at']))}} @endif</td>
+            @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</td>
           </tr>
             <tr>
-            <td > รหัสผลิตภัณท์ </td>
+                <td>ประเภทอุปกรณ์ </td>
+                <td>{{$row->typeCheck->type_name}}</td>
+                <td>เวลาคาดว่าจะเสร็จ</td>
+                <td>@if ($row['type_return']=='') รอการยืนยัน
+        @else {{date('d/M/Y',strtotime($row['type_return']))}} @endif</td>
+        
+                
+          <tr>
+          <td > รหัสผลิตภัณท์ </td>
             <td>{{$row['productCode']}}</td>
-                <td> สถานะการซ่อม  </td>
+            <td> สถานะการซ่อม  </td>
             <td>{{$row->statusCheckname->status}}</td>
           </tr>
-          <tr>
-          <td>ประเภทอุปกรณ์ </td>
-                <td>{{$row->typeCheck->type_name}}</td>
-         
-               
-               
-            <td>วิธีแก้ไขปัญหา</td>
            
-            <td>{{$row['method']}}</td>
 
           </tr>
           <tr>
             <td>สาเหตุ/ปัญหาที่พบ </td>
             <td>{{$row['problem']}}</td>
-            <td> ชื่อผู้ดำเนินการ</td>
-            <td>{{$row['repairman']}}</td>
+            <td>วิธีแก้ไขปัญหา</td>
+            <td>{{$row['method']}}</td>
+            
           </tr>
           <tr >
             <td> ชื่อ-นามสกุล /แผนก   </td>
@@ -111,15 +112,15 @@
             @elseif ($row->users->department==6) ฝ่ายบัญชี
             @elseif ($row->users->department==7) ฝ่ายซ่อมบำรุง
             @endif </td>
-            <td> หมายเหตุ</td>
-            <td>{{$row['remark']}}</td>
+            <td> ชื่อผู้ดำเนินการ</td>
+            <td>{{$row['repairman']}}</td>
+            
           </tr>
           <tr>
           <td>รูปภาพประกอบ</td>
           <td> @include('modalCall/img') </td>
-          
-          <td></td>
-          <td></td>
+          <td> หมายเหตุ</td>
+            <td>{{$row['remark']}}</td>
           </tr>
           </table>
          

@@ -39,9 +39,8 @@
     @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
 		@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
 <td>{{$row->statusCheckname->status}} </td>
-<td>
-<a href="{{action('AdminController@process',$row['id'])}}">รายละเอียด</a></td>
 <td> @include('modalCall/adminDel')</td>
+<td><a href="{{action('AdminController@process',$row['id'])}}">รายละเอียด</a></td>
 </tr>
 @endforeach 
 </table>

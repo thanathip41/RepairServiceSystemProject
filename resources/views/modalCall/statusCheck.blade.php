@@ -10,26 +10,24 @@
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}} 
 					<input type="hidden" name="_method" value="PATCH"/>
 	      			<div class="modal-body">
-							<div class="text-right">
-							<label> </label><br>
-							</div>
 									<p class="text-center">
 										<input type="hidden"  name="statusCheck" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใช่หรือไม่
 										<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> <br>
-										
 									</p>
 									<div class="row">
 										<div class="col-6">
-										<label> วันที่คาดว่าจะได้รับอุปกรณ์  	 <br> 
-										<small>	เวลาที่แจ้งซ่อม : {{date('d/M/Y',strtotime($row['created_at']))}} </small>
-										</label>
-									
+										<label> วันที่คาดว่าจะได้รับอุปกรณ์ 
+										<br> <small>	เวลาที่แจ้งซ่อม : {{date('d/M/Y',strtotime($row['created_at']))}} </small></label>
 										</div>
-										<div class="col-6">
-										<input  type="date" name="type_return" class="form-control" required/>
-										</div>
-										
+
+											<div class="col-6">
+											<input  type="date" name="type_return" class="form-control" required/>
+											</div>
 									</div>
+										<div class="form-group"> 
+											<label> หมายเหตุ  </label>
+											<textarea   name="remark" class="form-control"></textarea>
+										</div>
 							</div>
 							<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">Yes </button> 
@@ -53,18 +51,18 @@
 				<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body">
 						<div> 
-							<label>รหัสผลิตภัณท์ : {{$row['productCode']}}</label><br/>
-							<label>สาเหตุ/ปัญหาที่พบ : {{$row['problem']}}</label><br/>
-							<label>ชื่อผู้แก้ไขปัญหา : {{Auth::user()->name}}</label>
+							<label><b>รหัสผลิตภัณท์ :</b> {{$row['productCode']}}</label><br/>
+							<label><b>สาเหตุ/ปัญหาที่พบ :</b> {{$row['problem']}}</label><br/>
+							<label><b>ชื่อผู้แก้ไขปัญหา :</b> {{Auth::user()->name}}</label>
 							<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 						</div>
 						<div class="form-group"> 
-						<label> วิธีการแก้ไขปัญหา  </label> 
-						<textarea   name="method" class="form-control" rows="4"  required></textarea>
+						<label> <b>วิธีการแก้ไขปัญหา </b> </label> 
+						<textarea   name="method" class="form-control" rows="3"  required></textarea>
 						</div>
 						<div class="form-group"> 
-						<label> หมายเหตุ  </label>
-						<textarea   name="remark" class="form-control"></textarea>
+						<label> <b>หมายเหตุ</b>  </label>
+						<textarea   name="remark" class="form-control" rows="3">{{$row['remark']}}</textarea>
 						</div>
 						<input type="hidden"  name="statusCheck" value="3"/>
 	     	  </div>
