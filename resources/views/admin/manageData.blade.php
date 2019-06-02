@@ -26,11 +26,11 @@
 <th>อุปกรณ์/ปัญหาที่พบ</th>
 <th>เวลาแจ้ง/รับซ่อม</th>
 <th>สถานะการซ่อม</th>
-<th>รายละเอียด</th>
 <th>ลบข้อมูล</th>
+<th>รายละเอียด</th>
 </tr> 
 
-@foreach($admin as $row) <!-- ดึงข้อมูล data ใน datacontroller@index = $row -->
+@foreach($admin as $row) 
 <tr>
 <td>{{$row['id']}} <br> <p style="color:blue;"> {{$row['productCode']}}</td>  
 <td>{{$row->typeCheck->type_name}}  <br> <p style="color:red;">{{$row['problem']}}</p></td> 
@@ -40,7 +40,7 @@
 		@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
 <td>{{$row->statusCheckname->status}} </td>
 <td> @include('modalCall/adminDel')</td>
-<td><a href="{{action('AdminController@process',$row['id'])}}">รายละเอียด</a></td>
+<td><a href="{{action('AdminDataRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 </tr>
 @endforeach 
 </table>

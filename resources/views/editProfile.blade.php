@@ -88,7 +88,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">สถานะในระบบ </label>
                             <div class="col-md-6">
-                            <input type="text" name="role"  class="form-control" value="{{$row->adminChecktest->role}}" disabled />
+                            <input type="text" name="role"  class="form-control" value="{{$row->userCheck->roleCheck}}" disabled />
                             </div>
                         </div>
                         <div class="form-group row mb-0">

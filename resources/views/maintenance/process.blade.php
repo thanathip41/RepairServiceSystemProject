@@ -81,8 +81,8 @@
                 <td>ประเภทอุปกรณ์ </td>
                 <td>{{$row->typeCheck->type_name}}</td>
                 <td>เวลาคาดว่าจะเสร็จ</td>
-                <td>@if ($row['type_return']=='') รอการยืนยัน
-        @else {{date('d/M/Y',strtotime($row['type_return']))}} @endif</td>
+                <td>@if ($row['pro_return']=='') รอการยืนยัน
+        @else {{date('d/M/Y',strtotime($row['pro_return']))}} @endif</td>
         
                 
           <tr>

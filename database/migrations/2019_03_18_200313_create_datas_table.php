@@ -13,7 +13,7 @@ class CreateInsertdatasTable extends Migration
      */
     public function up()
     {
-        Schema::create('data', function (Blueprint $table) {
+        Schema::create('data_repair', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('fname');
             $table->string('lname');

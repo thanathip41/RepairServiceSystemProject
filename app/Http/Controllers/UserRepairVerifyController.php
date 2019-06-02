@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\data;
+use App\data_repair;
 use Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -15,7 +15,7 @@ class UserRepairVerifyController extends Controller
         [ 
           'statusCheck'=>'required',
         ]); 
-        $update = data::find($id); 
+        $update = data_repair::find($id); 
         $update->statusCheck =$request->get('statusCheck');
         $update->save(); 
         return back()->with('success', 'Successfully');

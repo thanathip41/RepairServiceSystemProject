@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\data;
-use App\User;
 use Mail;
 
 class MainMailController extends Controller

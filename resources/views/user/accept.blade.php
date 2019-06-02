@@ -20,22 +20,23 @@
 <th>รหัสแจ้งซ่อม</th>
 <th>รหัสผลิตภัณฑ์</th> 
 <th>อุปกรณ์/ปัญหา</th>
-<th>เวลาแจ้งซ่อม/รับซ่อม</th>
+<th>เวลารับซ่อม /คาดว่าจะเสร็จ</th>
 <th>สถานะ</th>
 <th>ยืนยันการซ่อม</th>
 <th>รายละเอียด </th>
 </tr>
 
-@foreach($alertUser as $row)
+@foreach($accept as $row)
 
 <tr> 
 <td>{{$row['id']}} </td> 
     <td>{{$row['productCode']}}</td> 
     <td>{{$row->typeCheck->type_name}}: <br> <p style="color:red;">{{$row['problem']}}</p></td>
-    <td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> 
-        <p style="color:red;">
+    <td><div style="color:green;">
         @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
-        @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
+        @else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</div> 
+    <div style="color:Orange;">@if ($row['pro_return']=='') รอการยืนยัน
+        @else {{date('d/M/Y',strtotime($row['pro_return']))}} @endif </div> </td>
     <td>{{$row->statusCheckname->status}}</td>
     <td> @include('modalCall/userHistory')</td>
     <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
@@ -44,7 +45,7 @@
 
 @endforeach
 </table> 
-{{$alertUser->links()}}
+{{$accept->links()}}
  </div>
 
 </div> 

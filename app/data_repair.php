@@ -4,14 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class data extends Model
+class data_repair extends Model
 {
-    protected $fillable=['productCode','problem','type_id','id','idM','img','type_return'];// 'repairman','statusCheck', 'method','remark' ไม่ได้ถูกส่ง
-    
-     public function idMtest()
-    {   
-        return $this->belongsTo(User::class,'id');   
-    }
+    protected $table='data_repair';
+    protected $fillable=['productCode','problem','type_id','id','idM','img'];// 'repairman','statusCheck', 'method','remark','pro_return' ไม่ได้ถูกส่ง
 
     public function typeCheck()
     {  

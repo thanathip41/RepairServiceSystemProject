@@ -68,7 +68,12 @@
         <a class="nav-link" href="{{ url('/insert') }}">
           <i class="fa fa-wrench"></i>
           <span> แจ้งซ่อม</span></a>
-      </li> 
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/accept') }}">
+          <i class="fa fa-check"></i>
+         รับอุปกรณ์ <span class="badge badge-danger">@foreach($s3 as $row) {{$row->number}}  @endforeach</span></a>
+      </li>
         <li class="nav-item">
         <a class="nav-link" href="{{ url('/history') }}">
           <i class="fa fa-history"></i>

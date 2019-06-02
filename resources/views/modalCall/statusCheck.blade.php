@@ -4,31 +4,34 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 		<div class="modal-header bg-info text-white">
-			<div class="modal-title">หมายเลขแจ้งซ่อม  {{$row['id']}}</div>
+			<div class="modal-title"> ดำเนินการซ่อมของหมายเลข  {{$row['id']}}</div>
 			<button type="button" class="close text-white" data-dismiss="modal">&times;</button>
       </div>
 				<form method="post" action="{{action('MainStatusRepairController@update',$row['id'])}}">{{csrf_field()}} 
 					<input type="hidden" name="_method" value="PATCH"/>
 	      			<div class="modal-body">
-									<p class="text-center">
-										<input type="hidden"  name="statusCheck" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใช่หรือไม่
-										<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> <br>
-									</p>
+							<div>
+							<label><b>รหัสผลิตภัณท์ : </b> {{$row['productCode']}}</label><br/>
+							<label><b>สาเหตุ/ปัญหาที่พบ : </b> {{$row['problem']}}</label><br/>
+							<label><b>ชื่อผู้แจ้งซ่อม : </b>{{$row->users->name}}</label>
+						</div>
 									<div class="row">
 										<div class="col-6">
-										<label> วันที่คาดว่าจะได้รับอุปกรณ์ 
-										<br> <small>	เวลาที่แจ้งซ่อม : {{date('d/M/Y',strtotime($row['created_at']))}} </small></label>
+										<label> <b>วันที่คาดว่าจะได้รับอุปกรณ์</b> 
+										<br> 	เวลาที่แจ้งซ่อม : {{date('d/M/Y',strtotime($row['created_at']))}} </label>
 										</div>
 
 											<div class="col-6">
-											<input  type="date" name="type_return" class="form-control" required/>
+											<input  type="date" name="pro_return" class="form-control" required/>
 											</div>
 									</div>
 										<div class="form-group"> 
-											<label> หมายเหตุ  </label>
-											<textarea   name="remark" class="form-control"></textarea>
+											<label> <b> หมายเหตุ</b>  </label>
+											<textarea   name="remark" class="form-control" rows="3"></textarea>
 										</div>
 							</div>
+									<input type="hidden"  name="statusCheck" value="2"/>
+									<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/>
 							<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">Yes </button> 
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
@@ -54,7 +57,7 @@
 							<label><b>รหัสผลิตภัณท์ :</b> {{$row['productCode']}}</label><br/>
 							<label><b>สาเหตุ/ปัญหาที่พบ :</b> {{$row['problem']}}</label><br/>
 							<label><b>ชื่อผู้แก้ไขปัญหา :</b> {{Auth::user()->name}}</label>
-							<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+							
 						</div>
 						<div class="form-group"> 
 						<label> <b>วิธีการแก้ไขปัญหา </b> </label> 
@@ -64,6 +67,8 @@
 						<label> <b>หมายเหตุ</b>  </label>
 						<textarea   name="remark" class="form-control" rows="3">{{$row['remark']}}</textarea>
 						</div>
+						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+						<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
 						<input type="hidden"  name="statusCheck" value="3"/>
 	     	  </div>
 	      <div class="modal-footer">
@@ -186,6 +191,19 @@
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 						<input type="hidden" name="method" value="{{$row['method']}}" />
 					</p>
+					<div class="row">
+										<div class="col-6">
+										<label> <b>วันที่คาดว่าจะได้รับอุปกรณ์</b> 
+										<br> 	เวลาที่แจ้งซ่อม : {{date('d/M/Y',strtotime($row['created_at']))}} </label>
+										</div>
+											<div class="col-6">
+											<input  type="date" name="type_return" class="form-control" required/>
+											</div>
+									</div>
+									<div class="form-group"> 
+						<label> <b>หมายเหตุ</b>  </label>
+						<textarea   name="remark" class="form-control" rows="3">{{$row['remark']}}</textarea>
+						</div>
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 

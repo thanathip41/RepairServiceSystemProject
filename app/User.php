@@ -13,13 +13,13 @@ class User extends Authenticatable
     protected $fillable = [
        'id', 'name','department', 'email','username', 'password' ,'deleted','img'
     ];
-    public function adminChecktest()
+    public function userCheck()
     {   
         return $this->belongsTo(roleCheck::class,'roleCheck');   
         //เรียก rolecheck class จาก roleCheck.php
     }
     public function data(){   
-        return $this->hasmany(data::class,'id');   //('App\Data','id')
+        return $this->hasmany(data_repair::class,'id');   //('App\Data','id')
         //เรียก modal data :: class ให้ id ของ users = idM
     }
     public function departCheck()

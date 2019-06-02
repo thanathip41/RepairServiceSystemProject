@@ -47,8 +47,8 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" 
-            href="{{ url('/alertUser') }}"><i class="fa fa-bell"></i>
-            <span class="badge badge-danger">@foreach($s3 as $row) {{$row->number}} @endforeach</span></a>
+            href="{{ url('/accept') }}"><i class="fa fa-bell"></i>
+            <span class="badge badge-danger">@foreach($s3 as $row) {{$row->number}}  @endforeach</span></a>
           </li>
        
           @elseif (Auth::user()->roleCheck==1)

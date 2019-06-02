@@ -25,9 +25,9 @@
 <tr>
     <th>รหัสแจ้งซ่อม /ผลิตภัณฑ์</th> 
     <th>อุปกรณ์ /ปัญหา</th>
-    <th>เวลารับซ่อม /คาดว่าจะเสร็จ</th>
+    <th>เวลารับซ่อม /รับซ่อม</th>
+    <th>เวลาคาดว่าจะได้รับ</th>
     <th>สถานะ</th>
-    <th>การดำเนินการ</th>
     <th>รายละเอียด </th>
 </tr>
 
@@ -36,13 +36,13 @@
 <tr> 
     <td>{{$row['id']}} <br> <p style="color:blue;"> {{$row['productCode']}}</td>  
 	<td>{{$row->typeCheck->type_name}}  <br> <div style="color:red;">{{$row['problem']}}</div></td> 
-	<td><div style="color:green;">
+	<td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> 
+        <p style="color:green;">
         @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
-        @else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</div> 
-    <div style="color:Orange;">@if ($row['type_return']=='') รอการยืนยัน
-        @else {{date('d/M/Y',strtotime($row['type_return']))}} @endif </div> </td>
+        @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
+        <td> <div style="color:#7DC182;">@if ($row['pro_return']=='') รอการยืนยัน
+        @else {{date('d/M/Y',strtotime($row['pro_return']))}} @endif </div> </td>
 	<td>{{$row->statusCheckname->status}}</td>  
-    <td> @include('modalCall/userHistory')</td>
     <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 </tr>
 

@@ -6,7 +6,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       	</div>
-          <form method="post" action="{{action('AdminController@update',$row['id'])}}">{{csrf_field()}}  
+          <form method="post" action="{{action('AdminDataRepairController@update',$row['id'])}}">{{csrf_field()}}  
 					<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body" >
 					<p class="text-center">
@@ -29,7 +29,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       	</div>
-          <form method="post" action="{{action('AdminController@update',$row['id'])}}">{{csrf_field()}}  
+          <form method="post" action="{{action('AdminDataRepairController@update',$row['id'])}}">{{csrf_field()}}  
 					<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body" >
 					<p class="text-center">

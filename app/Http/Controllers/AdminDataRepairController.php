@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\data;
+use App\data_repair;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
-class AdminController extends Controller
+class AdminDataRepairController extends Controller
 {
     public function index()
     {
-        $admin=data::WHERE('deleted','=',0)->paginate(5);
+        $admin=data_repair::WHERE('deleted','=',0)->paginate(5);
         return view('admin.manageData', compact('admin')); 
     }
     public function restoreData()
     {
-        $admin=data::WHERE('deleted','=',1)->paginate(5);
+        $admin=data_repair::WHERE('deleted','=',1)->paginate(5);
         return view('admin.restoreData', compact('admin')); 
     }
     public function update(Request $request, $id)
@@ -26,13 +26,13 @@ class AdminController extends Controller
           'deleted'=>'required'
         
         ]); 
-        $update = data::find($id); 
+        $update = data_repair::find($id); 
         $update->deleted = $request->get('deleted');
         $update->save(); 
         return back()->with('success', 'Successfully');
     }
     public function process($id){
-        $row=data::find($id);
+        $row=data_repair::find($id);
         return view('admin.process',compact('row'));
         }
 }

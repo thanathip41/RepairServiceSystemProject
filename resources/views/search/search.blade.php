@@ -28,7 +28,7 @@
 <form action="{{action('MainDataRepairController@searchCode')}}" method="post" >
 			{{ csrf_field() }}
 			<div class="input-group">
-			<input type="text"  class="form-control" name="searchCode" maxlength="6" placeholder="Search Code"  > 
+			<input type="text"  class="form-control" name="searchCode" maxlength="10" placeholder="Search Code"  > 
 			<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
 				</div>	
 		</form>

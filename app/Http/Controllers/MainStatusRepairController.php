@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\data;
+use App\data_repair;
 use App\User;
 use Auth;
 use DB;
@@ -21,19 +21,19 @@ class MainStatusRepairController extends Controller
           'repairman'=>'' ,
           'method'=>'',
           'remark'=>'',
-          'type_return'=> '',
+          'pro_return'=> '',
         ]); 
-        $update = data::find($id); 
+        $update = data_repair::find($id); 
         $update->repairman = $request->get('repairman'); 
         $update->statusCheck = $request->get('statusCheck');
         $update->method = $request->get('method');
         $update->remark = $request->get('remark');
-        $update->type_return = $request->get('type_return');
+        $update->pro_return = $request->get('pro_return');
         $update->save(); 
         return back()->with('success', 'successfully');
     }
     public function process($id){
-        $row=data::find($id);
+        $row=data_repair::find($id);
         return view('maintenance.process',compact('row'));
         }
 }

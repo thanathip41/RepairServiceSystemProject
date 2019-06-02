@@ -128,9 +128,13 @@ function check(){
 
 function validation()
 { Swal.fire({
-
   type: 'success',
-  title: 'มีคิวก่อนหน้าคุณจำนวน <?php echo ($row->number - 1);?> คน',
+  title: 'มีคิวก่อนหน้าคุณจำนวน <?php 
+   if (($row->number-1)== -1){
+        echo  0;
+  }
+  else echo ($row->number-1)
+  ?> คน',
 
   showConfirmButton: false,
 })
