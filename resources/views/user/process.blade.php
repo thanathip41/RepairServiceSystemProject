@@ -114,7 +114,7 @@
           </tr>
           <tr>
           <td>รูปภาพประกอบ</td>
-          <td> @include('modalCall/img') </td>
+          <td> @include('user/modalUser/img') </td>
           <td> หมายเหตุ</td>
             <td>{{$row['remark']}}</td>
           </tr>

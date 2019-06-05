@@ -43,7 +43,7 @@
             <a class="nav-link " href="{{ url('/history') }}"><i class="fa fa-history"></i> ประวัติการใช้งาน</a>
           </li>
           <li class="nav-item">
-          @include('modalCall/QR')
+          @include('user/modalUser/QR')
           </li>
           <li class="nav-item">
             <a class="nav-link" 

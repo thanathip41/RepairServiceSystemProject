@@ -5,10 +5,6 @@
 <h5> <i class="fa fa-users" aria-hidden="true"></i> จำนวนคิวมีทั้งหมด {{$row->number}} คิว</h5>
 @endforeach
 
- <?php
-// foreach($s1 as $row)
-//  echo ($row->number - 1);
-?>
 </div>
 <br>
 <div class="container">
@@ -40,7 +36,7 @@
         <p style="color:green;">
         @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
         @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
-        <td> <div style="color:#7DC182;">@if ($row['pro_return']=='') รอการยืนยัน
+        <td> <div style="color:#134C3A;">@if ($row['pro_return']=='') รอการยืนยัน
         @else {{date('d/M/Y',strtotime($row['pro_return']))}} @endif </div> </td>
 	<td>{{$row->statusCheckname->status}}</td>  
     <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>

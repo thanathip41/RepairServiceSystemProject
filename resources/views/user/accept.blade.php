@@ -38,7 +38,7 @@
     <div style="color:Orange;">@if ($row['pro_return']=='') รอการยืนยัน
         @else {{date('d/M/Y',strtotime($row['pro_return']))}} @endif </div> </td>
     <td>{{$row->statusCheckname->status}}</td>
-    <td> @include('modalCall/userHistory')</td>
+    <td> @include('user/modalUser/acceptPro')</td>
     <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 
 </tr>

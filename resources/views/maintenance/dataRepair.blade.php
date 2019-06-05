@@ -15,11 +15,11 @@
              </div> 
              @endif 
 	<div class="container" align="right">
-	@include('search/status')
+	@include('maintenance/search/status')
 </div>
 
 <div class="container" align="center">
-@include('search/search')
+@include('maintenance/search/searchData')
 </div> 
 <div class="container">
 	<table class="table table-bordered table-striped"> 
@@ -30,7 +30,6 @@
 				<th>เวลาแจ้งซ่อม/รับซ่อม</th>
 				<th>สถานะ</th>
 				<th >การดำเนินการ</th>
-	
 				<th>รายละเอียด</th>
 			</tr> 
 				@foreach($datarepair  as $row) 
@@ -41,7 +40,7 @@
 						@if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
 						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>
 				<td>{{$row->statusCheckname->status}}</td>  
-				<td >@include('modalCall/statusCheck')</td>
+				<td >@include('maintenance/modalMain/statusCheck')</td>
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td> 
 				</tr>
 				
@@ -65,13 +64,12 @@
 		@foreach($query as $row)
 		<tr>
 				<td>{{$row['id']}} <br> <p style="color:blue;"> {{$row['productCode']}}</td>  
-
 				<td>{{$row->typeCheck->type_name}}  <br> <p style="color:red;">{{$row['problem']}}</p></td> 
 				<td>{{date('d/M/Y',strtotime($row['created_at']))}} <br> <p style="color:green;">
 						@if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
 						@else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</p></td>
 				<td>{{$row->statusCheckname->status}}</td>  
-				<td>@include('modalCall/statusCheck')</td>
+				<td >@include('maintenance/modalMain/statusCheck')</td>
 				<td><a href="{{action('MainStatusRepairController@process',$row['id'])}}">รายละเอียด</a></td> 
 				</tr>
 		@endforeach 

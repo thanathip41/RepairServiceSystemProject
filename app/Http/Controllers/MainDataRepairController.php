@@ -190,7 +190,7 @@ public function searchStatus()
             DB::raw('select count(*) as number from data_repair where statusCheck=6 and deleted=0'));
         $s7 = DB::select( 
             DB::raw('select count(*) as number from data_repair where statusCheck=7 and deleted=0'));
-        $sAll = DB::select( 
+        $sAlldd = DB::select( 
             DB::raw('select count(*) as number from data_repair where statusCheck and deleted=0'));
         
     $searching = Input::get ('searchStatus');

@@ -13,22 +13,29 @@
 use App\User;
 use Illuminate\Support\Facades\Input;
 Auth::routes();
-    Route::group(['middleware' =>['auth']], function(){   //['ban','auth']]
+    Route::group(['middleware' =>['ban','auth']], function(){   //['ban','auth']]
      Route::get('/',function () 
-     {
-      if(Auth::user()->activated==1){
-        
+    {
         $s1 = DB::select( 
          DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
          $id=Auth::user()->id;
          $s3 = DB::select( 
         DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
        return view('homepage.welcome', compact('s1','s3'));
-      }
-      elseif (Auth::user()->activated==0 )
-      return view('errors.login');
    });
 
+  //  {
+  //   if(Auth::user()->activated==1){
+      
+  //     $s1 = DB::select( 
+  //      DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
+  //      $id=Auth::user()->id;
+  //      $s3 = DB::select( 
+  //     DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
+  //    return view('homepage.welcome', compact('s1','s3'));
+  //   }
+  //   elseif (Auth::user()->activated==0 )
+  //   return view('errors.login');
     Route::group(['middleware' =>'admin'], function()
     {
         Route::resource('/Role', 'AdminRoleController');
@@ -52,12 +59,9 @@ Auth::routes();
           Route::any('/searchDate', 'MainDataRepairController@searchDate');
         Route::resource('/status', 'MainStatusRepairController');
           Route::get('/process/{id}', 'MainStatusRepairController@process');
-        
-        //Route::get('/Piechart', 'MainRepairGraphController@Piechart'); 
         Route::get('/mail', 'MainMailController@index');
           Route::post('/postMail', 'MainMailController@post');
-        //  Route::post('/postMailCC', 'MainMailController@postCC');
-        //Route::resource('/stat', 'MainStatController');
+      
        
       
     });
@@ -73,6 +77,6 @@ Auth::routes();
 
         
      });
+     
      Route::resource('/profile', 'editProfileController');
-    
 });

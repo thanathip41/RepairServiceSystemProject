@@ -22,8 +22,8 @@
 
 <body class="bg-primary">
 
-  <div class="container">
 
+  <div class="container">
     <!-- Outer Row -->
     <div class="row justify-content-center">
 

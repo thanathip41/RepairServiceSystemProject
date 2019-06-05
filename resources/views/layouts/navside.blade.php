@@ -72,7 +72,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/accept') }}">
           <i class="fa fa-check"></i>
-         รับอุปกรณ์ <span class="badge badge-danger">@foreach($s3 as $row) {{$row->number}}  @endforeach</span></a>
+         <span> รับอุปกรณ์</span> <small class="badge badge-danger">@foreach($s3 as $row) {{$row->number}}  @endforeach</small></a>
       </li>
         <li class="nav-item">
         <a class="nav-link" href="{{ url('/history') }}">
@@ -177,8 +177,6 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
                  
-            
-             
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown">
          <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button"
@@ -194,8 +192,8 @@
              <a class="dropdown-item" href="{{url('/profile')}}" style="background-color: #63AED3"  >                  
                 <p align="center"> {{Auth::user()->name}}<br>
                    <small>Member since {{date('M. Y',strtotime(Auth::user()->created_at))}}
-                   <br> @if (Auth::user()->activated==1) <i class="fa fa-circle text-success"></i> ใช้งาน
-                   @elseif (Auth::user()->activated==0) <i class="fa fa-circle text-danger"></i> ปิดการใช้งาน@endif
+                   <br><i class="fa fa-circle text-success"></i> กำลังใช้งาน
+                  
                    </small> </p>
               </a>
                                     <div class="dropdown-divider"></div>

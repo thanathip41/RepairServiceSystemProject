@@ -134,6 +134,7 @@
 										}
 										</script>					
 					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+					<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
 					</div>
 					<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button>   
@@ -190,6 +191,7 @@
 						<input type="hidden"  name="statusCheck" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใหม่อีกครั้งใช่หรือไม่
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 						<input type="hidden" name="method" value="{{$row['method']}}" />
+					
 					</p>
 					<div class="row">
 										<div class="col-6">
@@ -234,6 +236,7 @@
 						<input type="hidden"  name="statusCheck" value="3"/>
 						<input type="hidden" name="method" value="{{$row['method']}}" />
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+						<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 
@@ -262,6 +265,7 @@
 						<input type="hidden" name="method" value="{{$row['method']}}" />
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 						<input type="hidden"  name="statusCheck" value="3"/>
+						<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 

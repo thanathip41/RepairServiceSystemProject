@@ -39,10 +39,9 @@
     @if ($row['roleCheck']==3) 
     {{date('d/M/Y',strtotime($row['updated_at']))}} </div>
 		@else <div style="color:green;">	ใช้งานในระบบ </div>		@endif</td>
-		<td> {{$row->userCheck->role}}</td>
-    <td> @include('modalCall/adminAdd') @include('modalCall/adminDelUser')</td>
+		<td> {{$row->userCheck->roleCheck}}</td>
+    <td> @include('admin/modalAdmin/adminAddUser') @include('admin/modalAdmin/adminDelUser')</td>
 
-	
 </tr>
 @endforeach
 </table>

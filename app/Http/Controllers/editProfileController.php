@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\data_repair;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Storage;
 class editProfileController extends Controller
 {
     public function index()
-    {
+    { 
+      
        $whereid=Auth::user()->id;
-       $editPro = User::WHERE('id','=',$whereid)->paginate ();
-      // dd($editPro);
-	    return view('editProfile', compact('editPro')); 
+       $editPro = User::WHERE('id','=',$whereid)->paginate();
+       $id=Auth::user()->id;
+       $s3 = DB::select( 
+      DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
+      //dd($editPro);
+	    return view('editProfile', compact('editPro','s3')); 
     }
     public function update(Request $request,$id)
     {

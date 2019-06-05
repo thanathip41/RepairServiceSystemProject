@@ -3,7 +3,7 @@
 <div class="modal modal-danger fade" id="m{{$row['id']}}"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+		<div class="modal-header bg-info text-white">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       	</div>
           <form method="post" action="{{action('AdminDataRepairController@update',$row['id'])}}">{{csrf_field()}}  
@@ -26,7 +26,7 @@
 <div class="modal modal-danger fade" id="d{{$row['id']}}"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+		<div class="modal-header bg-info text-white">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       	</div>
           <form method="post" action="{{action('AdminDataRepairController@update',$row['id'])}}">{{csrf_field()}}  
@@ -44,4 +44,6 @@
     </div>
   </div>
 </div>
+@else
+<button class="btn btn-danger" disabled><i class="fa fa-trash" ></i></button> 
 @endif

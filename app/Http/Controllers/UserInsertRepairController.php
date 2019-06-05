@@ -17,8 +17,9 @@ class UserInsertRepairController extends Controller
     {
         $s1 = DB::select( 
             DB::raw("select count(*) as number from data_repair where statusCheck=1 and deleted=0"));
-            $s3 = DB::select( 
-                DB::raw("select count(*) as number from data_repair where statusCheck=3 and deleted=0"));
+            $id=Auth::user()->id;
+         $s3 = DB::select( 
+        DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
         return view('user.InsertRepair', compact('s1','s3')); 
     }
     public function store(Request $request)
@@ -49,24 +50,26 @@ class UserInsertRepairController extends Controller
     {
         $s1 = DB::select( 
             DB::raw("select count(*) as number from data_repair where statusCheck=1 and deleted=0"));
-            $s3 = DB::select( 
-                DB::raw("select count(*) as number from data_repair where statusCheck=3 and deleted=0"));
+            
        $whereID=Auth::user()->id;
        $history = data_repair::WHERE('idM','=',$whereID)->WHERE('deleted','=',0)->paginate (5);
+       $s3 = DB::select( 
+      DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$whereID' and deleted=0"));
         return view('user.history', compact('history','s1','s3'))->with('success', 'Successfully'); 
     }
     
     public function accept()
     {
+        $id=Auth::user()->id;
         $s3 = DB::select( 
-            DB::raw("select count(*) as number from data_repair where statusCheck=3 and deleted=0"));
+       DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
         $whereID=Auth::user()->id;
         $accept  = data_repair::WHERE('idM','=',$whereID)->WHERE('StatusCheck','=',3)->WHERE('deleted','=',0)->paginate (5);
-       // dd($alertUser);
         return view('user.accept', compact('accept','s3'))->with('success', 'Successfully'); 
     }
     public function process($id){
         $row=data_repair::find($id);
         return view('user.process',compact('row'));
         }
+
 }

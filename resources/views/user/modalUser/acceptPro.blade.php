@@ -20,6 +20,7 @@
 				<label class="btn btn-danger ">
 					<input type="radio"  name="statusCheck" value="5" required autocomplete="off">ปฏิเสธ (กรณีไม่สามารถใช้งานได้)<br>
 					</label>
+					<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
 			</div>
 				</p>
 	      </div>

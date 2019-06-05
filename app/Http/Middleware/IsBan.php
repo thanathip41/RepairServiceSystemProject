@@ -20,8 +20,8 @@ class IsBan
        // dd($request->input('username'));
         $isBaned = ((isset($user))?$user->activated:1);
         if ($isBaned==0){
-            
-                return view('errors.login');   
+            abort(401);
+           
         } 
        return $next($request);
     }

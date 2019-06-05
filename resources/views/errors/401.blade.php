@@ -4,8 +4,6 @@
 <head>
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-
      <!-- Title -->
      <title>Sorry, This Page Can&#39;t Be Accessed</title>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -23,11 +21,9 @@
                     <p>กรุณาติดต่อ Admin เพื่อให้สามารถใช้งานได้ตามปกติ </p>
                     <div class="text-center">
           
-            <a  class="btn btn-danger" href="{{ route('logout') }}"  onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();"> back to login</a>
-            
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
-                </form>
+             <a class="btn btn-danger" href="{{ route('login') }}" class="btn btn-default">Login again?</a> 
+             &nbsp;
+             <a class="btn btn-primary" href="{{ route('register') }}" class="btn btn-default">Register</a> 
           </div>
         </div>
                    
