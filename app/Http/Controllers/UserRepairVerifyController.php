@@ -13,10 +13,10 @@ class UserRepairVerifyController extends Controller
     {   
         $this->validate($request, 
         [ 
-          'statusCheck'=>'required',
+          'status_id'=>'required',
         ]); 
         $update = data_repair::find($id); 
-        $update->statusCheck =$request->get('statusCheck');
+        $update->status_id =$request->get('status_id');
         $update->save(); 
         return back()->with('success', 'Successfully');
     }

@@ -33,12 +33,12 @@
 @foreach($admin as $row) <!-- ดึงข้อมูล data ใน datacontroller@index = $row -->
 <tr>
 <td>{{$row['id']}} <br> <p style="color:blue;"> {{$row['productCode']}}</td>  
-<td>{{$row->typeCheck->type_name}} : <br> <p style="color:red;">{{$row['problem']}}</p></td> 
+<td>{{$row->typeCheck->device_id}} : <br> <p style="color:red;">{{$row['problem']}}</p></td> 
 <td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> 
     <p style="color:red;">
     @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
 		@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
-<td>{{$row->statusCheckname->status}}</td>
+<td>{{$row->statusCheckname->status_id}}</td>
 <td><a href="{{action('AdminDataRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 <td> @include('admin/modalAdmin/adminDelData')</td>
 </tr>

@@ -1,4 +1,4 @@
-@if ($row['statusCheck']==1) 
+@if ($row['status_id']==1) 
 <button type="button" class="btn btn-success btn-block"  data-toggle="modal" data-target="#one{{$row['id']}}"><i class="far fa-edit"></i>  ดำเนินการ</button>
 <div class="modal fade" id="one{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -22,7 +22,7 @@
 										</div>
 
 											<div class="col-6">
-											<input  type="date" name="pro_return" class="form-control" required/>
+											<input  type="date" name="date_return" class="form-control" required/>
 											</div>
 									</div>
 										<div class="form-group"> 
@@ -30,7 +30,7 @@
 											<textarea   name="remark" class="form-control" rows="3"></textarea>
 										</div>
 							</div>
-									<input type="hidden"  name="statusCheck" value="2"/>
+									<input type="hidden"  name="status_id" value="2"/>
 									<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/>
 							<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">Yes </button> 
@@ -41,7 +41,7 @@
   </div>
 </div>
 
-@elseif ($row['statusCheck']==2)
+@elseif ($row['status_id']==2)
 <button type="button" class="btn btn-success " data-toggle="modal" data-target="#two{{$row['id']}}"><i class="far fa-edit"></i> จัดการ</button>
 <div class="modal fade" id="two{{$row['id']}}"  tabindex="-1"role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document"> 
@@ -68,8 +68,8 @@
 						<textarea   name="remark" class="form-control" rows="3">{{$row['remark']}}</textarea>
 						</div>
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
-						<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
-						<input type="hidden"  name="statusCheck" value="3"/>
+						<input  type="hidden" name="date_return" value="{{$row['date_return']}}"/>
+						<input type="hidden"  name="status_id" value="3"/>
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 
@@ -95,7 +95,7 @@
 				<div class="col-md-12">
             <div class="row">
               <div class="col-6">
-										<select onchange="typeAndproblem(this.value, '{{$row['id']}}')" name="statusCheck" class="form-control" id="selectTandP">
+										<select onchange="typeAndproblem(this.value, '{{$row['id']}}')" name="status_id" class="form-control" id="selectTandP">
 									     <option value="6">มีประกัน</option>
 										   <option value="7">หมดประกัน</option>
 										</select>
@@ -134,7 +134,7 @@
 										}
 										</script>					
 					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
-					<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
+					<input  type="hidden" name="date_return" value="{{$row['date_return']}}"/>
 					</div>
 					<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button>   
@@ -144,7 +144,7 @@
 		</div>
 	</div>
 </div>
-@elseif ($row['statusCheck']==3)
+@elseif ($row['status_id']==3)
 <button class="btn btn-info btn-block" data-toggle="modal" data-target="#three{{$row['id']}}"><i class="fa fa-envelope"></i> ส่ง E-mail</button>
 <div class="modal fade" id="three{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -160,7 +160,7 @@
 					</p>
 				<input type="hidden" name="email" value="{{$row->users->email}}"/>
 				<input type="hidden" name="subject" value="การแจ้งซ่อม {{$row['id']}}"/>
-				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row->typeCheck->type_name}} ดำเนินเสร็จสมบูรณ์"/>
+				<input type="hidden" name="message" value=" เรียนคุณ {{$row->users->name}}  ขณะนี้การซ่อม {{$row->typeCheck->device_id}} ดำเนินเสร็จสมบูรณ์"/>
 	     	  </div>
 	      <div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Yes </button> 
@@ -171,11 +171,11 @@
   </div>
 </div>
 
-@elseif ($row['statusCheck']==4)
+@elseif ($row['status_id']==4)
 
 <p class="text-success" align="center">  เสร็จสมบูรณ์</p>
 
-@elseif ($row['statusCheck']==5)
+@elseif ($row['status_id']==5)
 <button type="button" class="btn btn-danger btn-block"  data-toggle="modal" data-target="#five{{$row['id']}}"><i class="fas fa-undo"></i> ทำรายการใหม่</button> 
 <div class="modal fade" id="five{{$row['id']}}" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -188,7 +188,7 @@
 				<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body">
 					<p class="text-center">
-						<input type="hidden"  name="statusCheck" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใหม่อีกครั้งใช่หรือไม่
+						<input type="hidden"  name="status_id" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใหม่อีกครั้งใช่หรือไม่
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
 						<input type="hidden" name="method" value="{{$row['method']}}" />
 					
@@ -216,7 +216,7 @@
   </div>
 </div>
 
-@elseif ($row['statusCheck']==6) 
+@elseif ($row['status_id']==6) 
 <a class="text-danger"> </a>
 <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#six{{$row['id']}}"><i class="fa fa-wrench"></i>  เคลมอุปกรณ์
 </button>
@@ -233,10 +233,10 @@
 						<div align="center"> 
 					ได้รับอุปกรณ์จากเคลมแล้ว
 						</div>
-						<input type="hidden"  name="statusCheck" value="3"/>
+						<input type="hidden"  name="status_id" value="3"/>
 						<input type="hidden" name="method" value="{{$row['method']}}" />
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
-						<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
+						<input  type="hidden" name="date_return" value="{{$row['date_return']}}"/>
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 
@@ -246,7 +246,7 @@
     </div>
   </div>
 </div>
-@elseif ($row['statusCheck']==7) 
+@elseif ($row['status_id']==7) 
 <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#seven{{$row['id']}}" ><i class="fas fa-shopping-cart"></i>  ซื้ออุปกรณ์ใหม่</i>
 </button>
 <div class="modal fade" id="seven{{$row['id']}}"  tabindex="-1"role="dialog" aria-hidden="true">
@@ -264,8 +264,8 @@
 						</div>
 						<input type="hidden" name="method" value="{{$row['method']}}" />
 						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
-						<input type="hidden"  name="statusCheck" value="3"/>
-						<input  type="hidden" name="pro_return" value="{{$row['pro_return']}}"/>
+						<input type="hidden"  name="status_id" value="3"/>
+						<input  type="hidden" name="date_return" value="{{$row['date_return']}}"/>
 	     	  </div>
 	      <div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Yes </button> 

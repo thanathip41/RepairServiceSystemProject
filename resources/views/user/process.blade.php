@@ -19,37 +19,37 @@
         <div class="text-center"><h2>หมายเลขการแจ้งซ่อม {{$row['id']}}</h3></div>
         <div class="container">
         <ul class="progressbar">
-        @if ($row->statusCheck==1)
+        @if ($row->status_id==1)
               <li class="active">อยู่ระหว่างการรอคิว</li>
               <li >อยู่ระหว่างการดำเนินการ</li> 
               <li >รอการยืนยันจากผู้แจ้ง</li>
               <li >ดำเนินการเสร็จสิ้น</li>
-            @elseif ($row->statusCheck==2)
+            @elseif ($row->status_id==2)
               <li class="active">อยู่ระหว่างการรอคิว</li>
               <li class="active">อยู่ระหว่างการดำเนินการ</li> 
               <li >รอการยืนยันจากผู้แจ้ง</li>
               <li >ดำเนินการเสร็จสิ้น</li>
-            @elseif ($row->statusCheck==3)
+            @elseif ($row->status_id==3)
               <li class="active">อยู่ระหว่างการรอคิว</li>
               <li class="active">อยู่ระหว่างการดำเนินการ</li> 
               <li class="active">รอการยืนยันจากผู้แจ้ง</li>
               <li >ดำเนินการเสร็จสิ้น</li>
-            @elseif ($row->statusCheck==4)
+            @elseif ($row->status_id==4)
               <li class="active">อยู่ระหว่างการรอคิว</li>    
               <li class="active">อยู่ระหว่างการดำเนินการ</li> 
               <li class="active">รอการยืนยันจากผู้แจ้ง</li>
               <li class="active">ดำเนินการเสร็จสิ้น</li>
-              @elseif ($row->statusCheck==5)
+              @elseif ($row->status_id==5)
               <li class="fail">อยู่ระหว่างการรอคิว</li>    
               <li class="fail">อยู่ระหว่างการดำเนินการ</li> 
               <li class="fail">รอการยืนยันจากผู้แจ้ง</li>
               <li class="fail">ดำเนินการไม่สมบูรณ์ <br> (รอทำรายการใหม่)</li>
-            @elseif ($row->statusCheck==6)
+            @elseif ($row->status_id==6)
               <li class="fail">อยู่ระหว่างการรอคิว</li>    
               <li class="fail">อยู่ระหว่างการดำเนินการ</li> 
               <li class="fail">รอการยืนยันจากช่างซ่อม</li>
               <li class="fail">ดำเนินการไม่สมบูรณ์ <br> (เคลมอุปกรณ์)</li>
-            @elseif ($row->statusCheck==7)
+            @elseif ($row->status_id==7)
               <li class="fail">อยู่ระหว่างการรอคิว</li>    
               <li class="fail">อยู่ระหว่างการดำเนินการ</li> 
               <li class="fail">รอการยืนยันจากช่างซ่อม</li>
@@ -75,17 +75,17 @@
           </tr>
             <tr>
                 <td>ประเภทอุปกรณ์ </td>
-                <td>{{$row->typeCheck->type_name}}</td>
+                <td>{{$row->typeCheck->device_id}}</td>
                 <td>เวลาคาดว่าจะเสร็จ</td>
-                <td>@if ($row['pro_return']=='') รอการยืนยัน
-        @else {{date('d/M/Y',strtotime($row['pro_return']))}} @endif</td>
+                <td>@if ($row['date_return']=='') รอการยืนยัน
+        @else {{date('d/M/Y',strtotime($row['date_return']))}} @endif</td>
         
                 
           <tr>
           <td > รหัสผลิตภัณท์ </td>
             <td>{{$row['productCode']}}</td>
             <td> สถานะการซ่อม  </td>
-            <td>{{$row->statusCheckname->status}}</td>
+            <td>{{$row->statusCheckname->status_id}}</td>
           </tr>
            
 
@@ -100,14 +100,15 @@
           <tr >
             <td> ชื่อ-นามสกุล /แผนก   </td>
             <td> {{$row->users->name}} / 
-            @if ($row->users->department==1) ฝ่ายขาย 
-            @elseif ($row->users->department==2) ฝ่ายไอที
-            @elseif ($row->users->department==3) ฝ่ายบุคคล
-            @elseif ($row->users->department==4) ฝ่ายการตลาด
-            @elseif ($row->users->department==5) ฝ่ายบริหาร
-            @elseif ($row->users->department==6) ฝ่ายบัญชี
-            @elseif ($row->users->department==7) ฝ่ายซ่อมบำรุง
-            @endif </td>
+            @if     ($row->users->department_id==1) ฝ่ายขาย 
+            @elseif ($row->users->department_id==2) ฝ่ายไอที
+            @elseif ($row->users->department_id==3) ฝ่ายบุคคล
+            @elseif ($row->users->department_id==4) ฝ่ายการตลาด
+            @elseif ($row->users->department_id==5) ฝ่ายบริหาร
+            @elseif ($row->users->department_id==6) ฝ่ายบัญชี
+            @elseif ($row->users->department_id==7) ฝ่ายซ่อมบำรุง
+            @endif 
+            </td>
             <td> ชื่อผู้ดำเนินการ</td>
             <td>{{$row['repairman']}}</td>
             

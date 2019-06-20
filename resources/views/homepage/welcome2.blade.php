@@ -8,75 +8,61 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Service Repair</title>
+  <title>Service repair</title>
   <link rel="shortcut icon" type="image/x-icon" href="https://cdn0.iconfinder.com/data/icons/benefits-flat/125/flaticon_settings-512.png">
 
-  <!--bootstrap 4-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <!--bootstrap 4-->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-
-  <!-- Theme CSS - Includes Bootstrap -->
-  <link href="css/creative.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{{asset('home/css/freelancer.css')}}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link href="{{asset('/navside/css/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-  <link href="{{asset('home/css/creative.css')}}" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-<div class="container-fluid">
-      <a class="navbar-brand js-scroll-trigger text-uppercase" href="{{url('/')}}" style=" margin-left: 10%;">Computer Service Repair</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary " id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#" >Service Repair</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+        <ul class="navbar-nav ml-auto">
         @if (Auth::user()->role_id==0)
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/insert') }}"><i class="fa fa-wrench"></i> แจ้งซ่อม</a>
+            <a class="nav-link" href="{{ url('/insert') }}"><i class="fa fa-wrench"></i> แจ้งซ้อม</a>
           </li>
-          @foreach($s3 as $row)
-          @if ($row->number=="")
-          <li class="nav-item">
-          <a class="nav-link" role="button">
-          <i class="fa fa-bell"></i> <span class="badge badge-danger"> {{$row->number}}   </span>
-        </a>
-          @else
-        <li class="nav-item dropdown">
-          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-bell"></i> <span class="badge badge-danger"> {{$row->number}}  </span>
-        </a>@endif
-        @endforeach
-      
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        @foreach($alert as $row)
-        <small><a class="dropdown-item" href="{{ url('/accept') }}" > <img src="{{asset('storage').'/'.$row['img']}}" width="40" height="40"> {{$row->id}}   
-        <div class="dropdown-divider"></div><br>  </a>  </small> 
-        @endforeach
           <li class="nav-item">
             <a class="nav-link " href="{{ url('/history') }}"><i class="fa fa-history"></i> ประวัติการใช้งาน</a>
           </li>
           <li class="nav-item">
           @include('user/modalUser/QR')
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" 
+            href="{{ url('/accept') }}"><i class="fa fa-bell"></i>
+            <span class="badge badge-danger">@foreach($s3 as $row) {{$row->number}}  @endforeach</span></a>
+          </li>
        
-         
           @elseif (Auth::user()->role_id==1)
-        <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('/datarepair') }}"><i class="fa fa-wrench"></i> จัดการข้อมูล</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('/mail') }}"><i class="fa fa-envelope"></i> ส่งE-mail</a>
           </li>
+          
+          </li>
           @elseif (Auth::user()->role_id==2)
-      <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
         <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-database"></i> จัดการข้อมูลแจ้งซ่อม
         </a>
@@ -104,8 +90,7 @@
         </div>
       </li>
           @endif
-          
-        <li class="nav-item dropdown">
+          <li class="nav-item dropdown">
            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" 
               aria-haspopup="true" aria-expanded="false" v-pre style="color : #FFFFFF;"> 
                @if (Auth::user()->img=="") 
@@ -117,7 +102,7 @@
               @endif
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" > 
                    <a class="dropdown-item" href="{{url('/profile')}}" style="background-color: #63AED3"  >                  
-                     <div align="center">
+                     <p align="center">
                         {{Auth::user()->name}}<br>
                            @if (Auth::user()->role_id==2) 
                        <small>  Admin since  
@@ -130,13 +115,13 @@
                               <br> <i class="fa fa-circle text-success"></i> กำลังใช้งาน
                             </small> 
                            @endif
-                      </div>
+                      </p>
             </a>
                  <div class="dropdown-divider"></div>
                     <button  class="dropdown-item"  href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                      <div align="right"> <h6><i class="fas fa-sign-out-alt"></i> Sign out</h6>  </div>
+                      <div align="right"> <i class="fas fa-sign-out-alt"></i> Sign out </div>
                     </button>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
                       </form>
@@ -146,34 +131,59 @@
       </div>
     </div>
   </nav>
-  <!-- Masthead -->
-  <header class="masthead">
-    <div class="container h-100">
-      <div class="row h-100 align-items-center justify-content-center text-center">
-        <div class="col-lg-10 align-self-end">
-          <h1 class="text text-white font-weight-bold">Computer Service</h1>
-          <hr class="divider my-4">
-        </div>
-        <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-75 font-weight-light mb-5">
-          ระบบแจ้งซ่อม สำหรับพนักงานในบริษัท สามารถติดตามสถานะงานซ่อมลำดับคิวที่ซ่อม ลำดับคิวทั้งหมด ประวัติการซ่อม และ ระบบแจ้งเตือน ฯลฯ
-          </p>
-          @if (Auth::user()->role_id==0)
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{url('/insert')}}">แจ้งซ่อมที่นี่</a>
-          @elseif (Auth::user()->role_id==1)
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{url('/datarepair')}}">จัดข้อมูลแจ้งซ่อม</a>
-          @elseif (Auth::user()->role_id==2)
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{url('/Check')}}">จัดการข้อมูล</a>
-          @endif
+ <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{{('/image/e.jpg')}}" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{('/image/w.jpg')}}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{('/image/q.jpg')}}" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<script>
+$('#myCarousel').carousel({
+		interval:2000
+	});
+</script>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      
+        
+        <div class="col-md-12">
+          <h4 class="text-uppercase mb-4">About Computer Service Repair</h4>
+          <p class="lead mb-0">บริษัท ทีที เน็ตเวิร์ค อินทิเกรชั่น (ประเทศไทย) จำกัด ตั้งอยู่ที่ ชั้น 49 ออลซีซั่นส์เพลส ซีอาร์ซีทาวเวอร์ 87/2 ถนนวิทยุ กรุงเทพมหานคร 
+           
         </div>
       </div>
     </div>
-  </header>
-  <footer class="bg-dark py-5">
-    <div class="container">
-      <h5><div class="small text-center text-muted">Copyright &copy; 2019 - Computer Service</div></h5>
-    </div>
   </footer>
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Computer Service Repair</small>
+    </div>
+  </div>
 </body>
 
 </html>

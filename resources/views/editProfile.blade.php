@@ -64,14 +64,14 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">แผนกงาน </label>
                             <div class="col-md-6">
-                            <input type="text" name="department"  class="form-control" value="{{$row->departCheck->department}}" disabled />
+                            <input type="text" name="department_id"  class="form-control" value="{{$row->departCheck->department_id}}" disabled />
                             </div>
                         </div>
                         
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">สถานะในระบบ </label>
                             <div class="col-md-6">
-                            <input type="text" name="role"  class="form-control" value="{{$row->userCheck->roleCheck}}" disabled />
+                            <input type="text" name="role"  class="form-control" value="{{$row->userCheck->role_id}}" disabled />
                             </div>
                         </div>
                         <div class="form-group row mb-0">

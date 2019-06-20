@@ -16,10 +16,10 @@ class UserInsertRepairController extends Controller
     public function index()
     {
         $s1 = DB::select( 
-            DB::raw("select count(*) as number from data_repair where statusCheck=1 and deleted=0"));
+            DB::raw("select count(*) as number from data_repair where status_id=1 and deleted=0"));
             $id=Auth::user()->id;
          $s3 = DB::select( 
-        DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
+        DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
         return view('user.InsertRepair', compact('s1','s3')); 
     }
     public function store(Request $request)
@@ -34,7 +34,7 @@ class UserInsertRepairController extends Controller
             [ 'idM'=>Auth::user()->id,
               'productCode' =>('NPC-').$request->get('productCode'), 
               'problem' => $request->get('problem'),
-              'type_id'=>$request->get('type_id'),
+              'device_id'=>$request->get('device_id'),
               'id'=>('MT-').date('mdHis'),
  
             ]);
@@ -49,12 +49,12 @@ class UserInsertRepairController extends Controller
     public function history() 
     {
         $s1 = DB::select( 
-            DB::raw("select count(*) as number from data_repair where statusCheck=1 and deleted=0"));
+            DB::raw("select count(*) as number from data_repair where status_id=1 and deleted=0"));
             
        $whereID=Auth::user()->id;
        $history = data_repair::WHERE('idM','=',$whereID)->WHERE('deleted','=',0)->paginate (5);
        $s3 = DB::select( 
-      DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$whereID' and deleted=0"));
+      DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$whereID' and deleted=0"));
         return view('user.history', compact('history','s1','s3'))->with('success', 'Successfully'); 
     }
     
@@ -62,9 +62,9 @@ class UserInsertRepairController extends Controller
     {
         $id=Auth::user()->id;
         $s3 = DB::select( 
-       DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
+       DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
         $whereID=Auth::user()->id;
-        $accept  = data_repair::WHERE('idM','=',$whereID)->WHERE('StatusCheck','=',3)->WHERE('deleted','=',0)->paginate (5);
+        $accept  = data_repair::WHERE('idM','=',$whereID)->WHERE('status_id','=',3)->WHERE('deleted','=',0)->paginate (5);
         return view('user.accept', compact('accept','s3'))->with('success', 'Successfully'); 
     }
     public function process($id){

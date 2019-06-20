@@ -16,23 +16,23 @@ class MainDataRepairController extends Controller
 {
     public function index()
     {
-        $datarepair = data_repair::WHERE('deleted','=',0)->paginate(5);
+        $datarepair = data_repair::WHERE('deleted','=',0)->WHERE('status_id','!=',4)->paginate(5);
         $s1 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
         $s2 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=2 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=2 and deleted=0'));
         $s3 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=3 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=3 and deleted=0'));
         $s4 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=4 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=4 and deleted=0'));
         $s5 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=5 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=5 and deleted=0'));
         $s6 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=6 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=6 and deleted=0'));
         $s7 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=7 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=7 and deleted=0'));
         $sAll = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id and deleted=0'));
 
       
         return view('maintenance.dataRepair', compact('datarepair','s1','s2','s3','s4','s5','s6','s7','sAll')); 
@@ -52,21 +52,21 @@ class MainDataRepairController extends Controller
 public function searchCode()
 
  {      $s1 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
         $s2 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=2 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=2 and deleted=0'));
         $s3 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=3 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=3 and deleted=0'));
         $s4 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=4 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=4 and deleted=0'));
         $s5 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=5 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=5 and deleted=0'));
         $s6 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=6 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=6 and deleted=0'));
         $s7 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=7 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=7 and deleted=0'));
         $sAll = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id and deleted=0'));
         
     $searching = Input::get ('searchCode');
     if($searching != "")
@@ -81,21 +81,21 @@ if (count ($query) > 0)
 public function searchName()
 
  {      $s1 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
         $s2 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=2 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=2 and deleted=0'));
         $s3 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=3 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=3 and deleted=0'));
         $s4 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=4 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=4 and deleted=0'));
         $s5 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=5 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=5 and deleted=0'));
         $s6 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=6 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=6 and deleted=0'));
         $s7 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=7 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=7 and deleted=0'));
         $sAll = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id and deleted=0'));
         
     $searching = Input::get ('searchName');
     if($searching != "")
@@ -113,22 +113,22 @@ if (count ($query) > 0)
 public function searchDate()
  {   
      $s1 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
     //dd($s1);
 $s2 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=2 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=2 and deleted=0'));
 $s3 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=3 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=3 and deleted=0'));
 $s4 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=4 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=4 and deleted=0'));
 $s5 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=5 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=5 and deleted=0'));
 $s6 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=6 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=6 and deleted=0'));
 $s7 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=7 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=7 and deleted=0'));
 $sAll = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id and deleted=0'));
      $searching = Input::get ('searchDate');
     if($searching != "")
     {
@@ -143,22 +143,22 @@ if (count ($query) > 0)
 
 public function searchDateBetween()
  {  $s1 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
     //dd($s1);
 $s2 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=2 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=2 and deleted=0'));
 $s3 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=3 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=3 and deleted=0'));
 $s4 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=4 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=4 and deleted=0'));
 $s5 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=5 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=5 and deleted=0'));
 $s6 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=6 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=6 and deleted=0'));
 $s7 = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck=7 and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id=7 and deleted=0'));
 $sAll = DB::select( 
-    DB::raw('select count(*) as number from data_repair where statusCheck and deleted=0'));
+    DB::raw('select count(*) as number from data_repair where status_id and deleted=0'));
      
     $searching = Input::get ('searchDatefrom');
     $search = Input::get ('searchDateto');
@@ -177,26 +177,26 @@ public function searchStatus()
 
  {   
      $s1 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
         $s2 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=2 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=2 and deleted=0'));
         $s3 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=3 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=3 and deleted=0'));
         $s4 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=4 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=4 and deleted=0'));
         $s5 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=5 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=5 and deleted=0'));
         $s6 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=6 and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=6 and deleted=0'));
         $s7 = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck=7 and deleted=0'));
-        $sAlldd = DB::select( 
-            DB::raw('select count(*) as number from data_repair where statusCheck and deleted=0'));
+            DB::raw('select count(*) as number from data_repair where status_id=7 and deleted=0'));
+        $sAll = DB::select( 
+            DB::raw('select count(*) as number from data_repair where status_id and deleted=0'));
         
     $searching = Input::get ('searchStatus');
     if($searching != "")
     {
-    $query=data_repair::WHERE('statusCheck', 'like', '%' . $searching . '%' )->WHERE( 'deleted','=',0)->paginate (5);
+    $query=data_repair::WHERE('status_id', 'like', '%' . $searching . '%' )->WHERE( 'deleted','=',0)->paginate (5);
  $pagination = $query->appends(array('searchStatus'=> Input::get ( 'searchStatus' )));
 if (count ($query) > 0)
     return view ( 'maintenance.dataRepair',compact('s1','s2','s3','s4','s5','s6','s7','sAll') )->withquery($query)->withq($searching);

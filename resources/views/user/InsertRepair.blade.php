@@ -54,7 +54,7 @@
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-6">
-                                <select onchange="typeAndproblem(this.value)" name="type_id" class="form-control">
+                                <select onchange="typeAndproblem(this.value)" name="device_id" class="form-control">
                                     <option value=1>คอมพิวเตอร์</option>
                                     <option value=2>ปริ้นเตอร์/สแกนเนอร์</option>
                                     <option value=3>ระบบเครือข่าย</option>

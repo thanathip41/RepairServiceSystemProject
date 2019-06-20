@@ -17,7 +17,7 @@ class editProfileController extends Controller
        $editPro = User::WHERE('id','=',$whereid)->paginate();
        $id=Auth::user()->id;
        $s3 = DB::select( 
-      DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
+      DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
       //dd($editPro);
 	    return view('editProfile', compact('editPro','s3')); 
     }

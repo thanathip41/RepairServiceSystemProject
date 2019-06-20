@@ -16,7 +16,7 @@
 <br>
 <br>
 <div id="showone" class="myDiv" align="center" style="margin-left:30% ; margin-right:30%">
-<form action="{{action('MainDataRepairController@searchName')}}" method="post" >
+<form action="{{action('AdminDataRepairController@searchName')}}" method="post" >
 			{{ csrf_field() }}
 			<div class="input-group">
 				<input type="text" class="form-control" name="searchName"	 placeholder="ค้นหา ชื่อผู้แจ้งซ่อม"  >
@@ -25,7 +25,7 @@
 		</form>
 </div>
 <div id="showTwo" class="myDiv" align="center" style="margin-left:30% ; margin-right:30%">
-<form action="{{action('MainDataRepairController@searchCode')}}" method="post" >
+<form action="{{action('AdminDataRepairController@searchCode')}}" method="post" >
 			{{ csrf_field() }}
 			<div class="input-group">
 			<input type="text"  class="form-control" name="searchCode" maxlength="10" placeholder="ค้นหา รหัสผลิตภัณฑ์"  > 
@@ -35,7 +35,7 @@
 </div>
 
 <div id="showThree" class="myDiv" align="center" style="margin-left:30% ; margin-right:30%">
-	<form action="{{action('MainDataRepairController@searchDate')}}" method="post" >
+	<form action="{{action('AdminDataRepairController@searchDate')}}" method="post" >
 			{{ csrf_field() }}
 			<div class="input-group">
 			<input name="searchDate" type="date" class="form-control">
@@ -45,7 +45,7 @@
 </div>
 
 <div id="showFour" class="myDiv" align="center" style="margin-left:30% ; margin-right:30%">
-		<form id="MyForm" action="{{action('MainDataRepairController@searchDateBetween')}}" method="post" > {{ csrf_field() }}
+		<form id="MyForm" action="{{action('AdminDataRepairController@searchDateBetween')}}" method="post" > {{ csrf_field() }}
 		<div class="input-group">
 		
 			<input name="searchDatefrom" type="date" class="form-control">

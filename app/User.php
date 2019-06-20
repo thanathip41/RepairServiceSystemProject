@@ -11,12 +11,12 @@ class User extends Authenticatable
     use Notifiable;
     protected $table='users';
     protected $fillable = [
-       'id', 'name','department', 'email','username', 'password' ,'deleted','img'
+       'id', 'name','department_id', 'email','username', 'password' ,'deleted','img'
     ];
     public function userCheck()
     {   
-        return $this->belongsTo(roleCheck::class,'roleCheck');   
-        //เรียก rolecheck class จาก roleCheck.php
+        return $this->belongsTo(roleCheck::class,'role_id');   
+        
     }
     public function data(){   
         return $this->hasmany(data_repair::class,'id');   //('App\Data','id')
@@ -24,7 +24,7 @@ class User extends Authenticatable
     }
     public function departCheck()
     {   
-        return $this->belongsTo(depart_id::class,'department');   
+        return $this->belongsTo(depart_id::class,'department_id');   
         
     }
     /**

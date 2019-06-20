@@ -15,7 +15,7 @@ class IsMaintenance
      */
     public function handle($request, Closure $next)
     {
-       if(auth()->check()&& $request->user()->roleCheck==1 &&$request->user()->activated==1){
+       if(auth()->check()&& $request->user()->role_id==1 &&$request->user()->activated==1){
         return $next($request);
         }abort(403);  
     }

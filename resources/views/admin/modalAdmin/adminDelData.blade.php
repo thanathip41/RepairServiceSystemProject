@@ -1,4 +1,4 @@
-@if ($row['deleted']==0 && $row['statusCheck']==4)
+@if ($row['deleted']==0 && $row['status_id']==4)
 <button class="btn btn-danger"  data-toggle="modal" data-target="#m{{ $row['id']}}"><i class="fa fa-trash"></i></button> 
 <div class="modal modal-danger fade" id="m{{$row['id']}}"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">

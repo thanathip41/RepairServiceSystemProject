@@ -36,10 +36,10 @@
     <td>{{$row['name']}} <br> <div style="color:blue;">{{$row->departCheck->department}} </div></td> 
     <td>{{$row['email']}}</td>
     <td>{{date('d/M/Y',strtotime($row['created_at']))}} <br> <div style="color:red;"> 
-    @if ($row['roleCheck']==3) 
+    @if ($row['role_id']==3) 
     {{date('d/M/Y',strtotime($row['updated_at']))}} </div>
 		@else <div style="color:green;">	ใช้งานในระบบ </div>		@endif</td>
-		<td> {{$row->userCheck->roleCheck}}</td>
+		<td> {{$row->userCheck->role_id}}</td>
     <td> @include('admin/modalAdmin/adminAddUser') @include('admin/modalAdmin/adminDelUser')</td>
 
 </tr>

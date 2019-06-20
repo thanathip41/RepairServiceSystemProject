@@ -162,7 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Elibyy\TCPDF\ServiceProvider::class,
-        'Barryvdh\Debugbar\ServiceProvider',
+       // 'Barryvdh\Debugbar\ServiceProvider',
         
 
 
@@ -230,8 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Elibyy\TCPDF\Facades\TCPDF::class,
-       // 'PDF' =>Elibyy\TCPDF\Facades\TCPDF::Image()
-       'Debugbar' => 'Barryvdh\Debugbar\Facade',
+       //'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
     ],
 

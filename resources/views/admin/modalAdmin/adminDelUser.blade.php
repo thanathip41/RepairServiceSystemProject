@@ -1,4 +1,4 @@
-@if ($row['activated']==1 && $row['roleCheck']!=3)
+@if ($row['activated']==1 && $row['role_id']!=3)
 <button class="btn btn-danger"  data-toggle="modal" data-target="#del{{ $row['id']}}"><i class="fas fa-sign-out-alt"></i></button> 
 <div class="modal fade" id="del{{$row['id']}}" role="dialog">
   <div class="modal-dialog" >
@@ -10,7 +10,7 @@
 					<input type="hidden" name="_method" value="PATCH"/>
 	      <div class="modal-body" align="center">
 					 คุณ  {{$row['name']}} ได้ลาออกจากงานแล้ว ใช่หรือไม่
-					<input type="hidden"  name="roleCheck" value="3"/>
+					<input type="hidden"  name="role_id" value="3"/>
 	     	  </div>
 	      <div class="modal-footer">
 				<button  type="submit" class="btn btn-primary">Yes </button> 
@@ -20,7 +20,7 @@
     </div>
   </div>
 </div>
-@elseif ($row['activated']==1 && $row['roleCheck']==3)
+@elseif ($row['activated']==1 && $row['role_id']==3)
 <button class="btn btn-danger"  data-toggle="modal" data-target="#del{{ $row['id']}}"><i class="fa fa-user-times"></i></button> 
 <div class="modal fade" id="del{{$row['id']}}" role="dialog">
   <div class="modal-dialog" >
@@ -56,7 +56,7 @@
 	      <div class="modal-body" align="center">
 					คุณต้องการกู้ข้อมูลของ {{$row['name']}} เข้าในระบบ ใช่หรือไม่
 					<input type="hidden"  name="activated" value="1"/>
-					<input type="hidden"  name="roleCheck" value="0">
+					<input type="hidden"  name="role_id" value="0">
 	     	  </div>
 	      <div class="modal-footer">
 				<button  type="submit" class="btn btn-primary">Yes </button> 

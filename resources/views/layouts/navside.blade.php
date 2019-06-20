@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Service Repair</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn0.iconfinder.com/data/icons/benefits-flat/125/flaticon_settings-512.png">
 
   <!-- Custom fonts for this template-->
   <link href="{{asset('/navside/css/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -63,7 +64,7 @@
         Interface
       </div>
 
-          @if (Auth::user()->roleCheck==0)
+          @if (Auth::user()->role_id==0)
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/insert') }}">
           <i class="fa fa-wrench"></i>
@@ -96,7 +97,7 @@
                     </div>
                   </div>
                  
-       @elseif (Auth::user()->roleCheck==1)
+       @elseif (Auth::user()->role_id==1)
       
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/datarepair') }}">
@@ -109,7 +110,7 @@
         <span> ส่ง E-mail</span></a>
     </li> 
 
-        @elseif (Auth::user()->roleCheck==2)
+        @elseif (Auth::user()->role_id==2)
         <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseone" aria-expanded="true" aria-controls="collapseone">
           <i class="fa fa-database"></i>
@@ -137,16 +138,19 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/Piechart') }}">
-        <i class="fas fa-chart-pie"></i> 
-          <span> กราฟ</span></a>
-      </li> 
-
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url('/stat') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span> สถิติการใข้งาน</span></a>
-      </li> 
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsetree" aria-expanded="true" aria-controls="collapsetree">
+          <i class="fa fa-file"></i>
+          <span> รายงาน </span>
+        </a>
+        <div id="collapsetree" class="collapse" >
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">รายงานผล : </h6>
+            <a class="collapse-item" href="{{ url('/Piechart') }}"><i class="fas fa-chart-pie"></i> กราฟ</a>
+            <a class="collapse-item"  href="{{ url('/stat') }}"><i class="fas fa-fw fa-chart-area"></i> สถิติ</a>
+          </div>
+        </div>
+      </li>
+      
       @endif
       <hr class="sidebar-divider d-none d-md-block">
       <!-- Sidebar Toggler (Sidebar) -->
@@ -191,10 +195,18 @@
          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" > 
              <a class="dropdown-item" href="{{url('/profile')}}" style="background-color: #63AED3"  >                  
                 <p align="center"> {{Auth::user()->name}}<br>
-                   <small>Member since {{date('M. Y',strtotime(Auth::user()->created_at))}}
-                   <br><i class="fa fa-circle text-success"></i> กำลังใช้งาน
-                  
-                   </small> </p>
+                @if (Auth::user()->role_id==2) 
+                   <small>  Admin since  
+                    {{date('M. Y',strtotime(Auth::user()->created_at))}}
+                       <br><i class="fa fa-circle text-success"></i> กำลังใช้งาน
+                         </small> 
+                  @else 
+                    <small>   Member since
+                      {{date('M. Y',strtotime(Auth::user()->created_at))}}
+                        <br> <i class="fa fa-circle text-success"></i> กำลังใช้งาน
+                    </small> 
+                @endif
+                   </p>
               </a>
                                     <div class="dropdown-divider"></div>
                                     <button  class="dropdown-item"  href="{{ route('logout') }}"

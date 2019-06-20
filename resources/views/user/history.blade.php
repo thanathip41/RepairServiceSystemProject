@@ -31,14 +31,14 @@
 
 <tr> 
     <td>{{$row['id']}} <br> <p style="color:blue;"> {{$row['productCode']}}</td>  
-	<td>{{$row->typeCheck->type_name}}  <br> <div style="color:red;">{{$row['problem']}}</div></td> 
+	<td>{{$row->typeCheck->device_id}}  <br> <div style="color:red;">{{$row['problem']}}</div></td> 
 	<td>{{date('d/M/Y',strtotime($row['created_at']))}} :<br> 
         <p style="color:green;">
         @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
         @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
-        <td> <div style="color:#134C3A;">@if ($row['pro_return']=='') รอการยืนยัน
-        @else {{date('d/M/Y',strtotime($row['pro_return']))}} @endif </div> </td>
-	<td>{{$row->statusCheckname->status}}</td>  
+        <td> <div style="color:#134C3A;">@if ($row['date_return']=='') รอการยืนยัน
+        @else {{date('d/M/Y',strtotime($row['date_return']))}} @endif </div> </td>
+	<td>{{$row->statusCheckname->status_id}}</td>  
     <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 </tr>
 

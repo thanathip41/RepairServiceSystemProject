@@ -11,41 +11,39 @@
 |
 */
 use App\User;
+use App\data_repair;
 use Illuminate\Support\Facades\Input;
 Auth::routes();
     Route::group(['middleware' =>['ban','auth']], function(){   //['ban','auth']]
      Route::get('/',function () 
     {
-        $s1 = DB::select( 
-         DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
+        // $s1 = DB::select( 
+        //  DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
          $id=Auth::user()->id;
          $s3 = DB::select( 
-        DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
-       return view('homepage.welcome', compact('s1','s3'));
+        DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
+
+        $alert = data_repair::WHERE('idM','=',$id)->WHERE('deleted','=',0)->WHERE('status_id','=',3)->paginate (5);
+        //dd($alert);
+       return view('homepage.welcome', compact('s3','alert'));
    });
 
-  //  {
-  //   if(Auth::user()->activated==1){
-      
-  //     $s1 = DB::select( 
-  //      DB::raw('select count(*) as number from data_repair where statusCheck=1 and deleted=0'));
-  //      $id=Auth::user()->id;
-  //      $s3 = DB::select( 
-  //     DB::raw("select count(*) as number from data_repair where statusCheck=3 and idM='$id' and deleted=0"));
-  //    return view('homepage.welcome', compact('s1','s3'));
-  //   }
-  //   elseif (Auth::user()->activated==0 )
-  //   return view('errors.login');
     Route::group(['middleware' =>'admin'], function()
     {
         Route::resource('/Role', 'AdminRoleController');
         Route::resource('/Check', 'AdminDataRepairController');
         Route::resource('/deleted', 'AdminDelUserController');
         Route::get('/processAdmin/{id}', 'AdminDataRepairController@process');
+        Route::get('/pdf/{id}', 'AdminDataRepairController@PDF');
         Route::get('/restoreUser', 'AdminRoleController@restoreUser');
         Route::get('/restoreData', 'AdminDataRepairController@restoreData');
         Route::get('/Piechart', 'AdminGraphController@Piechart'); 
         Route::resource('/stat', 'AdminStatController');
+
+        Route::any('/sName', 'AdminDataRepairController@searchName');
+        Route::any('/sCode', 'AdminDataRepairController@searchCode');
+        Route::any('/sDateBetween', 'AdminDataRepairController@searchDateBetween');
+        Route::any('/sDate', 'AdminDataRepairController@searchDate');
     });
 
     Route::group(['middleware' =>'maintenance'], function()

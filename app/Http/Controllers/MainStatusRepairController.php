@@ -17,18 +17,18 @@ class MainStatusRepairController extends Controller
     {   
         $this->validate($request, 
         [ 
-          'statusCheck'=>'required',
+          'status_id'=>'required',
           'repairman'=>'' ,
           'method'=>'',
           'remark'=>'',
-          'pro_return'=> '',
+          'date_return'=> '',
         ]); 
         $update = data_repair::find($id); 
         $update->repairman = $request->get('repairman'); 
-        $update->statusCheck = $request->get('statusCheck');
+        $update->status_id = $request->get('status_id');
         $update->method = $request->get('method');
         $update->remark = $request->get('remark');
-        $update->pro_return = $request->get('pro_return');
+        $update->date_return = $request->get('date_return');
         $update->save(); 
         return back()->with('success', 'successfully');
     }

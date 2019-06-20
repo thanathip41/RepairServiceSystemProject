@@ -52,10 +52,9 @@
                                 @endif  
                     </div>
                     <div class="form-group">
-                    <!-- <input id="department" type="text" class="form-control{{ $errors->has('department') ? ' is-invalid' : '' }}" 
-                                name="department" value="{{ old('department') }}" required autofocus placeholder="แผนกงาน"> -->
-                                <select name="department" class="form-control{{ $errors->has('department') ? ' is-invalid' : '' }}"
-                                value="{{ old('department') }}" required autofocus placeholder="แผนกงาน">
+                   
+                                <select name="department_id" class="form-control{{ $errors->has('department_id') ? ' is-invalid' : '' }}"
+                                value="{{ old('department_id') }}" required autofocus placeholder="แผนกงาน">
                                     <option value=1>ฝ่ายขาย</option>
                                     <option value=2>ฝ่ายไอที</option>
                                     <option value=3>ฝ่ายบุคคล</option>
@@ -64,9 +63,9 @@
                                     <option value=6>ฝ่ายบัญชี</option>
                                     <option value=7>ฝ่ายซ่อมบำรุง</option>
                                 </select>
-                                @if ($errors->has('department'))
+                                @if ($errors->has('department_id'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('department') }}</strong>
+                                        <strong>{{ $errors->first('department_id') }}</strong>
                                     </span>
                                 @endif
                     </div>
