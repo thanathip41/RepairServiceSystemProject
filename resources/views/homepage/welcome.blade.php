@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Service Repair</title>
+  <title>Service Repair  </title>
   <link rel="shortcut icon" type="image/x-icon" href="https://cdn0.iconfinder.com/data/icons/benefits-flat/125/flaticon_settings-512.png">
 
   <!--bootstrap 4-->
@@ -32,7 +32,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
 <div class="container-fluid">
       <a class="navbar-brand js-scroll-trigger text-uppercase" href="{{url('/')}}" style=" margin-left: 10%;">Computer Service Repair</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -42,38 +42,66 @@
             <a class="nav-link" href="{{ url('/insert') }}"><i class="fa fa-wrench"></i> แจ้งซ่อม</a>
           </li>
           @foreach($s3 as $row)
-          @if ($row->number=="")
+          @if ($row->number==0)
           <li class="nav-item">
-          <a class="nav-link" role="button">
-          <i class="fa fa-bell"></i> <span class="badge badge-danger"> {{$row->number}}   </span>
+          <a class="nav-link">
+          <i class="fa fa-bell"></i> <span class="badge badge-danger"  style="vertical-align: top;border-radius: 50%;float:right;"> {{$row->number}} </span>
         </a>
           @else
         <li class="nav-item dropdown">
-          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-bell"></i> <span class="badge badge-danger"> {{$row->number}}  </span>
-        </a>@endif
+          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bell"></i> <span class="badge badge-danger"  style="vertical-align:top;border-radius: 50%; float:right;"> {{$row->number}}  </span>
+        </a>
+        @endif
         @endforeach
-      
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        @foreach($alert as $row)
-        <small><a class="dropdown-item" href="{{ url('/accept') }}" > <img src="{{asset('storage').'/'.$row['img']}}" width="40" height="40"> {{$row->id}}   
-        <div class="dropdown-divider"></div><br>  </a>  </small> 
+        <h5 class="dropdown-header"><b>การแจ้งเตือน</b></h5>
+        <div class="dropdown-divider" style="border-color:black;"></div>
+        @foreach($noti as $row)
+        <small><a class="dropdown-item" href="{{ url('/accept') }}" > 
+        <img src="{{asset('storage').'/'.$row['img']}}"  style="border-radius: 50%;width:40px; height:40px;"> {{$row->id}}  
+         <div class="text-right"> ตรวจสอบอุปกรณ์</div>
+        </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
         @endforeach
-          <li class="nav-item">
+        </div>
+        </li>
+        
+
+        <li class="nav-item dropdown">
+          <a class="nav-link scrollable-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-history"></i> ประวัติการใช้งาน
+        </a>
+        <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdown">
+        <h5 class="dropdown-header"><b>รายการประวัติแจ้งซ่อม</b></h5>
+        <div class="dropdown-divider" style="border-color:black;"></div>
+        @foreach($notihistory as $row)
+        <small><a class="dropdown-item" href="{{action('UserInsertRepairController@process',$row['id'])}}"> 
+        <img src="{{asset('storage').'/'.$row['img']}}"  style="border-radius: 50%;width:40px; height:40px;"> {{$row->id}}  
+         <div class="text-right"> <small>{{$row->productCode}}</small></div>
+        </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
+        @endforeach
+        <footer class="text-center">
+        <a href="{{'/history'}}" style="color:blue;">แสดงทั้งหมด</a>
+        </footer>
+        </div>
+        </li>
+
+          <!-- <li class="nav-item">
             <a class="nav-link " href="{{ url('/history') }}"><i class="fa fa-history"></i> ประวัติการใช้งาน</a>
-          </li>
+          </li> -->
+
           <li class="nav-item">
-          @include('user/modalUser/QR')
+          <a class="nav-link " href="{{ url('/bot') }}"><i class="fa fa-robot"></i> แชทบอท</a>
           </li>
           
-       
-         
           @elseif (Auth::user()->role_id==1)
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('/datarepair') }}"><i class="fa fa-wrench"></i> จัดการข้อมูล</a>
+            <a class="nav-link" href="{{ url('/datarepair') }}"><i class="fa fa-wrench"></i> จัดการข้อมูลแจ้งซ่อม</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/mail') }}"><i class="fa fa-envelope"></i> ส่งE-mail</a>
+            <a class="nav-link" href="{{ url('/mail') }}"><i class="fa fa-envelope"></i> ส่ง E-mail</a>
           </li>
           @elseif (Auth::user()->role_id==2)
       <li class="nav-item dropdown">
@@ -83,8 +111,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item"href="{{ url('/Check') }}"><i class="fa fa-wrench"></i> จัดการข้อมูลแจ้งซ่อม</a>
           <a class="dropdown-item" href="{{ url('/restoreData') }}"><i class="fas fa-trash-restore"></i> กู้ข้อมูลแจ้งซ่อม</a>
-     
         </div>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-users"></i>  จัดการข้อมูลผู้ใช้
@@ -106,8 +134,8 @@
           @endif
           
         <li class="nav-item dropdown">
-           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" 
-              aria-haspopup="true" aria-expanded="false" v-pre style="color : #FFFFFF;"> 
+           <a id="navbarDropdown" class="nav-link dropdown" href="#" data-toggle="dropdown" 
+              style="color : #FFFFFF;"> 
                @if (Auth::user()->img=="") 
                  <img src="{{('/image/user.png')}}" 
                   style="width:45px; height:45px; float:left;border-radius: 50%;margin-left:5px;"></a> 
@@ -156,7 +184,8 @@
         </div>
         <div class="col-lg-8 align-self-baseline">
           <p class="text-white-75 font-weight-light mb-5">
-          ระบบแจ้งซ่อม สำหรับพนักงานในบริษัท สามารถติดตามสถานะงานซ่อมลำดับคิวที่ซ่อม ลำดับคิวทั้งหมด ประวัติการซ่อม และ ระบบแจ้งเตือน ฯลฯ
+          ระบบแจ้งซ่อม สำหรับพนักงานในบริษัท สามารถติดตามสถานะงานซ่อมลำดับคิวที่ซ่อม ลำดับคิวทั้งหมด 
+          ประวัติการซ่อม การแจ้งเตือนผ่าน E-mail และการแก้ไขปัญหาเบื้องต้นกับแชทบอท ฯลฯ
           </p>
           @if (Auth::user()->role_id==0)
           <a class="btn btn-primary btn-xl js-scroll-trigger" href="{{url('/insert')}}">แจ้งซ่อมที่นี่</a>

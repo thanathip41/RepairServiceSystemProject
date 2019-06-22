@@ -71,14 +71,17 @@
             <td>{{date('d/M/Y',strtotime($row['created_at']))}}</td>
             <td> เวลาดำเนินการ</td>
             <td>@if ($row['created_at']==$row['updated_at'])  ไม่ได้ดำเนินการ
-            @else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</td>
+            @else 
+            {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</td>
           </tr>
             <tr>
                 <td>ประเภทอุปกรณ์ </td>
                 <td>{{$row->typeCheck->device_id}}</td>
                 <td>เวลาคาดว่าจะเสร็จ</td>
                 <td>@if ($row['date_return']=='') รอการยืนยัน
-        @else {{date('d/M/Y',strtotime($row['date_return']))}} @endif</td>
+        @else {{date('d/M/Y',strtotime($row['date_return']))}} @endif
+       
+        </td>
         
                 
           <tr>

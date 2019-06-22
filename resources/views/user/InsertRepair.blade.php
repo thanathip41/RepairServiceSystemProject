@@ -3,11 +3,14 @@
 @section('content')
  <div class="container">
  <br>
- <div class="container" align="center" style="margin-left:20% ;">
+ <div class="container" align="center" style="margin-left:24% ;">
 @foreach($s1 as $row)
-<h5> <i class="fa fa-users" aria-hidden="true"></i> จำนวนคิวมีทั้งหมด {{$row->number}} คิว</h5>
+ <i class="fa fa-users" aria-hidden="true"></i> จำนวนคิวมีทั้งหมด {{$row->number}} คน
 @endforeach
+<?php
 
+echo (date("H:i:s"));
+?>
 </div>
 <div class="container">
     <div class="row justify-content-center">
@@ -26,15 +29,11 @@
                 </ul> 
                 </div> 
                 @endif 
-                <div class="card-header">Insert Data</div>
+                <div class="card-header" align="center"><h3>แจ้งซ่อมอุปกรณ์</h3></div>
 
                 <div class="card-body">
                
                 <form method="post" action="{{action('UserInsertRepairController@store')}}" enctype="multipart/form-data" > {{csrf_field()}}
-              
-                <div class="form-group row">
-                 <label for="name" class="col-md-4 col-form-label text-md-right"><h5>{{date('d-m-Y')}} </h5></label>
-                        </div>
                         
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">รหัสผลิตภัณฑ์</label>
@@ -135,9 +134,7 @@ function check(){
 function validation()
 { Swal.fire({
   type: 'success',
-  title: 'ขณะนี้คุณเป็นคิวที่  <?php  
-  echo $row->number + 1  ?> ',
-
+  title: 'ขณะนี้คุณเป็นคิวที่ <?php echo $row->number + 1  ?> ',
   showConfirmButton: false,
 })
 }

@@ -41,13 +41,13 @@
   <br>
   <tr>
     <td><h3> แผนกงาน</h3></td>
-     <td>@if ($PDF->users->department==1) ฝ่ายขาย 
-            @elseif ($PDF->users->department==2) ฝ่ายไอที
-            @elseif ($PDF->users->department==3) ฝ่ายบุคคล
-            @elseif ($PDF->users->department==4) ฝ่ายการตลาด
-            @elseif ($PDF->users->department==5) ฝ่ายบริหาร
-            @elseif ($PDF->users->department==6) ฝ่ายบัญชี
-            @elseif ($PDF->users->department==7) ฝ่ายซ่อมบำรุง
+     <td>@if ($PDF->users->department_id==1) ฝ่ายขาย 
+            @elseif ($PDF->users->department_id==2) ฝ่ายไอที
+            @elseif ($PDF->users->department_id==3) ฝ่ายบุคคล
+            @elseif ($PDF->users->department_id==4) ฝ่ายการตลาด
+            @elseif ($PDF->users->department_id==5) ฝ่ายบริหาร
+            @elseif ($PDF->users->department_id==6) ฝ่ายบัญชี
+            @elseif ($PDF->users->department_id==7) ฝ่ายซ่อมบำรุง
             @endif </td>
   </tr>
   <br>
@@ -59,7 +59,7 @@
   <br>
   <tr >
      <td><h3> สถานะการซ่อม</h3> </td>
-      <td>{{$PDF->statusCheckname->status}}</td>
+      <td>{{$PDF->statusCheckname->status_id}}</td>
   </tr>
   <br>
   <tr>

@@ -17,15 +17,12 @@ Auth::routes();
     Route::group(['middleware' =>['ban','auth']], function(){   //['ban','auth']]
      Route::get('/',function () 
     {
-        // $s1 = DB::select( 
-        //  DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
          $id=Auth::user()->id;
          $s3 = DB::select( 
         DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
-
-        $alert = data_repair::WHERE('idM','=',$id)->WHERE('deleted','=',0)->WHERE('status_id','=',3)->paginate (5);
-        //dd($alert);
-       return view('homepage.welcome', compact('s3','alert'));
+        $noti = data_repair::WHERE('idM','=',$id)->WHERE('deleted','=',0)->WHERE('status_id','=',3)->paginate(10);
+        $notihistory = data_repair::WHERE('idM','=',$id)->WHERE('deleted','=',0)->paginate(30);
+       return view('homepage.welcome', compact('s3','noti','notihistory'));
    });
 
     Route::group(['middleware' =>'admin'], function()
@@ -71,7 +68,9 @@ Auth::routes();
         Route::get('/insert', 'UserInsertRepairController@index');
         Route::resource('/insertdata', 'UserInsertRepairController');
         Route::get('/processUser/{id}', 'UserInsertRepairController@process');
-        Route::get('/img', 'UserInsertRepairController@img');
+        Route::get('/img', 'UserInsertRepairController@img');     
+        Route::get('/bot', 'UserInsertRepairController@bot');
+
 
         
      });

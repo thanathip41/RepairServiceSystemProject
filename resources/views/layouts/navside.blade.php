@@ -73,7 +73,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/accept') }}">
           <i class="fa fa-check"></i>
-         <span> รับอุปกรณ์</span> <small class="badge badge-danger">@foreach($s3 as $row) {{$row->number}}  @endforeach</small></a>
+         <span> รับอุปกรณ์</span> <small class="badge badge-danger" style="vertical-align: top;border-radius:50%;">@foreach($s3 as $row) {{$row->number}}  @endforeach</small></a>
       </li>
         <li class="nav-item">
         <a class="nav-link" href="{{ url('/history') }}">

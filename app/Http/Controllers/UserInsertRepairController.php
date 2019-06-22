@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\data_repair;
+use App\User;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Session;
@@ -61,15 +62,25 @@ class UserInsertRepairController extends Controller
     public function accept()
     {
         $id=Auth::user()->id;
+
         $s3 = DB::select( 
        DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
-        $whereID=Auth::user()->id;
-        $accept  = data_repair::WHERE('idM','=',$whereID)->WHERE('status_id','=',3)->WHERE('deleted','=',0)->paginate (5);
+        $accept  = data_repair::WHERE('idM','=',$id)->WHERE('status_id','=',3)->WHERE('deleted','=',0)->paginate (5);
         return view('user.accept', compact('accept','s3'))->with('success', 'Successfully'); 
     }
     public function process($id){
         $row=data_repair::find($id);
         return view('user.process',compact('row'));
         }
+    public function bot()
+        {
+            $id=Auth::user()->id;
+            $s3 = DB::select( 
+           DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
+            return view('user.bot', compact('s3')); 
+        }
+
+        
+    
 
 }

@@ -1,10 +1,7 @@
 @extends('layouts.navside') 
 @section('content')
-<div class="container" align="right">
-@foreach($s1 as $row)
-<h5> <i class="fa fa-users" aria-hidden="true"></i> จำนวนคิวมีทั้งหมด {{$row->number}} คิว</h5>
-@endforeach
-
+<div class="container" align="center">
+   <h2> ประวัติการแจ้งซ่อม</h2>
 </div>
 <br>
 <div class="container">
