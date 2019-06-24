@@ -18,14 +18,14 @@ class User extends Authenticatable
         return $this->belongsTo(roleCheck::class,'role_id');   
         
     }
-    public function data(){   
+    public function users(){   
         return $this->hasmany(data_repair::class,'id');   //('App\Data','id')
         //เรียก modal data :: class ให้ id ของ users = idM
     }
+
     public function departCheck()
     {   
-        return $this->belongsTo(depart_id::class,'department_id');   
-        
+        return $this->belongsTo(depart_id::class,'department_id');      
     }
     /**
      * The attributes that should be hidden for arrays.

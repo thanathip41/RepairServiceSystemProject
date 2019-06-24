@@ -70,7 +70,11 @@ class UserInsertRepairController extends Controller
     }
     public function process($id){
         $row=data_repair::find($id);
-        return view('user.process',compact('row'));
+        $id=Auth::user()->id;
+
+        $s3 = DB::select( 
+       DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
+        return view('user.process',compact('row','s3'));
         }
     public function bot()
         {

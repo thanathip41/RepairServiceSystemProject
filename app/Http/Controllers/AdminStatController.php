@@ -30,7 +30,8 @@ class AdminStatController extends Controller
         $sAll = DB::select( 
             DB::raw('select count(*) as number from data_repair where status_id and deleted=0'));
  $qq=DB::select( 
-   DB::raw('select DATE_FORMAT(created_at , "%Y-%m")as date, device_id as type, count(*) as number from data_repair group by date,type'));
+   DB::raw('select DATE_FORMAT(created_at , "%Y-%m")as date, device_id as type, deleted=0  as del,count(*) 
+   as number from data_repair group by date,type,del'));
    //dd($qq);
                 $id1m1 = DB::select( 
                     DB::raw('select count(*) as number from data_repair where device_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-01" and deleted=0'));

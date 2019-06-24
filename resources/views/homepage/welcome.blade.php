@@ -67,7 +67,6 @@
         </div>
         </li>
         
-
         <li class="nav-item dropdown">
           <a class="nav-link scrollable-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
           aria-haspopup="true" aria-expanded="false">
@@ -81,17 +80,13 @@
         <img src="{{asset('storage').'/'.$row['img']}}"  style="border-radius: 50%;width:40px; height:40px;"> {{$row->id}}  
          <div class="text-right"> <small>{{$row->productCode}}</small></div>
         </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
+        
         @endforeach
-        <footer class="text-center">
+        <footer class="text-center" >
         <a href="{{'/history'}}" style="color:blue;">แสดงทั้งหมด</a>
         </footer>
         </div>
         </li>
-
-          <!-- <li class="nav-item">
-            <a class="nav-link " href="{{ url('/history') }}"><i class="fa fa-history"></i> ประวัติการใช้งาน</a>
-          </li> -->
-
           <li class="nav-item">
           <a class="nav-link " href="{{ url('/bot') }}"><i class="fa fa-robot"></i> แชทบอท</a>
           </li>

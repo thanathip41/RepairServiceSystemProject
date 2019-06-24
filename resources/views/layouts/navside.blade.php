@@ -50,10 +50,20 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
+    
+       
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/')}}">
-          <i class="fas fa-home"></i>
-          <span>Home</span></a>
+        <a class="nav-link" href="{{url('/profile')}}">
+        <i>@if (Auth::user()->img=="") 
+          <img src="{{('/image/user.png')}}" 
+          style="width:50px; height:50px; float:left;border-radius: 50%;margin-left:5px;">
+          @else
+           <img src="{{asset('storage').'/'.Auth::user()->img}}" 
+           style="width:50px; height:50px; float:left;border-radius: 50%;margin-left:5px;">
+           @endif</i>
+          <span> <small> คุณ {{ Auth::user()->name}} <br>&nbsp;&nbsp;&nbsp;&nbsp;
+           <i class="fa fa-circle text-success"></i>ออนไลน์ </small> </span>
+          </a>
       </li>
 
       <!-- Divider -->
@@ -208,12 +218,11 @@
                 @endif
                    </p>
               </a>
-                                    <div class="dropdown-divider"></div>
-                                    <button  class="dropdown-item"  href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                                       <div align="right"> <i class="fas fa-sign-out-alt"></i> Sign out </div>
-                                    </button>
+                <div class="dropdown-divider"></div>
+                  <button  class="dropdown-item"  href="{{ route('logout') }}"
+                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                   <div align="right"> <i class="fas fa-sign-out-alt"></i> Sign out </div>
+                  </button>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
                 </form>
             </div>

@@ -4,7 +4,12 @@
 <div class="container" align="center">   
 <h3>สถิติการแจ้งซ่อมคอมพิวเตอร์ อุปกรณ์ต่อพ่วงและระบบเครือข่าย</h3>
 </div>
-<div class="container">         
+<div class="container">
+<!-- @foreach($qq as $row)
+<div>
+{{$row->del}}
+</div>
+@endforeach      -->
 <table class="table table-bordered table-striped"> 
     <thead>
     <tr class="table-primary">
