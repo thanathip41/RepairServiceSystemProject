@@ -73,7 +73,8 @@
           <i class="fa fa-history"></i> ประวัติการใช้งาน
         </a>
         <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdown">
-        <h5 class="dropdown-header"><b>รายการประวัติแจ้งซ่อม</b></h5>
+        <a href="{{'/history'}}" style="color:blue;float:right;font-size: 13px;"> <small> แสดงทั้งหมด</small></a>
+        <div class="dropdown-header"><b>ประวัติแจ้งซ่อม</b></div>
         <div class="dropdown-divider" style="border-color:black;"></div>
         @foreach($notihistory as $row)
         <small><a class="dropdown-item" href="{{action('UserInsertRepairController@process',$row['id'])}}"> 
@@ -82,7 +83,7 @@
         </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
         
         @endforeach
-        <footer class="text-center" >
+        <footer class="text-center" style="background-color: #63AED3">
         <a href="{{'/history'}}" style="color:blue;">แสดงทั้งหมด</a>
         </footer>
         </div>
