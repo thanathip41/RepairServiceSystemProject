@@ -22,6 +22,8 @@ Auth::routes();
         DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
         $noti = data_repair::WHERE('idM','=',$id)->WHERE('deleted','=',0)->WHERE('status_id','=',3)->paginate(10);
         $notihistory = data_repair::WHERE('idM','=',$id)->WHERE('deleted','=',0)->paginate(30);
+        
+        //dd($noti);
        return view('homepage.welcome', compact('s3','noti','notihistory'));
    });
 

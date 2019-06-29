@@ -116,7 +116,7 @@
             @endif 
             </td>
             <td> ชื่อผู้ดำเนินการ</td>
-            <td>{{$row['repairman']}}</td>
+            <td>{{$row->repairname->name}}</td>
             
           </tr>
           <tr>

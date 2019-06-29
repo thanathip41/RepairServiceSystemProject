@@ -23,6 +23,11 @@ class User extends Authenticatable
         //เรียก modal data :: class ให้ id ของ users = idM
     }
 
+    public function repairname(){   
+        return $this->hasmany(data_repair::class,'id');   //('App\Data','id')
+        //เรียก modal data :: class ให้ id ของ users = idM
+    }
+
     public function departCheck()
     {   
         return $this->belongsTo(depart_id::class,'department_id');      

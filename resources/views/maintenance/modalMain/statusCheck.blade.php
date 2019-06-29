@@ -31,7 +31,7 @@
 										</div>
 							</div>
 									<input type="hidden"  name="status_id" value="2"/>
-									<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/>
+									<input type="hidden" name="repairman"  value="{{Auth::user()->id}}"/>
 							<div class="modal-footer">
 							<button type="submit" class="btn btn-primary">Yes </button> 
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
@@ -67,7 +67,7 @@
 						<label> <b>หมายเหตุ</b>  </label>
 						<textarea   name="remark" class="form-control" rows="3">{{$row['remark']}}</textarea>
 						</div>
-						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+						<input type="hidden" name="repairman"  value="{{Auth::user()->id}}"/> 
 						<input  type="hidden" name="date_return" value="{{$row['date_return']}}"/>
 						<input type="hidden"  name="status_id" value="3"/>
 	     	  </div>
@@ -133,7 +133,7 @@
 											
 										}
 										</script>					
-					<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+					<input type="hidden" name="repairman"  value="{{Auth::user()->id}}"/> 
 					<input  type="hidden" name="date_return" value="{{$row['date_return']}}"/>
 					</div>
 					<div class="modal-footer">
@@ -189,7 +189,7 @@
 	      <div class="modal-body">
 					<p class="text-center">
 						<input type="hidden"  name="status_id" value="2"/> การต้องดำเนินการซ่อม <br/> ของคุณ {{$row->users->name}} ใหม่อีกครั้งใช่หรือไม่
-						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+						<input type="hidden" name="repairman"  value="{{Auth::user()->id}}"/> 
 						<input type="hidden" name="method" value="{{$row['method']}}" />
 					
 					</p>
@@ -235,7 +235,7 @@
 						</div>
 						<input type="hidden"  name="status_id" value="3"/>
 						<input type="hidden" name="method" value="{{$row['method']}}" />
-						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+						<input type="hidden" name="repairman"  value="{{Auth::user()->id}}"/> 
 						<input  type="hidden" name="date_return" value="{{$row['date_return']}}"/>
 	     	  </div>
 	      <div class="modal-footer">
@@ -263,7 +263,7 @@
 					ซื้ออุปกรณ์ใหม่เรียบร้อยแล้ว
 						</div>
 						<input type="hidden" name="method" value="{{$row['method']}}" />
-						<input type="hidden" name="repairman"  value="{{Auth::user()->name}}"/> 
+						<input type="hidden" name="repairman"  value="{{Auth::user()->id}}"/> 
 						<input type="hidden"  name="status_id" value="3"/>
 						<input  type="hidden" name="date_return" value="{{$row['date_return']}}"/>
 	     	  </div>

@@ -70,7 +70,7 @@
   <br>
   <tr>
      <td><h3> ชื่อผู้ดำเนินการ</h3> </td>
-      <td>{{$PDF->repairman}}</td>
+      <td>{{$PDF->repairname->name}}</td>
   </tr>
   <br>
   <tr>

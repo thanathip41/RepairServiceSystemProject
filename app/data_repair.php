@@ -24,6 +24,11 @@ class data_repair extends Model
     return $this->belongsTo(User::class,'idM'); //('App\User','idM','id');
     }
 
+    public function repairname()
+    { 
+    return $this->belongsTo(User::class,'repairman'); //('App\User','idM','id');
+    }
+
    protected $primaryKey="id";   // php มอง id เป็น int 
    public $incrementing =false;
 
