@@ -93,7 +93,7 @@
   <tr>
  
   <td><h3 align="center" >({{$PDF->users->name}})</h3></td>
-  <td><h3  align="center">({{$PDF->repairman}})</h3></td>
+  <td><h3  align="center">({{$PDF->repairname->name}})</h3></td>
  
   </tr>
   <tr>

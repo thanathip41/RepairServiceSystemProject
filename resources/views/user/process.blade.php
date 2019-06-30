@@ -113,8 +113,11 @@
             @endif 
             </td>
             <td> ชื่อผู้ดำเนินการ</td>
+            @if ($row['repairman']=="")
+            <td> </td>
+            @else
             <td>{{$row->repairname->name}}</td>
-            
+            @endif
           </tr>
           <tr>
           <td>รูปภาพประกอบ</td>

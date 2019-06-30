@@ -32,7 +32,8 @@ class UserInsertRepairController extends Controller
              'img'=>  'image|mimes:jpg,jpeg,png|max:2048'
         ]); 
         $input = new data_repair(
-            [ 'idM'=>Auth::user()->id,
+            [ 
+              'idM'=>Auth::user()->id,
               'productCode' =>('NPC-').$request->get('productCode'), 
               'problem' => $request->get('problem'),
               'device_id'=>$request->get('device_id'),
@@ -71,20 +72,18 @@ class UserInsertRepairController extends Controller
     public function process($id){
         $row=data_repair::find($id);
         $id=Auth::user()->id;
-
         $s3 = DB::select( 
        DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
-        return view('user.process',compact('row','s3'));
-        }
-    public function bot()
-        {
-            $id=Auth::user()->id;
-            $s3 = DB::select( 
-           DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
-            return view('user.bot', compact('s3')); 
-        }
-
-        
+       $accept  = data_repair::WHERE('idM','=',$id)->WHERE('status_id','=',3)->WHERE('deleted','=',0)->paginate (5);
+        return view('user.process',compact('row','s3','accept'))->with('success', 'Successfully'); 
     
-
+        }
+    public function acceptNoti($id)
+        {
+        $row=data_repair::find($id);
+        $id=Auth::user()->id;
+        $s3 = DB::select( 
+       DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
+        return view('user.acceptNoti',compact('row','s3'));
+        }
 }

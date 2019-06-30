@@ -71,7 +71,7 @@ Auth::routes();
         Route::resource('/insertdata', 'UserInsertRepairController');
         Route::get('/processUser/{id}', 'UserInsertRepairController@process');
         Route::get('/img', 'UserInsertRepairController@img');     
-        Route::get('/bot', 'UserInsertRepairController@bot');
+        Route::get('/acceptNoti/{id}', 'UserInsertRepairController@acceptNoti');
 
 
         

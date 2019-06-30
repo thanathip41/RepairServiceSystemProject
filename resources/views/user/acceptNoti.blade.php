@@ -1,5 +1,6 @@
 @extends('layouts.navside') 
 @section('content')
+
 <div class="container" align="center">
    <h2> ยืนยันการรับอุปกรณ์</h2>
 </div>
@@ -23,13 +24,11 @@
 <th>รายละเอียด </th>
 </tr>
 
-@foreach($accept as $row)
-
 <tr> 
     <td>{{$row['id']}} </td> 
     <td>{{$row['productCode']}}</td> 
     <td>{{$row->typeCheck->device_id}}: <br> <p style="color:red;">{{$row['problem']}}</p></td>
-    <td><div class="text-center" style="color:green;">
+    <td><div class="text-center"style="color:green;">
         @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
         @else {{date('d/M/Y',strtotime($row['updated_at']))}}@endif</div> 
     <div class="text-center" style="color:Orange;">@if ($row['date_return']=='') รอการยืนยัน
@@ -39,9 +38,6 @@
     <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 
 </tr>
-
-@endforeach
 </table> 
-{{$accept->links()}}
  </div>
 @stop

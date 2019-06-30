@@ -42,50 +42,16 @@
             <a class="nav-link" href="{{ url('/insert') }}"><i class="fa fa-wrench"></i> แจ้งซ่อม</a>
           </li>
         
-          @foreach($s3 as $row)
-          @if ($row->number==0)
-          <li class="nav-item">
-          <a class="nav-link">
-          <i class="fa fa-bell"></i> <span class="badge badge-secondary"  style="vertical-align: top;border-radius: 50%;float:right;"> {{$row->number}} </span>
-        </a>
-          @else
-        <li class="nav-item dropdown">
-          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-bell"></i><span class="badge badge-danger"  style="vertical-align:top;border-radius: 50%; float:right;"> {{$row->number}}  </span>
-        </a>
-        @endif
-        @endforeach
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <h5 class="dropdown-header"><b>การแจ้งเตือน</b></h5>
-        <div class="dropdown-divider" style="border-color:black;"></div>
-        @foreach($noti as $row)
-        @if ($row['img']=='')
-        <small><a class="dropdown-item" href="{{ url('/accept') }}" > 
-        <img src="{{asset('storage').'/'.$row->repairname->img}}"  style="border-radius: 50%;width:40px; height:40px;"/>
-        
-        <small> <b> {{$row->repairname->name}} ได้แจ้งเตือนถึงคุณ </b> <img src="{{asset('image/Qm.jpg')}}"style="border-radius: 50%;width:40px; height:40px;"> </small>
-        <br/> <small style="margin-left: 25%"> {{$row->productCode}} ดำเนินการเสร็จสิ้น </small>
-        </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
-        @else 
-        <small><a class="dropdown-item" href="{{ url('/accept') }}" > 
-        <img src="{{asset('storage').'/'.$row->repairname->img}}"  style="border-radius: 50%;width:40px; height:40px;"/>
-        
-        <small> <b> {{$row->repairname->name}} ได้แจ้งเตือนถึงคุณ </b> <img src="{{asset('storage').'/'.$row['img']}}"  style="border-radius: 50%;width:40px; height:40px;"> </small>
-        <br/> <small style="margin-left: 25%"> {{$row->productCode}} ดำเนินการเสร็จสิ้น </small>
-        </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
-        @endif
-        @endforeach
-        </div>
-        </li>
+         
         <li class="nav-item dropdown">
           <a class="nav-link scrollable-menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
           aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-history"></i> ประวัติการใช้งาน
         </a>
         <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdown">
-        <a href="{{'/history'}}" style="color:blue;float:right;font-size: 13px;"> <small> แสดงทั้งหมด</small></a>
-        <div class="dropdown-header"><b>ประวัติแจ้งซ่อม</b></div>
+        
+        <div class="dropdown-header">
+        <a href="{{'/history'}}" style="color:#6E706E"> <b>ประวัติแจ้งซ่อม</b> </a></div>
         <div class="dropdown-divider" style="border-color:black;"></div>
         @foreach($notihistory as $row)
         <small><a class="dropdown-item" href="{{action('UserInsertRepairController@process',$row['id'])}}"> 
@@ -107,6 +73,48 @@
         </div>
         </li>
         
+        @foreach($s3 as $row)
+          @if ($row->number==0)
+          <li class="nav-item">
+          <a class="nav-link">
+          <i class="fa fa-bell"></i> <span class="badge badge-secondary"  style="vertical-align: top;border-radius: 50%;float:right;"> {{$row->number}} </span>
+        </a>
+          @else
+        <li class="nav-item dropdown">
+          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bell"></i><span class="badge badge-danger"  style="vertical-align:top;border-radius: 50%; float:right;"> {{$row->number}}  </span>
+        </a>
+        @endif
+        @endforeach
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <div class="dropdown-header">
+        <a href="{{'/accept'}}" style="color:#6E706E"> <b>การแจ้งเตือน</b> </a></div>
+        <div class="dropdown-divider" style="border-color:black;"></div>
+        @foreach($noti as $row)
+        @if ($row['img']=='')
+        <small><a class="dropdown-item" href="{{action('UserInsertRepairController@acceptNoti',$row['id'])}}" > 
+        <img src="{{asset('storage').'/'.$row->repairname->img}}"  style="border-radius: 50%;width:40px; height:50px;"/>
+        
+        <small style="font-size:12px"> <b> {{$row->repairname->name}} ได้แจ้งเตือนถึงคุณ </b> 
+        <img src="{{asset('image/Qm.jpg')}}"style="width:40px; height:50px;"> </small>
+        <br/> <small style="margin-left: 25%;"> {{$row->productCode}} ดำเนินการเสร็จสิ้น </small>
+        </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
+        @else 
+        <small><a class="dropdown-item" href="{{action('UserInsertRepairController@acceptNoti',$row['id'])}}" > 
+        <img src="{{asset('storage').'/'.$row->repairname->img}}"  style="border-radius: 50%;width:40px; height:50px;"/>
+        
+        <small style="font-size:12px"> <b> {{$row->repairname->name}} ได้แจ้งเตือนถึงคุณ </b> 
+        <img src="{{asset('storage').'/'.$row['img']}}"  style="width:40px; height:50px;"> </small>
+        <br/> <small style="margin-left: 25%"> {{$row->productCode}} ดำเนินการเสร็จสิ้น </small>
+        </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
+        @endif
+        @endforeach
+        <footer class="text-center">
+        <a href="{{'/accept'}}" style="color:blue;">แสดงทั้งหมด</a>
+        </footer>
+        </div>
+        </li>
           
           @elseif (Auth::user()->role_id==1)
         <li class="nav-item">
