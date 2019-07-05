@@ -14,7 +14,7 @@ use App\User;
 use App\data_repair;
 use Illuminate\Support\Facades\Input;
 Auth::routes();
-    Route::group(['middleware' =>['ban','auth']], function(){   //['ban','auth']]
+    Route::group(['middleware' =>['isDel','auth']], function(){   //['ban','auth']]
      Route::get('/',function () 
     {
          $id=Auth::user()->id;

@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\User;
-class IsBan
+class IsDel
 {
     /**
      * Handle an incoming request.
@@ -18,12 +18,18 @@ class IsBan
 
         $user = User::where('username', $request->username)->first();
        // dd($request->input('username'));
-        $isBaned = ((isset($user))?$user->activated:1);
-        if ($isBaned==0){
+        $isDel = ((isset($user))?$user->activated:1);
+        //$isQuit =((isset($user))?$user->role_id:3);
+        if ($isDel==0 ){
             abort(401);
-           
         } 
-       return $next($request);
+        // elseif ($isQuit==3) {
+            
+        // }
+        else {
+            return $next($request);
+        }
+     
     }
     
 }

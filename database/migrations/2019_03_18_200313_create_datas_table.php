@@ -14,10 +14,19 @@ class CreateInsertdatasTable extends Migration
     public function up()
     {
         Schema::create('data_repair', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('fname');
-            $table->string('lname');
+            $table->string('id', 20)->primary();
+            $table->string('productCode')->nullable();
+            $table->string('problem');
             $table->timestamps();
+            $table->string('device_id');
+            $table->string('repairman');
+            $table->string('status_id')->default(1);;
+            $table->string('method');
+            $table->string('remark');
+            $table->boolean('deleted')->default(0);
+            $table->string('idM')->nullable();
+            $table->string('img');
+            $table->date('date_return');
         });
     }
 
@@ -28,6 +37,6 @@ class CreateInsertdatasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data');
+        Schema::dropIfExists('data_repair');
     }
 }

@@ -13,7 +13,6 @@
   <link rel="stylesheet" type="text/css" href="{{asset('/css/bodycolor.css')}}">
     </head>
     <body>
-    @if (Auth::user()->deleted==0)
     <br>
         <div class="container">
         <div class="text-center"><h2>หมายเลขการแจ้งซ่อม {{$row['id']}}</h3></div>
@@ -130,7 +129,5 @@
           <a href=javascript:history.back() class="btn btn-default">Close</a> 
           </div>
     </div>
-
-   @endif
     </body>
 </html>

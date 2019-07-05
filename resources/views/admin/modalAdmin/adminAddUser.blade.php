@@ -46,8 +46,8 @@
     </div>
   </div>
 </div>
-@elseif ($row['role_id']==3)
-<button class="btn btn-primary"  data-toggle="modal" data-target="#add{{ $row['id']}}"> <i class="fa fa-user-plus"></i></button> 
+ @elseif ($row['role_id']==3)
+ <button class="btn btn-primary"  data-toggle="modal" data-target="#add{{ $row['id']}}"> <i class="fa fa-user-plus"></i></button> 
 <div class="modal modal-danger fade" id="add{{$row['id']}}"   role="dialog" >
   <div class="modal-dialog" >
     <div class="modal-content">

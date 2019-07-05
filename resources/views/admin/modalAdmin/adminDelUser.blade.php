@@ -33,6 +33,7 @@
 	      <div class="modal-body" align="center">
 					คุณต้องการลบคุณ {{$row['name']}} ออกจากระบบ ใช่หรือไม่
 					<input type="hidden"  name="activated" value="0">
+					<input type="hidden"  name="role_id" value="{{$row['role_id']}}">
 	     	  </div>
 	      <div class="modal-footer">
 				<button  type="submit" class="btn btn-primary">Yes </button> 
@@ -56,7 +57,7 @@
 	      <div class="modal-body" align="center">
 					คุณต้องการกู้ข้อมูลของ {{$row['name']}} เข้าในระบบ ใช่หรือไม่
 					<input type="hidden"  name="activated" value="1"/>
-					<input type="hidden"  name="role_id" value="0">
+					<input type="hidden"  name="role_id" value="{{$row['role_id']}}">
 	     	  </div>
 	      <div class="modal-footer">
 				<button  type="submit" class="btn btn-primary">Yes </button> 

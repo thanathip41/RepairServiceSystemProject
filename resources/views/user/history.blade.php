@@ -36,7 +36,7 @@
         <td> <div style="color:#134C3A;">@if ($row['date_return']=='') รอการยืนยัน
         @else {{date('d/M/Y',strtotime($row['date_return']))}} @endif </div> </td>
 	<td>{{$row->statusCheckname->status_id}}</td>  
-    <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
+    <td> <a class="btn btn-secondary" href="{{action('UserInsertRepairController@process',$row['id'])}}"><i class="fas fa-eye"></i> </a></td>
 </tr>
 
 @endforeach

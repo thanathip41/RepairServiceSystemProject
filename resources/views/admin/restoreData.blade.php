@@ -26,8 +26,9 @@
 <th>อุปกรณ์/ปัญหาที่พบ</th>
 <th>เวลาแจ้ง/รับซ่อม</th>
 <th>สถานะการซ่อม</th>
-<th>รายละเอียด</th>
 <th>กู้ข้อมูล</th>
+<th>รายละเอียด</th>
+
 </tr> 
 
 @foreach($admin as $row) <!-- ดึงข้อมูล data ใน datacontroller@index = $row -->
@@ -39,8 +40,10 @@
     @if ($row['created_at']==$row['updated_at']) ไม่ได้ดำเนินการ
 		@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
 <td>{{$row->statusCheckname->status_id}}</td>
-<td><a href="{{action('AdminDataRepairController@process',$row['id'])}}">รายละเอียด</a></td>
 <td> @include('admin/modalAdmin/adminDelData')</td>
+<td> <a class="btn btn-secondary" href="{{action('AdminDataRepairController@process',$row['id'])}}"><i class="fas fa-eye"></i> </a></td>
+
+
 </tr>
 @endforeach 
 </table>

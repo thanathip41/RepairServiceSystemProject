@@ -64,7 +64,7 @@ class Kernel extends HttpKernel
         'maintenance'=> \App\Http\Middleware\IsMaintenance::class,
         'user'=> \App\Http\Middleware\IsUser::class,
         'admin'=> \App\Http\Middleware\IsAdmin::class,
-        'ban'=> \App\Http\Middleware\IsBan::class,
+        'isDel'=> \App\Http\Middleware\IsDel::class,
         
        
     ];

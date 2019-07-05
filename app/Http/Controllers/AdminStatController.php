@@ -11,10 +11,12 @@ class AdminStatController extends Controller
 {
     public function index()
     {
-        
+        $qq=DB::select( 
+            DB::raw('select DATE_FORMAT(created_at , "%Y-%m")as date, device_id as type,count(*) 
+            as number from data_repair where deleted=0 group by date,type'));
+          //  dd($qq);
         $s1 = DB::select( 
             DB::raw('select count(*) as number from data_repair where status_id=1 and deleted=0'));
-            //dd($s1);
         $s2 = DB::select( 
             DB::raw('select count(*) as number from data_repair where status_id=2 and deleted=0'));
         $s3 = DB::select( 
@@ -29,10 +31,7 @@ class AdminStatController extends Controller
             DB::raw('select count(*) as number from data_repair where status_id=7 and deleted=0'));
         $sAll = DB::select( 
             DB::raw('select count(*) as number from data_repair where status_id and deleted=0'));
- $qq=DB::select( 
-   DB::raw('select DATE_FORMAT(created_at , "%Y-%m")as date, device_id as type, deleted=0  as del,count(*) 
-   as number from data_repair group by date,type,del'));
-   //dd($qq);
+ 
                 $id1m1 = DB::select( 
                     DB::raw('select count(*) as number from data_repair where device_id="1" and DATE_FORMAT(created_at , "%Y-%m")="2019-01" and deleted=0'));
                     $id1m2  = DB::select( 

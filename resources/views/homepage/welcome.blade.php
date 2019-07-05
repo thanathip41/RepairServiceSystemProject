@@ -49,7 +49,6 @@
           <i class="fa fa-history"></i> ประวัติการใช้งาน
         </a>
         <div class="dropdown-menu scrollable-menu" aria-labelledby="navbarDropdown">
-        
         <div class="dropdown-header">
         <a href="{{'/history'}}" style="color:#6E706E"> <b>ประวัติแจ้งซ่อม</b> </a></div>
         <div class="dropdown-divider" style="border-color:black;"></div>
@@ -67,7 +66,7 @@
         </a> </small>  <div class="dropdown-divider" style="border-color:black;"></div>
         @endif
         @endforeach
-        <footer class="text-center" style="background-color: #63AED3">
+        <footer class="text-center">
         <a href="{{'/history'}}" style="color:blue;">แสดงทั้งหมด</a>
         </footer>
         </div>
@@ -87,7 +86,8 @@
         </a>
         @endif
         @endforeach
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu dropdown-menu-right scrollable-menu" aria-labelledby="navbarDropdown">
+        
         <div class="dropdown-header">
         <a href="{{'/accept'}}" style="color:#6E706E"> <b>การแจ้งเตือน</b> </a></div>
         <div class="dropdown-divider" style="border-color:black;"></div>
@@ -226,6 +226,7 @@
   <footer class="bg-dark py-5">
     <div class="container">
       <h5><div class="small text-center text-muted">Copyright &copy; 2019 - Computer Service</div></h5>
+ 
     </div>
   </footer>
 </body>

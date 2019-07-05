@@ -14,15 +14,14 @@
 <div class="container">            
 <table class="table table-bordered table-striped"> 
 <tr>
-<th>รหัสแจ้งซ่อม</th>
-<th>รหัสผลิตภัณฑ์</th> 
-<th>อุปกรณ์/ปัญหา</th>
-<th>เวลารับซ่อม /คาดว่าจะเสร็จ</th>
-<th>สถานะ</th>
-<th>ยืนยันการซ่อม</th>
-<th>รายละเอียด </th>
+    <th>รหัสแจ้งซ่อม</th>
+    <th>รหัสผลิตภัณฑ์</th> 
+    <th>อุปกรณ์/ปัญหา</th>
+    <th>เวลารับซ่อม /คาดว่าจะเสร็จ</th>
+    <th>สถานะ</th>
+    <th>ยืนยันการซ่อม</th>
+    <th>รายละเอียด </th>
 </tr>
-
 @foreach($accept as $row)
 
 <tr> 
@@ -36,7 +35,8 @@
         @else {{date('d/M/Y',strtotime($row['date_return']))}} @endif </div> </td>
     <td>{{$row->statusCheckname->status_id}}</td>
     <td> @include('user/modalUser/acceptPro')</td>
-    <td><a href="{{action('UserInsertRepairController@process',$row['id'])}}">รายละเอียด</a></td>
+    <td> <a class="btn btn-secondary" href="{{action('UserInsertRepairController@process',$row['id'])}}">
+    <i class="fas fa-eye"></i> </a></td>
 
 </tr>
 

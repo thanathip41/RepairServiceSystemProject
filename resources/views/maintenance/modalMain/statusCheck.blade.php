@@ -114,7 +114,7 @@
 					</div>
 										<script>
 										function typeAndproblem(val, id) {
-												//var HTML = "";
+												
 												if(val == 6) {
 														document.getElementById("s2"+id).setAttribute("hidden", true);
 														document.getElementById("s2"+id).setAttribute("disabled", true);
@@ -125,8 +125,8 @@
 
 													document.getElementById("s1"+id).setAttribute("hidden", true);
 													document.getElementById("s1"+id).setAttribute("disabled", true);
-														document.getElementById("s2"+id).removeAttribute("hidden");
-														document.getElementById("s2"+id).removeAttribute("disabled");
+													document.getElementById("s2"+id).removeAttribute("hidden");
+													document.getElementById("s2"+id).removeAttribute("disabled");
 
 												} 
 												

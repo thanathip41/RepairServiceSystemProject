@@ -67,6 +67,7 @@ class UserInsertRepairController extends Controller
         $s3 = DB::select( 
        DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
         $accept  = data_repair::WHERE('idM','=',$id)->WHERE('status_id','=',3)->WHERE('deleted','=',0)->paginate (5);
+        //dd($accept )
         return view('user.accept', compact('accept','s3'))->with('success', 'Successfully'); 
     }
     public function process($id){
@@ -83,7 +84,7 @@ class UserInsertRepairController extends Controller
         $row=data_repair::find($id);
         $id=Auth::user()->id;
         $s3 = DB::select( 
-       DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
+        DB::raw("select count(*) as number from data_repair where status_id=3 and idM='$id' and deleted=0"));
         return view('user.acceptNoti',compact('row','s3'));
         }
 }

@@ -42,7 +42,7 @@
 		@else {{date('d/M/Y',strtotime($row['updated_at']))}} @endif</p> </td>
 <td>{{$row->statusCheckname->status_id}} </td>
 <td> @include('admin/modalAdmin/adminDelData')</td>
-<td><a href="{{action('AdminDataRepairController@process',$row['id'])}}">รายละเอียด</a></td>
+<td> <a class="btn btn-secondary" href="{{action('AdminDataRepairController@process',$row['id'])}}"><i class="fas fa-eye"></i> </a></td>
 </tr>
 @endforeach 
 </table>

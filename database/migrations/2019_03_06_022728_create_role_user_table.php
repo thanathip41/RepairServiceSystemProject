@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusChecksTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateStatusChecksTable extends Migration
      */
     public function up()
     {
-        Schema::create('status_checks', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->string('role_id');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateStatusChecksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_checks');
+        Schema::dropIfExists('role_user');
     }
 }

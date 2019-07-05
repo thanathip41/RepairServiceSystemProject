@@ -7,10 +7,6 @@
 @foreach($s1 as $row)
  <i class="fa fa-users" aria-hidden="true"></i> จำนวนคิวมีทั้งหมด {{$row->number}} คน
 @endforeach
-<?php
-
-echo (date("H:i:s"));
-?>
 </div>
 <div class="container">
     <div class="row justify-content-center">
