@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateDevicetypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,6 +17,16 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('device_id');
         });
+        // Insert some stuff
+            DB::table('device_type')->insert(
+            array(
+                array('id' => 1,'device_id' => 'คอมพิวเตอร์'),
+                array('id' => 2,'device_id' => 'ปริ้นเตอร์/สแกนเนอร์'),
+                array('id' => 3,'device_id' => 'ระบบเครือข่าย'),
+                
+                 )
+        );
+          
     }
 
     /**

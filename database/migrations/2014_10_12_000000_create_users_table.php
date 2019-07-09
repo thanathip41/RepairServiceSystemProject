@@ -14,9 +14,9 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('id', 20)->primary();
             $table->string('name');
-            $table->integer('department');
+            $table->integer('department_id');
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
@@ -25,6 +25,20 @@ class CreateUsersTable extends Migration
             $table->boolean('activeted')->default(1);
             $table->string('img');
         });
+        // DB::table('users')->insert(
+        //     array(
+        //         array(
+                    
+        //             'department_id' => 8,'email' => 'admin@gmail.com',
+        //             'id'=>'MT-0000001','name' => 'ผู้ดูแลระบบ ทดสอบ',
+        //             'password' => '$2y$10$3NcymCVURBx1mIatjWW1Bu/..DcOdyRhyBzx2DuhQkQOhATC29OHy', 'role_id' => 2 ,
+        //             'username'=>'admin',  'img'=>'',
+        //             'created_at'=>date('Y-m-d H:i:s'),
+        //             'updated_at'=>date('Y-m-d H:i:s'),
+        //              )
+               
+        //          )
+        // );
     }
 
     /**

@@ -47,7 +47,7 @@ Auth::routes();
 
     Route::group(['middleware' =>'maintenance'], function()
     {   
-        Route::resource('/datarepair', 'MainDataRepairController');
+        Route::resource('datarepair', 'MainDataRepairController');
           Route::get('/formpdf/{id}', 'MainDataRepairController@PDF');
           Route::any('/searchName', 'MainDataRepairController@searchName');
           Route::any('/searchStatus', 'MainDataRepairController@searchStatus');
